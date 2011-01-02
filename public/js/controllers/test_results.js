@@ -7,9 +7,10 @@ skeleton.TestResults = function(app) {
   
   app.post('#/test_results', function(context) {
     context.post('/test_results', context.params, function() {
-      
+      context.flash('You have successfully taken the test. Thanks.');
+      context.redirect('#/');
     }, function() {
-      
+      context.showErrors('#new_test_result_form', context);
     });
   });
 }

@@ -1,11 +1,11 @@
 <h2>Take the test!</h2>
 
-<form method="POST" action="#/test_results" id="new_test_result">
+<form method="POST" action="#/test_results" id="new_test_result_form">
   {{#questions}}
     <p>
       {{question}}<br />
-      <input type="radio" name="test_result[questions][{{_id}}]" value="0" /> {{answer_1}}
-      <input type="radio" name="test_result[questions][{{_id}}]" value="1" /> {{answer_2}}
+      <input type="radio" name="test_result[questions][{{_id}}]" value="1" /> {{answer_1}}
+      <input type="radio" name="test_result[questions][{{_id}}]" value="2" /> {{answer_2}}
     </p>  
   {{/questions}}
   

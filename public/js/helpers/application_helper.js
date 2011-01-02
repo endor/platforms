@@ -25,6 +25,10 @@
 
     formatErrors: function(errors) {
       return errors;
+    },
+    
+    showErrors: function(form_id, context) {
+      $(form_id).validate().showErrors(context.formatErrors(errors));
     }
   };
   

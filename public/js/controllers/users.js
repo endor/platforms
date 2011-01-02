@@ -4,8 +4,7 @@ skeleton.Users = function(app) {
       context.flash('Welcome ' + context.params.user.username);
       context.redirect('#/test_results/new');
     }, function(errors) {
-      context.partial('views/users/new.mustache');
-      $('#new_user_form').validate().showErrors(context.formatErrors(errors));
+      context.showErrors('#new_user_form', context);
     });
   });
   
