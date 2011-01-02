@@ -3,7 +3,8 @@ require.paths.unshift('vendor/ejs');
 require.paths.unshift('lib');
 
 var Skeleton = require('./lib/skeleton'),
-  User = require('models/user');
+  User = require('models/user'),
+  QuestionProvider = require('models/question_provider');
 
 App = function() {};
 App.prototype = new Skeleton();
@@ -20,6 +21,12 @@ App.prototype.initializeRoutes = function(app) {
     }));
   });
 
+  app.get('/questions', function(req, res) {
+    var questions = QuestionProvider.read('questions.txt');
+    
+    res.send(JSON.stringify(questions), 200);
+  });
+  
   function handleError(res, callback) {
     return function() {
       var args = Array.prototype.slice.call(arguments); 

@@ -1,0 +1,11 @@
+How are you doing?
+Good
+Bad
+
+Do you like animals?
+Yes
+No
+
+Do you like snowboarding?
+Yes
+No

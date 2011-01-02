@@ -1,15 +1,27 @@
-skeleton.ApplicationHelper = {
-  post: function(url, data, success, error) {
+(function() {
+  var send = function(type, url, data, success, error) {
     $.ajax({
-      method: 'POST',
+      type: type,
       url: url,
-      data: data,
+      data: JSON.stringify(data),
+      contentType: 'application/json',
       success: success,
       error: error
-    });
-  },
+    });    
+  };
   
-  formatErrors: function(errors) {
-    return errors;
-  }
-};
+  skeleton.ApplicationHelper = {
+    post: function(url, data, success, error) {
+      send('POST', url, data, success, error);
+    },
+
+    get: function(url, data, success, error) {
+      send('GET', url, data, success, error);
+    },
+
+    formatErrors: function(errors) {
+      return errors;
+    }
+  };
+  
+})();
