@@ -6,8 +6,12 @@ skeleton.app = $.sammy('#wrapper', function() {
   
   skeleton.Users(this);
   skeleton.TestResults(this);
+  
+  this.get('#/', function() {
+    this.partial('views/start.mustache');
+  });
 });
 
 $(function() {
-  skeleton.app.run('#/users/new');
+  skeleton.app.run('#/');
 });
