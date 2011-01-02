@@ -28,7 +28,7 @@ App.prototype.initializeRoutes = function(app) {
   app.get('/questions', function(req, res) {
     var questions = QuestionProvider.read('questions.txt');
     
-    res.send(JSON.stringify(questions), 200);
+    res.send(questions, 200);
   });
   
   function handleError(res, callback) {
