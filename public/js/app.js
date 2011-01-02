@@ -1,7 +1,7 @@
-var skeleton.app = $.sammy(function() {
+skeleton.app = $.sammy(function() {
   this.use(Sammy.Mustache);
   this.use(Sammy.NestedParams);
-
+  
   this.helpers(skeleton.ApplicationHelper);
   
   skeleton.Users(this);
@@ -9,6 +9,5 @@ var skeleton.app = $.sammy(function() {
 });
 
 $(function() {
-  skeleton.app.run('#/');
-  skeleton.app.trigger('init');
+  skeleton.app.run('#/users/new');
 });
