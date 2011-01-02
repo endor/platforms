@@ -15,10 +15,14 @@ App.prototype.initializeRoutes = function(app) {
   
   app.post('/users', function(req, res) {
     var user = User.fromParams(req.body.user);
-    app.db.saveDoc(user.toDoc(), handleError(res, function(ok) {
-      req.session.user_id = user.toDoc()._id;
-      res.send(201);
-    }));
+    if(user.valid()) {
+      app.db.saveDoc(user.toDoc(), handleError(res, function(ok) {
+        req.session.user_id = user.toDoc()._id;
+        res.send(201);
+      }));
+    } else {
+      res.send({user: user.errors}, 422);
+    };
   });
 
   app.get('/questions', function(req, res) {
