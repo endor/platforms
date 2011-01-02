@@ -1,13 +1,9 @@
 describe("ApplicationHelper", function() {
-  var helper;
-
-  beforeAll(function() {
-    helper = skeleton.ApplicationHelper;
-  });
+  var helper = skeleton.ApplicationHelper;;
 
   it("should prepend the type the keys", function() {
-    var result = helper.formatErrors({user: {login: [err1, err2]}});
-    expect(result).toEqual({user_login: [err1, err2]});
+    var result = helper.formatErrors({user: {login: ['err1', 'err2']}});
+    expect(result).toEqual({user_login: ['err1', 'err2']});
   });
 });
 //   describe("when song has been paused", function() {

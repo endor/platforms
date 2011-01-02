@@ -24,7 +24,7 @@
     },
 
     formatErrors: function(errors) {
-      return errors;
+
     },
     
     showErrors: function(form_id, context) {

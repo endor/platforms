@@ -9,8 +9,6 @@
     
     <script type="text/javascript" charset="utf-8" src="vendor/lab/lab.js"></script>
 		<script type="text/javascript">
-		  var skeleton = {};
-		  
 		  $LAB
 		  .script('vendor/jquery/jquery.js').wait()
 		  .script('vendor/jquery/jquery.form.js')
@@ -20,6 +18,7 @@
       .script('vendor/sammy/sammy.nested_params.js')
       .script('vendor/sammy/sammy.mustache.js')
       .script('vendor/underscore/underscore.js').wait()
+      .script('js/boot.js').wait()
       .script('js/helpers/application_helper.js')
       .script('js/controllers/users.js')
       .script('js/controllers/test_results.js').wait()

@@ -11,6 +11,9 @@
 #   - dist/**/*.js
 #
 src_files:
+    - public/js/boot.js
+    - public/vendor/jquery/jquery.js
+    - public/vendor/**/*.js
     - public/js/**/*.js
 
 # stylesheets
