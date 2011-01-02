@@ -1,13 +1,14 @@
 skeleton.Users = function(app) {
   app.post('#/users', function(context) {
-    this.post('/users', this.params, function() {
+    context.post('/users', context.params, function() {
       context.redirect('#/test_results/new');
-    }, function() {
+    }, function(errors) {
       context.partial('views/users/new.mustache');
+      $.validator.showErrors(context.formatErrors(errors));
     });
   });
   
-  app.get('#/users/new', function() {
-    this.partial('views/users/new.mustache');
+  app.get('#/users/new', function(context) {
+    context.partial('views/users/new.mustache');
   });
 }

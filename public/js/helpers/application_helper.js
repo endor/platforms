@@ -7,5 +7,9 @@ skeleton.ApplicationHelper = {
       success: success,
       error: error
     });
+  },
+  
+  formatErrors: function(errors) {
+    return errors;
   }
 };
