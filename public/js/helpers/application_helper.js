@@ -11,6 +11,10 @@
   };
   
   skeleton.ApplicationHelper = {
+    flash: function(message) {
+      $('#flash').html(message).show().delay(2000).fadeOut('slow');
+    },
+    
     post: function(url, data, success, error) {
       send('POST', url, data, success, error);
     },
