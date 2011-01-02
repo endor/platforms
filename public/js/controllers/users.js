@@ -4,7 +4,7 @@ skeleton.Users = function(app) {
       context.redirect('#/test_results/new');
     }, function(errors) {
       context.partial('views/users/new.mustache');
-      $.validator.showErrors(context.formatErrors(errors));
+      $('#new_user_form').validate().showErrors(context.formatErrors('user', errors));
     });
   });
   

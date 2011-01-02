@@ -1,0 +1,15 @@
+<h2>Take the test!</h2>
+
+<form method="POST" action="#/test_results" id="new_test_result">
+  {{#questions}}
+    <p>
+      {{question}}<br />
+      <input type="radio" name="test_result[questions][{{_id}}]" value="0" />
+      <input type="radio" name="test_result[questions][{{_id}}]" value="1" />
+    </p>  
+  {{/questions}}
+  
+  <p>
+    <input type="submit" value="Show me my personality!" />
+  </p>
+</form>
