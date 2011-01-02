@@ -4,3 +4,7 @@ What we still need to decide/figure out:
 
 1) use expresso or jspec? expresso is more integration testing, jspec would be more unit testing.
 2) use ejs or stick with mustache in client and server?
+
+== Startup
+
+$ node server.js

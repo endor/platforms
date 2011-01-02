@@ -1,4 +1,5 @@
-require 'rubygems'
+require "rubygems"
+require "bundler/setup"
 require 'json'
 require 'capybara/cucumber'
 require 'test/unit'
