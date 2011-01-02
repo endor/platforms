@@ -4,7 +4,8 @@ var skeleton.app = $.sammy(function() {
 
   this.helpers(skeleton.ApplicationHelper);
   
-  skeleton.Users(this);  
+  skeleton.Users(this);
+  skeleton.TestResults(this);
 });
 
 $(function() {
