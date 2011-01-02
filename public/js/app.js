@@ -2,9 +2,7 @@ var skeleton.app = $.sammy(function() {
   this.use(Sammy.Mustache);
   this.use(Sammy.NestedParams);
 
-  this.get('#/users/new', function() {
-    this.render('views/users/new.mustache');
-  });
+  skeleton.Users(this);  
 });
 
 $(function() {
