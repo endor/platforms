@@ -1,11 +1,5 @@
-// Run $ expresso
-path = require('path');
-
-require.paths.unshift(path.join(__dirname, '../vendor'));
-require.paths.unshift(path.join(__dirname, '../lib'));
-
 var sys = require('sys'),
-  User = require('models/user');
+  User = require('../lib/models/user');
   
 module.exports = {
   'User should be invalid with invalid email': function(assert) {
