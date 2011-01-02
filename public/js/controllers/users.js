@@ -3,11 +3,11 @@ skeleton.Users = function(app) {
     this.post('/users', this.params, function() {
       context.redirect('#/test_results/new');
     }, function() {
-      context.render('views/users/new.mustache');
+      context.partial('views/users/new.mustache');
     });
   });
   
   app.get('#/users/new', function() {
-    this.render('views/users/new.mustache');
+    this.partial('views/users/new.mustache');
   });
 }

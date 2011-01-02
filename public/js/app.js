@@ -1,4 +1,5 @@
-skeleton.app = $.sammy(function() {
+skeleton.app = $.sammy('#wrapper', function() {
+  
   this.use(Sammy.Mustache);
   this.use(Sammy.NestedParams);
   
