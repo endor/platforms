@@ -6,7 +6,7 @@
       data: JSON.stringify(data),
       contentType: 'application/json',
       success: success,
-      error: error
+      error: function(xhr) { error(JSON.parse(xhr.responseText)); }
     });    
   };
   
@@ -24,10 +24,16 @@
     },
 
     formatErrors: function(errors) {
-
+      var formattedErrors = {};
+      _.each(errors, function(attributes, clazz) {
+        _.each(attributes, function(messages, attribute) {
+          formattedErrors[clazz + '[' + attribute + ']'] = messages.join(', ');
+        });
+      });
+      return formattedErrors;
     },
     
-    showErrors: function(form_id, context) {
+    showErrors: function(form_id, context, errors) {
       $(form_id).validate().showErrors(context.formatErrors(errors));
     }
   };

@@ -4,7 +4,7 @@ skeleton.Users = function(app) {
       context.flash('Welcome ' + context.params.user.username);
       context.redirect('#/test_results/new');
     }, function(errors) {
-      context.showErrors('#new_user_form', context);
+      context.showErrors('#new_user_form', context, errors);
     });
   });
   
