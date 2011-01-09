@@ -35,6 +35,10 @@ module.exports = {
   'User#authenticate should return false if password doesn\'t match': function(assert) {
     var user = User.fromParams({password: 'test'});
     assert.ok(!user.authenticate('xyz'));
+  },
+  'User.fromDoc should add authenticate method': function(assert) {
+    var user = User.fromDoc({});
+    assert.equal(typeof(user.authenticate), 'function');
   }
 };
 
