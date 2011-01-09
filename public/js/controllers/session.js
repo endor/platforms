@@ -1,11 +1,11 @@
 skeleton.Session = function(app) {
   app.put('#/session', function(context) {
-    var session = {session: {username: context.params.session.username, password: context.params.session.password}};
+    var session = {session: context.params.session};
     
     context.put('/session', session, function(user) {
-      context.flash('Welcome back ' + context.params.user.username);
-      context.redirect('#/');
       skeleton.current_user = user;
+      context.flash('Welcome back ' + context.params.session.username);
+      context.redirect('#/');
     }, function(errors) {
       context.showErrors('#new_session_form', context, errors);
     });
