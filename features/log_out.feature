@@ -4,5 +4,5 @@ Feature: Log out
     Given a user "alex"
       And "alex" is logged in
     When I go to the start page
-      And I follow "Log out"
+      And I press "Log out"
     Then I should be logged out

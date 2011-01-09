@@ -7,15 +7,15 @@ Given /^"([^"]*)" is logged in$/ do |username|
 end
 
 Then /^I should not be logged in$/ do
-  Then 'I should not see "Logout"'
+  Then 'I should not see "Log out"'
 end
 
 Then /^I should be logged out$/ do
   When 'I go to the start page'
-  Then 'I should not see "Logout"'
+  Then 'I should not see "Log out"'
 end
 
 Then /^I should be logged in$/ do
   When 'I go to the start page'
-  Then 'I should see "Logout"'
+  Then 'I should see "Log out"'
 end
