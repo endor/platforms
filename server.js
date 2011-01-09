@@ -50,6 +50,20 @@ App.prototype.initializeRoutes = function(app) {
     };
   });
   
+  app.put('/session', function(req, res) {
+    app.db.getDoc(User.toId(req.body.session.username), function(err, user) {
+      if(err) {
+        res.send(422, {session: {username: ['not found.']}})
+      } else {
+        if(user.password == req.body.session.password) {
+          res.send(201, {user: user});
+        } else {
+          res.send(422, {session: {password: ['does not match the password on record.']}})
+        }
+      }
+    });
+  });
+  
   function handleError(res, callback) {
     return function() {
       var args = Array.prototype.slice.call(arguments); 

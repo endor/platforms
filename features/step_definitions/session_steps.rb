@@ -10,3 +10,8 @@ Then /^I should be logged out$/ do
   When 'I go to the start page'
   Then 'I should not see "Log out"'
 end
+
+Then /^I should be logged in$/ do
+  When 'I go to the start page'
+  Then 'I should see "Log out"'
+end
