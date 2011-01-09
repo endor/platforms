@@ -418,6 +418,7 @@
       var args = _makeArray(arguments),
           plugin = args.shift(),
           plugin_name = plugin || '';
+          
       try {
         args.unshift(this);
         if (typeof plugin == 'string') {
