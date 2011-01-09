@@ -5,7 +5,7 @@ skeleton.Session = function(app) {
     context.put('/session', session, function(user) {
       skeleton.current_user = user;
       context.flash('Welcome back ' + context.params.session.username);
-      context.redirect('#/');
+      context.redirect('#/test_results/new');
     }, function(errors) {
       context.showErrors('#new_session_form', context, errors);
     });
@@ -18,6 +18,7 @@ skeleton.Session = function(app) {
   app.del('#/session', function(context) {
     context.del('/session', null, function() {
       skeleton.current_user = null;
+      context.redirect('#/');
     });
   });
 }
