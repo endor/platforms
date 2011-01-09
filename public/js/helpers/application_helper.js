@@ -24,6 +24,14 @@
     get: function(url, data, success, error) {
       send('GET', url, data, success, error);
     },
+    
+    put: function(url, data, success, error) {
+      send('PUT', url, data, success, error);
+    },
+    
+    del: function(url, data, success, error) {
+      send('DELETE', url, data, success, error);
+    },
 
     formatErrors: function(errors) {
       var formattedErrors = {};

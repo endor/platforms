@@ -8,21 +8,7 @@ skeleton.app = $.sammy('#wrapper', function() {
   skeleton.TestResults(this);
   skeleton.Session(this);
   
-  this.before(function() {
-    if(!skeleton.current_user) {
-      this.get('/session', null, function(user) {
-        skeleton.current_user = user;
-      });
-    }
-    
-    if(skeleton.current_user) {
-      $('#login').hide()
-      $('#logout').show()
-    } else {
-      $('#logout').hide()
-      $('#login').show()      
-    }
-  });
+  this.before(skeleton.SessionFilter);
   
   this.get('#/', function() {
     this.partial('views/start.mustache');

@@ -14,6 +14,8 @@ skeleton.Session = function(app) {
   });
   
   app.del('#/session', function(context) {
-    skeleton.current_user = null;
+    context.del('/session', null, function() {
+      skeleton.current_user = null;
+    });
   });
 }
