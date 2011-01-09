@@ -1,6 +1,6 @@
 skeleton.SessionFilter = function(context) {
   if(!skeleton.current_user) {
-    if(['#/users/new', '#/session/new', '#/session'].indexOf(context.path) >= 0) {
+    if(['#/users/new', '#/users', '#/session/new', '#/session'].indexOf(context.path) >= 0) {
       $('#logout').hide();
       $('#login').show();      
     } else {
