@@ -7,5 +7,5 @@ Yes
 No
 
 Do you like snowboarding?
-Yes
-No
+Very much
+Not at all

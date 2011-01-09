@@ -45,6 +45,7 @@ App.prototype.initializeRoutes = function(app) {
       if(!err) {
         callback.apply(null, args);
       } else {
+        console.log(err)
         res.send(err, 500);
       };
     };
