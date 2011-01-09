@@ -4,8 +4,11 @@
   {{#questions}}
     <p>
       {{question}}<br />
-      <input type="radio" name="test_result[questions][{{_id}}]" value="1" /> {{answer_1}}
-      <input type="radio" name="test_result[questions][{{_id}}]" value="2" /> {{answer_2}}
+      <input type="radio" id="test_result_questions_{{id}}_1" name="test_result[questions][{{id}}]" value="1" />
+      <label for="test_result_questions_{{id}}_1">{{answer_1}}</label>
+      
+      <input type="radio" id="test_result_questions_{{id}}_2" name="test_result[questions][{{id}}]" value="2" />
+      <label for="test_result_questions_{{id}}_2">{{answer_2}}</label>
     </p>  
   {{/questions}}
   
