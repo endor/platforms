@@ -4,6 +4,11 @@
   </head>
   <body>
     <h1>Platforms</h1>
+    <ul>
+      <li><a href="#/users/new">Register</a></li>
+      <li id="login"><a href="#/session/new">Login</a></li>
+      <li id="logout"><form method="DELETE" action="#/session"><input type="submit" value="Logout" /></form></li>
+    </ul>
     <div id="flash"></div>
     <div id="wrapper"></div>
     
@@ -21,6 +26,7 @@
       .script('js/boot.js').wait()
       .script('js/helpers/application_helper.js')
       .script('js/controllers/users.js')
+      .script('js/controllers/session.js')
       .script('js/controllers/test_results.js').wait()
       .script('js/app.js');
 		</script>

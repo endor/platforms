@@ -18,10 +18,8 @@ App.prototype.initializeRoutes = function(app) {
     if(user.valid()) {
       app.db.saveDoc(user.toDoc(), res, function(err, ok) {
         if(err) {
-          console.log('ERROR', err);
           res.send(err);
         } else {
-          console.log('SUCCESS');
           req.session.user_id = user.toDoc()._id;
           res.send(201);
         }

@@ -6,6 +6,23 @@ skeleton.app = $.sammy('#wrapper', function() {
   
   skeleton.Users(this);
   skeleton.TestResults(this);
+  skeleton.Session(this);
+  
+  this.before(function() {
+    if(!skeleton.current_user) {
+      this.get('/session', {}, function(user) {
+        skeleton.current_user = user;
+      });
+    }
+    
+    if(skeleton.current_user) {
+      $('#login').hide()
+      $('#logout').show()
+    } else {
+      $('#logout').hide()
+      $('#login').show()      
+    }
+  });
   
   this.get('#/', function() {
     this.partial('views/start.mustache');
