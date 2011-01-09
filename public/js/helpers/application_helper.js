@@ -1,5 +1,5 @@
 (function() {
-  var send = function(type, url, data, success, error) {
+  var send = function(type, context, url, data, success, error) {
     error = error || function() {};
     
     $.ajax({
@@ -8,7 +8,15 @@
       data: data ? JSON.stringify(data) : null,
       contentType: 'application/json',
       success: success,
-      error: function(xhr) { error(JSON.parse(xhr.responseText)); }
+      error: function(xhr) {
+        if(xhr.status === 401) {
+          skeleton.current_user = null;
+          skeleton.requestBeforeSessionTimeout = context;
+          skeleton.app.runRoute('get', '#/session/new');
+        } else {
+          error(JSON.parse(xhr.responseText));
+        }
+      }
     });    
   };
   
@@ -18,19 +26,19 @@
     },
     
     post: function(url, data, success, error) {
-      send('POST', url, data, success, error);
+      send('POST', this, url, data, success, error);
     },
 
     get: function(url, data, success, error) {
-      send('GET', url, data, success, error);
+      send('GET', this, url, data, success, error);
     },
     
     put: function(url, data, success, error) {
-      send('PUT', url, data, success, error);
+      send('PUT', this, url, data, success, error);
     },
     
     del: function(url, data, success, error) {
-      send('DELETE', url, data, success, error);
+      send('DELETE', this, url, data, success, error);
     },
 
     formatErrors: function(errors) {
