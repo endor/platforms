@@ -1,6 +1,6 @@
 skeleton.Session = function(app) {
   app.put('#/session', function(context) {
-    var session = {session: {username: context.params.username, password: context.params.password}};
+    var session = {session: {username: context.params.session.username, password: context.params.session.password}};
     
     context.put('/session', session, function(user) {
       context.flash('Welcome back ' + context.params.user.username);
