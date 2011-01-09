@@ -8,8 +8,8 @@ skeleton.SessionFilter = (function() {
   
   return function(context) {
     if(!skeleton.current_user) {
-      if(_(allowed_routes).select(function(obj) {
-        return obj.path == context.path && obj.verb == context.verb;
+      if(_(allowed_routes).select(function(route) {
+        return route.path == context.path && route.verb == context.verb;
       }).length > 0) {
         $('#logout').hide();
         $('#login').show();      
