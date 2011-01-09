@@ -3,6 +3,7 @@ Given /^a user "([^"]*)"$/ do |username|
   And 'I follow "Register"'
   And %Q{I fill in the signup form as "#{username}"}
   And 'I press "Register"'
+  And 'I press "Log out"'
 end
 
 Given /^a user "([^"]*)" with the password "([^"]*)"$/ do |username, password|
@@ -11,6 +12,7 @@ Given /^a user "([^"]*)" with the password "([^"]*)"$/ do |username, password|
   And %Q{I fill in the signup form as "#{username}"}
   And %Q{I fill in "#{password}" for "Password"}
   And 'I press "Register"'
+  And 'I press "Log out"'
 end
 
 When /^I fill in the signup form as "([^"]*)"$/ do |username|

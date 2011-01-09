@@ -1,9 +1,9 @@
 Given /^"([^"]*)" is logged in$/ do |username|
   When 'I go to the start page'
-  And 'I follow "Login"'
+  And 'I follow "Log in"'
   And %Q{I fill in "Username" with "#{username}"}
   And %Q{I fill in "Password" with "test"}
-  And 'I press "Login"'
+  And 'I press "Log in"'
 end
 
 Then /^I should not be logged in$/ do
@@ -17,5 +17,5 @@ end
 
 Then /^I should be logged in$/ do
   When 'I go to the start page'
-  Then 'I should see "Log out"'
+  page.should have_xpath('//input[@value=\'Log out\']')
 end
