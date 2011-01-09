@@ -1,5 +1,5 @@
 STDERR.puts 'starting node'
-  $server_pid = Process.spawn({'NODE_ENV' => 'test', 'PORT' => '3001'}, 'node server.js')
+  $server_pid = Process.spawn({'CONNECT_ENV' => 'test', 'PORT' => '3001'}, 'node server.js')
   begin
     HTTParty.get Capybara.app_host + '/index.html'
   rescue Errno::ECONNREFUSED => e
