@@ -14,6 +14,7 @@ GEM
     celerity (0.8.6)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
+    configuration (1.2.0)
     crack (0.1.8)
     cucumber (0.10.0)
       builder (>= 2.1.2)
@@ -38,6 +39,9 @@ GEM
       selenium-rc (>= 2.1.0)
     json (1.4.6)
     json_pure (1.4.6)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     mime-types (1.16)
     nokogiri (1.4.4)
     rack (1.2.1)
@@ -73,3 +77,4 @@ DEPENDENCIES
   cucumber
   httparty
   jasmine
+  launchy
