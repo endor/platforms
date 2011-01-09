@@ -7,7 +7,11 @@
     <ul>
       <li><a href="#/users/new">Register</a></li>
       <li id="login"><a href="#/session/new">Login</a></li>
-      <li id="logout"><form method="DELETE" action="#/session"><input type="submit" value="Logout" /></form></li>
+      <li id="logout">
+        <form method="DELETE" action="#/session">
+          <input type="submit" value="Logout" />
+        </form>
+      </li>
     </ul>
     <div id="flash"></div>
     <div id="wrapper"></div>
@@ -24,9 +28,9 @@
       .script('vendor/sammy/sammy.mustache.js')
       .script('vendor/underscore/underscore.js').wait()
       .script('js/boot.js').wait()
+      .script('js/controllers/session.js')
       .script('js/helpers/application_helper.js')
       .script('js/controllers/users.js')
-      .script('js/controllers/session.js')
       .script('js/controllers/test_results.js')
       .script('js/filters/session_filter.js').wait()
       .script('js/app.js');

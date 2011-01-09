@@ -3,13 +3,14 @@ skeleton.SessionFilter = function() {
     this.get('/session', null, function(user) {
       skeleton.current_user = user;
       
-      if(skeleton.current_user) {
-        $('#login').hide()
-        $('#logout').show()
-      } else {
-        $('#logout').hide()
-        $('#login').show()      
-      }
+      $('#login').hide();
+      $('#logout').show();
+    }, function() {
+      $('#logout').hide();
+      $('#login').show();      
     });
+  } else {
+    $('#login').hide();
+    $('#logout').show();    
   }
 }
