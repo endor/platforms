@@ -1,9 +1,11 @@
 (function() {
   var send = function(type, url, data, success, error) {
+    error = error || function() {};
+    
     $.ajax({
       type: type,
       url: url,
-      data: JSON.stringify(data),
+      data: data ? JSON.stringify(data) : null,
       contentType: 'application/json',
       success: success,
       error: function(xhr) { error(JSON.parse(xhr.responseText)); }

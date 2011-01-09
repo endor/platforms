@@ -10,7 +10,7 @@ skeleton.app = $.sammy('#wrapper', function() {
   
   this.before(function() {
     if(!skeleton.current_user) {
-      this.get('/session', {}, function(user) {
+      this.get('/session', null, function(user) {
         skeleton.current_user = user;
       });
     }
