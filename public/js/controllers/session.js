@@ -1,6 +1,8 @@
 skeleton.Session = function(app) {
   app.put('#/session', function(context) {
-    context.put('/session', {username: context.params.username, password: context.params.password}, function(user) {
+    var session = {session: {username: context.params.username, password: context.params.password}};
+    
+    context.put('/session', session, function(user) {
       context.flash('Welcome back ' + context.params.user.username);
       context.redirect('#/');
       skeleton.current_user = user;
@@ -14,6 +16,8 @@ skeleton.Session = function(app) {
   });
   
   app.del('#/session', function(context) {
-    skeleton.current_user = null;
+    context.del('/session', null, function() {
+      skeleton.current_user = null;
+    });
   });
 }
