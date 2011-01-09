@@ -40,6 +40,16 @@ App.prototype.initializeRoutes = function(app) {
     res.send(questions, 200);
   });
   
+  app.get('/session', function(req, res) {
+    if(req.session.user_id) {
+      app.db.getDoc(req.session.user_id, handleError(res, function(user) {
+        res.send({user: user}, 200);
+      }));
+    } else {
+      res.send({}, 404);
+    };
+  });
+  
   function handleError(res, callback) {
     return function() {
       var args = Array.prototype.slice.call(arguments); 
