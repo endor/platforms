@@ -25,3 +25,10 @@ Feature: Sign up
       And I press "Register"
     Then I should see "can't be blank."
 
+  Scenario: fails because user already exists
+    Given a user "alex"
+    When I go to the start page
+      And I follow "Register"
+      And I fill in the signup form as "alex"
+      And I press "Register"
+    Then I should see "is already taken."

@@ -16,10 +16,16 @@ App.prototype.initializeRoutes = function(app) {
   app.post('/users', function(req, res) {
     var user = User.fromParams(req.body.user);
     if(user.valid()) {
-      app.db.saveDoc(user.toDoc(), handleError(res, function(ok) {
-        req.session.user_id = user.toDoc()._id;
-        res.send(201);
-      }));
+      app.db.saveDoc(user.toDoc(), res, function(err, ok) {
+        if(err) {
+          console.log('ERROR', err);
+          res.send(err);
+        } else {
+          console.log('SUCCESS');
+          req.session.user_id = user.toDoc()._id;
+          res.send(201);
+        }
+      });
     } else {
       res.send({user: user.errors}, 422);
     };
