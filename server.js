@@ -8,8 +8,11 @@ var Skeleton = require('./lib/skeleton'),
   sys = require('sys');
 
 App = function() {};
+App.session = require('./app/actions/session');
 App.prototype = new Skeleton();
 App.prototype.initializeRoutes = function(app) {
+  App.session(app);
+  
   app.get('/', function(req, res) {
     res.redirect('index.html');
   });
@@ -40,31 +43,8 @@ App.prototype.initializeRoutes = function(app) {
     res.send(questions, 200);
   });
   
-  app.get('/session', function(req, res) {
-    if(req.session.user_id) {
-      app.db.getDoc(req.session.user_id, handleError(res, function(user) {
-        res.send({user: user}, 200);
-      }));
-    } else {
-      res.send({}, 404);
-    };
-  });
   
-  app.put('/session', function(req, res) {
-    app.db.getDoc(User.toId(req.body.session.username), function(err, user) {
-      if(err) {
-        res.send(422, {session: {username: ['not found.']}})
-      } else {
-        if(user.password == req.body.session.password) {
-          res.send(201, {user: user});
-        } else {
-          res.send(422, {session: {password: ['does not match the password on record.']}})
-        }
-      }
-    });
-  });
-  
-  function handleError(res, callback) {
+  app.handleError = function(res, callback) {
     return function() {
       var args = Array.prototype.slice.call(arguments); 
       var err = args.shift(); 
