@@ -24,9 +24,13 @@ module.exports = {
     var user = User.fromParams({password: 'test'});
     assert.ok(user.encrypted_password.length > 0);
   },
-  'User.toDoc should remove the unencrypted password': function(assert) {
+  'User#toDoc should remove the unencrypted password': function(assert) {
     var user = User.fromParams({password: 'test'});
     assert.ok(user.toDoc().password == undefined);
+  },
+  'User#toDoc should remove all functions': function(assert) {
+    var user = User.fromParams({});
+    assert.ok(user.toDoc().authenticate == undefined);
   },
   'User#authenticate should return true if password matches': function(assert) {
     var user = User.fromParams({password: 'test'});
