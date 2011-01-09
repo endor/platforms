@@ -8,14 +8,14 @@ var Skeleton = require('./lib/skeleton'),
 
 App = function() {};
 App.session = require('controllers/session');
-App.user = require('controllers/user');
-App.question = require('controllers/question');
+App.users = require('controllers/users');
+App.questions = require('controllers/questions');
 
 App.prototype = new Skeleton();
 App.prototype.initializeRoutes = function(app) {
   App.session(app);
-  App.user(app);
-  App.question(app);
+  App.users(app);
+  App.questions(app);
   
   app.get('/', function(req, res) {
     res.redirect('index.html');
