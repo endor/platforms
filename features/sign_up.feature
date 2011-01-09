@@ -21,7 +21,7 @@ Feature: Sign up
       And I fill in "sail away" for "Life Motto"
       And I fill in "" for "Username"
       And I fill in "test" for "Password"
-      And I fill in "you can fly" for "Seconday Life Motto"
+      And I fill in "you can fly" for "Secondary Life Motto"
       And I press "Register"
     Then I should see "can't be blank."
 
