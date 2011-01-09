@@ -7,9 +7,9 @@ var Skeleton = require('./lib/skeleton'),
   sys = require('sys');
 
 App = function() {};
-App.session = require('actions/session');
-App.user = require('actions/user');
-App.question = require('actions/question');
+App.session = require('controllers/session');
+App.user = require('controllers/user');
+App.question = require('controllers/question');
 
 App.prototype = new Skeleton();
 App.prototype.initializeRoutes = function(app) {
