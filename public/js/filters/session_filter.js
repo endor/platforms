@@ -4,13 +4,16 @@ skeleton.SessionFilter = (function() {
     {verb: 'post', path: '#/users'},
     {verb: 'get', path: '#/session/new'},
     {verb: 'put', path: '#/session'}
-  ];
+  ],
+  is_allowed_route = function(verb, path) {
+    return _(allowed_routes).select(function(route) {
+      return route.path == path && route.verb == verb;
+    }).length > 0;
+  };
   
   return function(context) {
     if(!skeleton.current_user) {
-      if(_(allowed_routes).select(function(obj) {
-        return obj.path == context.path && obj.verb == context.verb;
-      }).length > 0) {
+      if(is_allowed_route(context.verb, context.path)) {
         $('#logout').hide();
         $('#login').show();      
       } else {
