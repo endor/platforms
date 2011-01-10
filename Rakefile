@@ -6,8 +6,12 @@ Cucumber::Rake::Task.new(:cucumber, 'Run cucumber features') do |t|
   t.fork = false
 end
 
-task :default => [:expresso, :'jasmine:ci', :cucumber] do
+task :default => [:vows, :expresso, :'jasmine:ci', :cucumber] do
   
+end
+
+task :vows do
+  `vows vows/*.js`
 end
 
 task :expresso do
