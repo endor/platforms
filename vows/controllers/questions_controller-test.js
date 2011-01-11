@@ -18,7 +18,7 @@ vows.
       },
       
       'should return an array of questions': function (error, response) {
-        // assert.typeOf(JSON.parse(response.body)[0]['question'], 'string');
+        assert.typeOf(JSON.parse(response.body)[0]['question'], 'string');
       }
     }
   }).

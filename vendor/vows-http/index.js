@@ -32,14 +32,14 @@ var vows_http = {
 
     request.end();
     request.on('response', function (response) {
+      response.body = '';
       response.setEncoding('utf8');
       response.on('data', function (chunk) {
         response.body += chunk;
       });
       response.on('end', function() {
         callback(null, response);
-      });
-      
+      });      
     });
   },
   get: function (url, callback) {
