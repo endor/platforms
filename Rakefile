@@ -11,7 +11,7 @@ task :default => [:vows, :expresso, :'jasmine:ci', :cucumber] do
 end
 
 task :vows do
-  `vows vows/*.js`
+  `vows vows/models/*.js vows/controllers/*.js`
 end
 
 task :expresso do

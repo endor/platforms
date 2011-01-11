@@ -1,6 +1,6 @@
 var vows = require('vows'),
   assert = require('assert'),
-  User = require('../lib/models/user');
+  User = require('../../lib/models/user');
     
 var isInvalid = function(topic) {
   assert.isFalse(topic.valid());
