@@ -10,6 +10,7 @@ cap.app = $.sammy('body', function() {
   cap.Users(this);
   cap.Session(this);
   cap.Conferences(this);
+  cap.Categories(this);
   
   this.before(cap.SessionFilter);
   
