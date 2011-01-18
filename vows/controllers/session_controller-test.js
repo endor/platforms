@@ -15,7 +15,7 @@ vows.
           vows_http.post('/users', function(e, res) {
             vows_http.put('/session', callback, {session: {username: 'joe', password: 'test'}})
           }, {user: {email: 'joe@doe.com', username: 'joe', town: 'Berlin',
-              full_name: 'joe doe', life_motto: 'go with the flow', password: 'test'}})
+              fullname: 'joe doe', country: 'Germnay', password: 'test'}})
         },
 
         'should return the session id in a cookie': function (error, response) {

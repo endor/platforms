@@ -52,6 +52,7 @@ if(!process.env.SKIP_UPDATE_VIEWS) {
   
 require('controllers/session')(app);
 require('controllers/ws/categories')(app);
+require('controllers/ws/conferences')(app);
 require('controllers/ws/users')(app);
 require('controllers/reset')(app);
 
