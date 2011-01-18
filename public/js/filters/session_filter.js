@@ -14,13 +14,17 @@ cap.SessionFilter = (function() {
     if(cap.current_user.is_admin) { $('.show_when_admin').show(); }
     $('#login').hide();
     $('.show_when_logged_in').show();
+  },
+  logged_out = function() {
+    $('.show_when_admin').hide();
+    $('.show_when_logged_in').hide();
+    $('#login').show();
   };
   
   return function(context) {
     if(!cap.current_user) {
       if(is_allowed_route(context.verb, context.path)) {
-        $('.show_when_logged_in').hide();
-        $('#login').show();      
+        logged_out();
       } else {
         context.get('/session', null, function(user) {
           cap.current_user = user;
@@ -28,8 +32,7 @@ cap.SessionFilter = (function() {
           cap.app.runRoute(context.verb, context.path, context.params, context.target);
         }, function() {
           context.redirect('#/session/new');
-          $('.show_when_logged_in').hide();
-          $('#login').show();
+          logged_out();
         });
 
         return false;
