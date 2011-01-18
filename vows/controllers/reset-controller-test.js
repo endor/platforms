@@ -36,19 +36,32 @@ vows.
   addBatch({
     'POST /factorydefaults': {
       topic: function() {
-        var callback = this.callback;
-        vows_http.post('/factorydefaults', function() {
-          vows_http.get('/ws/categories', callback, {});
-        });
+        vows_http.post('/factorydefaults', this.callback);
       },
-      'should load categories': function(err, res) {
-        assert.isTrue(res.body.length > 0);
+      'categories': {
+        topic: function() {
+          vows_http.get('/ws/categories', this.callback);
+        },
+        'should import categories': function(err, res) {
+          assert.isTrue(res.body.length > 0);
+        },
       },
-      'should load conferences': function() {
-        // XXX
+      'conferences': {
+        topic: function() {
+          vows_http.get('/ws/conferencesbycategory', this.callback);
+        },
+        'should import conferences': function(err, res) {
+          assert.isTrue(res.body.length > 0);
+        },
       },
-      'should load members': function() {
-        // XXX
+      'members': {
+        topic: function() {
+          vows_http.get('/ws/members/sjobs', this.callback);
+        },
+        'should import users': function(err, res) {
+          assert.equal(res.statusCode, 200);
+          assert.equal(res.body.username, 'sjobs');
+        },
       },
       'should load series': function() {
         // XXX

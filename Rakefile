@@ -33,7 +33,7 @@ task :reset do
 end
 
 desc "Load test data"
-task :factory_defaults do
+task factory_defaults: :reset do
   `curl -X POST localhost:3000/factorydefaults`
 end
 
