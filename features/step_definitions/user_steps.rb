@@ -1,18 +1,10 @@
-Given /^a user "([^"]*)"$/ do |username|
-  When 'I go to the start page'
-  And 'I follow "Register"'
-  And %Q{I fill in the signup form as "#{username}"}
-  And 'I press "Register"'
-  # And 'I press "Log out"'
-end
-
-Given /^a user "([^"]*)" with the password "([^"]*)"$/ do |username, password|
-  When 'I go to the start page'
-  And 'I follow "Register"'
-  And %Q{I fill in the signup form as "#{username}"}
-  And %Q{I fill in "#{password}" for "Password"}
-  And 'I press "Register"'
-  And 'I press "Log out"'
+Given /^a user "([^"]*)"( with the password "([^"]*)")?$/ do |username, _, password|
+  Platforms.post "/ws/users", :body => {:email => "#{username}@email.pf",
+    :username => username,
+    :fullname => "#{username} doe",
+    :password => password || "test",
+    :town => "Berlin",
+    :country => "Country"}
 end
 
 When /^I fill in the signup form as "([^"]*)"$/ do |username|
