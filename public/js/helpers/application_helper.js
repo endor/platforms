@@ -1,5 +1,9 @@
 (function() {
   var send = function(type, context, url, data, success, error) {
+    if(typeof(data) == 'function') {
+      success = data;
+      error = success;
+    }
     error = error || function() {};
     
     $.ajax({

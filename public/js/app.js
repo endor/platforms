@@ -10,10 +10,12 @@ skeleton.app = $.sammy('body', function() {
   skeleton.Users(this);
   skeleton.Session(this);
   
-  this.before(skeleton.SessionFilter);
+  // this.before(skeleton.SessionFilter);
   
-  this.get('#/', function() {
-    this.partial('views/start.mustache');
+  this.get('#/', function(context) {
+    context.get('/categories', function(categories) {
+      context.partial('views/start.mustache', {categories: categories});
+    });
   });
 });
 
