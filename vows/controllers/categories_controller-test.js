@@ -45,7 +45,7 @@ vows.describe('CategoriesController')
       },
       
       'should allow retrieving the subcategories': function(err, response) {
-        assert.deepEqual(response.body.subcategories, [{name: 'tech', details: 'http://localhost:3001/ws/categories/category-tea'}]);
+        assert.deepEqual(response.body.subcategories, [{name: 'tea', details: 'http://localhost:3001/ws/categories/category-tea'}]);
       }
     }
   })
