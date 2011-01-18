@@ -1,0 +1,51 @@
+<h2>New Conference</h2>
+
+<form method="POST" action="#/conferences">
+  <p>
+    <label for="conference_name">Name</label>
+    <input type="text" id="conference_name" name="conference[name]" />
+  </p>
+  
+  <p>
+    <label for="conference_category">Category</label>
+    <select id="conference_category" name="conference[category]">
+      {{#categories}}
+        <option value="{{id}}">{{name}}</option>
+      {{/categories}}
+    </select>
+  </p>
+
+  <p>
+    <label for="conference_start_date">Start Date</label>
+    <input type="text" id="conference_start_date" name="conference[start_date]" />
+  </p>
+  
+  <p>
+    <label for="conference_end_date">End Date</label>
+    <input type="text" id="conference_end_date" name="conference[end_date]" />
+  </p>
+  
+  <p>
+    <label for="conference_description">Description</label>
+    <textarea id="conference_description" name="conference[description]"></textarea>
+  </p>
+  
+  <p>
+    <label for="conference_street">Street</label>
+    <input type="text" id="conference_street" name="conference[street]" />
+  </p>
+  
+  <p>
+    <label for="conference_zip">Zip Code</label>
+    <input type="text" id="conference_zip" name="conference[zip]" />
+  </p>
+  
+  <p>
+    <label for="conference_city">City</label>
+    <input type="text" id="conference_city" name="conference[city]" />
+  </p>
+  
+  <p>
+    <input type="submit" value="Add Conference" />
+  </p>
+</form>

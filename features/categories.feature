@@ -12,3 +12,15 @@ Feature: Categories
     When I go to the start page
     Then I should see "JavaScript"
       And I should see "Ruby"
+
+  Scenario: create a category
+    Given a user "admin" with the password "admin"
+      And a category "ProgrammingLanguages"
+      And I log in as "admin/admin"
+    When I follow "Create Category"
+      And I fill in "Name" with "JavaScript"
+      And I select "ProgrammingLanguages" from "Parent Category"
+      And I press "Add Category"
+    Then I should see "Category successfully created"
+      And I should see "ProgrammingLanguages"
+      And I should see "JavaScript"
