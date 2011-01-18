@@ -4,7 +4,8 @@ cap.SessionFilter = (function() {
     {verb: 'post', path: /#\/users/},
     {verb: 'get', path: /#\/session\/new/},
     {verb: 'put', path: /#\/session/},
-    {verb: 'get', path: /#\//}
+    {verb: 'get', path: /#\//},
+    {verb: 'get', path: /#\/conferences\//}
   ],
   is_allowed_route = function(verb, path) {
     return _(allowed_routes).select(function(route) {
