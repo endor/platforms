@@ -1,15 +1,15 @@
-skeleton.Session = function(app) {
+cap.Session = function(app) {
   app.put('#/session', function(context) {
     var session = {session: context.params.session};
     
     context.put('/session', session, function(user) {
-      skeleton.current_user = user;
+      cap.current_user = user;
       context.flash('Welcome back ' + context.params.session.username);
       
-      if(skeleton.requestBeforeSessionTimeout) {
-        var _context = skeleton.requestBeforeSessionTimeout;
-        skeleton.app.runRoute(_context.verb, _context.path, _context.params, _context.target); 
-        skeleton.requestBeforeSessionTimeout = null;
+      if(cap.requestBeforeSessionTimeout) {
+        var _context = cap.requestBeforeSessionTimeout;
+        cap.app.runRoute(_context.verb, _context.path, _context.params, _context.target); 
+        cap.requestBeforeSessionTimeout = null;
       } else {
         context.redirect('#/');
       }
@@ -24,7 +24,7 @@ skeleton.Session = function(app) {
   
   app.del('#/session', function(context) {
     context.del('/session', null, function() {
-      skeleton.current_user = null;
+      cap.current_user = null;
       context.redirect('#/');
     });
   });

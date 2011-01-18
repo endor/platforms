@@ -1,5 +1,9 @@
 (function() {
   var send = function(type, context, url, data, success, error) {
+    if(typeof(data) == 'function') {
+      success = data;
+      error = success;
+    }
     error = error || function() {};
     
     $.ajax({
@@ -10,9 +14,9 @@
       success: success,
       error: function(xhr) {
         if(xhr.status === 403) {
-          skeleton.current_user = null;
-          skeleton.requestBeforeSessionTimeout = context;
-          skeleton.app.runRoute('get', '#/session/new');
+          cap.current_user = null;
+          cap.requestBeforeSessionTimeout = context;
+          cap.app.runRoute('get', '#/session/new');
         } else {
           error(JSON.parse(xhr.responseText));
         }
@@ -20,7 +24,7 @@
     });    
   };
   
-  skeleton.ApplicationHelper = {
+  cap.ApplicationHelper = {
     flash: function(message) {
       $('#flash').html(message).show().delay(2000).fadeOut('slow');
     },

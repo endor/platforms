@@ -1,5 +1,5 @@
 describe("ApplicationHelper", function() {
-  var helper = skeleton.ApplicationHelper;
+  var helper = cap.ApplicationHelper;
 
   it("should reformat the nested errors to match input field names", function() {
     var result = helper.formatErrors({user: {login: ['err1'], email: ['err2']}});

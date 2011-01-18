@@ -46,7 +46,7 @@ vows.
       },
       'with all attributes set correctly': {
         topic: User.fromParams({email: 'joe@doe.com', username: 'joe', town: 'Berlin',
-          full_name: 'joe doe', life_motto: 'go with the flow', password: 'test'}),
+          fullname: 'joe doe', password: 'test', country: 'germany'}),
 
         'is valid': function(topic) {
           assert.isTrue(topic.valid());

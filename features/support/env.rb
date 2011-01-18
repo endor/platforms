@@ -32,6 +32,12 @@ def patiently(&block)
   # end
 end
 
+class Platforms
+  include HTTParty
+  base_uri 'localhost:3000'
+  format :json
+end
+
 Before do
   reset_database
 end

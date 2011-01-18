@@ -10,11 +10,11 @@ vows.
     'create': {
       'with invalid user': {
         topic: function () {
-          vows_http.post('/users', this.callback, {user: {}})
+          vows_http.post('/ws/users', this.callback, {user: {}})
         },
 
-        'should be an unprocessable entity': function (error, response) {
-          assert.equal(response.statusCode, 422);
+        'should be an invalid request': function (error, response) {
+          assert.equal(response.statusCode, 400);
         }        
       }
     }
