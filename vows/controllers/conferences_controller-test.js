@@ -64,8 +64,18 @@ vows.
       },
       
       'should return a list of conferences': function(err, response) {
-        var conferences = response.body;
-        assert.length(conferences, 2);
+        assert.length(response.body, 2);
+      },
+      
+      'filtered by category': {
+        topic: function() {
+          vows_http.get('/ws/conferences?category=tech-category', this.callback);
+        },
+        
+        'should return all conferences in the tech category': function(err, response) {
+          assert.length(response.body, 1)
+          assert.equal(response.body[0].name, 'nature');
+        }
       }
     }
   }).

@@ -1,5 +1,5 @@
 Given /^I create a category "(\w+)"$/ do |name|
-  Platforms.post '/categories', :body => { :name => name }
+  p Platforms.post '/ws/categories', :body => { :name => name }
 end
 
 Given /^a category "(\w+)"$/ do |name|
