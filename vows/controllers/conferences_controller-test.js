@@ -99,6 +99,15 @@ vows.
           assert.length(response.body, 1)
           assert.equal(response.body[0].name, 'techconf');
         }
+      },
+      'filtered by category that doesn\'t exist': {
+        topic: function() {
+          vows_http.get('/ws/conferencesbycategory/category-unknown', this.callback);
+        },
+        
+        'should return 404': function(err, response) {
+          assert.equal(response.statusCode, 404)
+        }
       }
     }
   }).
