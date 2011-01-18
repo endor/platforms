@@ -9,7 +9,12 @@ Feature: Conferences
       And a category "Ruby"
       And a conference "JSconf EU" in the category "JavaScript" with start date "01.05.2011" and end date "04.05.2011" and description "The best JavaScript conference in the world!" located in "Adalbertstr. 7, 10999 Berlin"
     When I go to the start page
-    Then I should see "JSconf EU"  
+    Then I should see "JSconf EU"
+    When I follow "Ruby"
+    Then I should not see "JSconf EU"
+    When I go to the start page
+      And I follow "JavaScript"
+    Then I should see "JSconf EU"
   
   Scenario: create a conference
     Given a user "admin" with the password "admin"
