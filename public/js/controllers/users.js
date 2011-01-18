@@ -12,4 +12,10 @@ cap.Users = function(app) {
   app.get('#/users/new', function(context) {
     context.partial('views/users/new.mustache');
   });
+  
+  app.get('#/users/:id', function(context) {
+    context.get('/ws/users/' + context.params.id, function(user) {
+      context.partial('views/users/show.mustache', user);      
+    });
+  });
 }
