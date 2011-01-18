@@ -1,3 +1,5 @@
+// origin: RM
+
 cap.Session = function(app) {
   app.put('#/session', function(context) {
     var session = {session: context.params.session};

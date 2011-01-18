@@ -1,3 +1,5 @@
+// origin: RM
+
 cap.SessionFilter = (function() {
   var allowed_routes = [
     {verb: 'get', path: /#\/users\/new/},

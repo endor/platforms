@@ -1,3 +1,5 @@
+// origin: M
+
 cap.Categories = function(app) {
   app.get('#/categories/new', function(context) {
     context.get('/ws/categories', function(categories) {

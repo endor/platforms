@@ -1,3 +1,5 @@
+// origin: M
+
 cap.Conferences = function(app) {
   app.get('#/conferences/new', function(context) {
     context.get('/ws/categories', function(categories) {
@@ -22,7 +24,9 @@ cap.Conferences = function(app) {
   });
   
   app.post('#/conferences/:id/attendees', function(context) {
-    context.post('/ws/conferences/' + context.params.id + '/attendees', function() {
+    // TODO: do not update the conference document
+    // but create an attendance object
+    context.post('/ws/conferences/' + context.params.id + '/attendees', {username: cap.current_user.user.username}, function() {
       context.flash('You are attending this conference!');
       context.redirect('#/conferences/' + context.params.id);
     });
