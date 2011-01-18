@@ -2,7 +2,7 @@ var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index');  
 
-vows_http.initialize(3000, 'localhost')
+vows_http.initialize(3001, '127.0.0.1')
 
 vows.
   describe('Session Controller').
