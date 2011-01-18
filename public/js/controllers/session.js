@@ -11,7 +11,7 @@ skeleton.Session = function(app) {
         skeleton.app.runRoute(_context.verb, _context.path, _context.params, _context.target); 
         skeleton.requestBeforeSessionTimeout = null;
       } else {
-        context.redirect('#/test_results/new');
+        context.redirect('#/');
       }
     }, function(errors) {
       context.showErrors('#new_session_form', context, errors);
