@@ -3,7 +3,7 @@ var vows = require('vows'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   _ = require('../../public/vendor/underscore/underscore')._;
 
-vows_http.initialize(3001, '127.0.0.1')
+vows_http.initialize(3001, 'localhost')
 
 vows.
   describe('ConferencesController').
@@ -13,7 +13,7 @@ vows.
         var callback = this.callback;
         
         vows_http.post('/reset', function() {
-          vows_http.post('/ws/conferences', callback, {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{id: 'tech-category'}]});
+          vows_http.post('/ws/conferences', callback, {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
         });
       },
 
@@ -23,7 +23,7 @@ vows.
       'should return the new conference': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         delete response.body.version;
-        assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '20110302', enddate: '20110304', categories: [{id: 'tech-category'}]});
+        assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
       }
     }
   }).addBatch({
@@ -40,7 +40,7 @@ vows.
         assert.equal(response.statusCode, 400);
       },
     },
-    'without permission': {
+    'create without permission': {
       // XXX
     }
   }).
@@ -50,11 +50,15 @@ vows.
         var callback = this.callback;
         
         vows_http.post('/reset', function() {
-          vows_http.post('/ws/conferences', function() {
-            vows_http.post('/ws/conferences', function() {
-              vows_http.get('/ws/conferences', callback);
-            }, {name: 'nature', startdate: '20110302', enddate: '20110304', categories: [{id: 'nature-category'}]});            
-          }, {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{id: 'tech-category'}]});
+          vows_http.post('/ws/categories', function() {
+            vows_http.post('/ws/categories', function() {
+              vows_http.post('/ws/conferences', function() {
+                vows_http.post('/ws/conferences', function() {
+                  vows_http.get('/ws/conferencesbycategory', callback);
+                }, {name: 'natureconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'nature'}]});
+              }, {name: 'techconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
+            }, {name: 'tech'});
+          }, {name: 'nature'})
         });
       },
       
@@ -63,12 +67,19 @@ vows.
       },
       
       'should return a list of conferences': function(err, response) {
-        assert.length(response.body, 2);
+        assert.deepEqual(response.body, [
+          {name: 'natureconf', startdate: '20110302', enddate: '20110304',
+            categories: [{details: 'http://localhost:3001/ws/categories/category-nature', name: 'nature'}],
+            details: 'http://localhost:3001/ws/conferences/conference-natureconf'},
+          {name: 'techconf', startdate: '20110302', enddate: '20110304',
+            categories: [{details: 'http://localhost:3001/ws/categories/category-tech', name: 'tech'}],
+            details: 'http://localhost:3001/ws/conferences/conference-techconf'},
+        ]);
       },
       
       'filtered by category': {
         topic: function() {
-          vows_http.get('/ws/conferences?category=tech-category', this.callback);
+          vows_http.get('/ws/conferencesbycategory/category-tech', this.callback);
         },
         
         'should return all conferences in the tech category': function(err, response) {

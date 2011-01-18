@@ -537,10 +537,28 @@ Db.prototype.viewCleanup = function(cb) {
 };
 
 Db.prototype.view = function(design, view, query, cb) {
-  return this.request({
-    path: ['', ensureDesignId(design), '_view', view].join('/'),
-    query: query
-  }, cb);
+  if(query.keys) {
+    var keys = query.keys;
+    delete(query.keys);
+    for(var i in query) {
+      if(query[i] == true || query[i] == false) {
+        query[i] = JSON.stringify(query[i]);
+      }
+    };
+    var params = querystring.stringify(query);
+    return this.request(
+      'post',
+      ['', ensureDesignId(design), '_view', view].join('/') + '?' + params,
+      {keys: keys},
+      cb
+    );
+  } else {
+    return this.request({
+      path: ['', ensureDesignId(design), '_view', view].join('/'),
+      query: query
+    }, cb);
+    
+  }
 };
 
 Db.prototype.changes = function(query, cb) {

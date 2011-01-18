@@ -50,7 +50,6 @@ require('controllers/ws/users')(app);
 require('controllers/reset')(app);
 
 app.get('/', function(req, res) {
-  console.log(req.header('host'));
   res.redirect('index.html');
 });
 
