@@ -4,6 +4,9 @@ cap.Session = function(app) {
     
     context.put('/session', session, function(user) {
       cap.current_user = user;
+      if(cap.current_user.user.username === 'admin') {
+        cap.current_user.is_admin = true;
+      }
       context.flash('Welcome back ' + context.params.session.username);
       
       if(cap.requestBeforeSessionTimeout) {

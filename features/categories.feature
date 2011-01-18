@@ -24,5 +24,5 @@ Feature: Categories
       And I select "ProgrammingLanguages" from "Parent Category"
       And I press "Add Category"
     Then I should see "Category successfully created"
-      And I should see "ProgrammingLanguages"
-      And I should see "JavaScript"
+    When I follow "ProgrammingLanguages"
+    Then I should see "JavaScript"
