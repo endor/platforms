@@ -44,7 +44,7 @@ app.configure('production', function() {
   app.db = couch_client.db(db_name + '_production');
 });
 
-if(process.env.SKIP_UPDATE_VIEWS.length == 0) {
+if(!process.env.SKIP_UPDATE_VIEWS) {
   sys.puts('updating views. set SKIP_UPDATE_VIEWS to skip this');
   couch_views.update_views(app.db, _);
 };
@@ -52,7 +52,6 @@ if(process.env.SKIP_UPDATE_VIEWS.length == 0) {
   
 require('controllers/session')(app);
 require('controllers/users')(app);
-require('controllers/questions')(app);
 
 app.get('/', function(req, res) {
   res.redirect('index.html');

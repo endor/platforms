@@ -1,7 +1,0 @@
-How are you doing?
-Good
-Bad
-
-Do you like animals?
-Yes
-No
