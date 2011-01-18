@@ -24,7 +24,7 @@ vows.
         'should return the new conference': function(error, response) {
           assert.isTrue(response.body.version.length > 0);
           delete response.body.version;
-          assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech'});
+          assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'tech-category'}]});
         }
       },
       'with invalid conference': {

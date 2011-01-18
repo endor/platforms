@@ -38,7 +38,7 @@ var vows_http = {
         response.body += chunk;
       });
       response.on('end', function() {
-        if(response.body[0] === "{") {
+        if(response.body[0] === "{" || response.body[0] === '[') {
           response.body = JSON.parse(response.body);          
         }
         callback(null, response);
