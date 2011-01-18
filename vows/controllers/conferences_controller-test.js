@@ -45,28 +45,28 @@ vows.
       }
     }
   }).
-  // addBatch({
-  //   'index': {
-  //     topic: function() {
-  //       var callback = this.callback;
-  //       
-  //       vows_http.post('/reset', function() {
-  //         vows_http.post('/ws/conferences', function() {
-  //           vows_http.post('/ws/conferences', function() {
-  //             vows_http.get('/ws/conferences', callback);
-  //           }, {name: 'nature', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'nature-category'}]});            
-  //         }, {name: 'tech', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'tech-category'}]});
-  //       });
-  //     },
-  //     
-  //     'should return 200': function(err, response) {
-  //       assert.equal(response.statusCode, 200);
-  //     },
-  //     
-  //     'should return a list of conferences': function(err, response) {
-  //       var conferences = response.body;
-  //       assert.length(conferences, 2);
-  //     }
-  //   }
-  // }).
+  addBatch({
+    'index': {
+      topic: function() {
+        var callback = this.callback;
+        
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/conferences', function() {
+            vows_http.post('/ws/conferences', function() {
+              vows_http.get('/ws/conferences', callback);
+            }, {name: 'nature', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'nature-category'}]});            
+          }, {name: 'tech', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'tech-category'}]});
+        });
+      },
+      
+      'should return 200': function(err, response) {
+        assert.equal(response.statusCode, 200);
+      },
+      
+      'should return a list of conferences': function(err, response) {
+        var conferences = response.body;
+        assert.length(conferences, 2);
+      }
+    }
+  }).
   export(module);
