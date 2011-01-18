@@ -3,7 +3,7 @@ cap.Users = function(app) {
     context.post('/ws/users', context.params.user, function(user) {
       context.flash('Welcome ' + user.fullname);
       cap.current_user = user
-      context.redirect('#/');
+      context.redirect('#/members/' + user.username);
     }, function(errors) {
       context.showErrors('#new_user_form', context, errors);
     });

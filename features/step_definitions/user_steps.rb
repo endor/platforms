@@ -5,6 +5,7 @@ Given /^a user "([^"]*)"( with the password "([^"]*)")?$/ do |username, _, passw
     :password => password || "test",
     :town => "Berlin",
     :country => "Country"}
+  Platforms.delete "/session"
 end
 
 When /^I fill in the signup form as "([^"]*)"$/ do |username|

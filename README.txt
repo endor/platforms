@@ -5,3 +5,5 @@ Install required ruby dependencies with bundler `bundle install` (see http://gem
 
 Install node dependencies with npm `npm install packetname` (see http://npmjs.org/)
 * vows
+
+Start Application with `node server.js`
