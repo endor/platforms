@@ -8,7 +8,7 @@ Scenario: see list of categories on the start page
     And I log in as "admin/admin"
     And I create a category "JavaScript"
     And I create a category "Ruby"
-    And I follow "Log out"
+    And I press "Log out"
   When I go to the start page
   Then I should see "JavaScript"
     And I should see "Ruby"
