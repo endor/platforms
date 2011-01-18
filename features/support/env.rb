@@ -34,7 +34,7 @@ end
 
 class Platforms
   include HTTParty
-  base_uri 'localhost:3000'
+  base_uri 'localhost:3001'
   format :json
 end
 
