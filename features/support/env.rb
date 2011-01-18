@@ -9,7 +9,6 @@ require 'httparty'
 require File.dirname(__FILE__) + '/config'
 
 ENV['NODE_ENV'] = 'test'
-ENV['SKIP_UPDATE_VIEWS'] = 'true'
 
 Capybara.app = nil
 Capybara.app_host = APP_HOST

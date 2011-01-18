@@ -9,7 +9,6 @@ var  User = require('models/user'),
   connect = require('connect/index'),
   querystring = require('querystring'),
   couchdb = require('node-couchdb/lib/couchdb'),
-  couch_views = require('couch_views'),
   cookie_sessions = require('cookie-sessions');
 
 var couch_client,
@@ -44,12 +43,6 @@ app.configure('production', function() {
   app.db = couch_client.db(db_name + '_production');
 });
 
-if(!process.env.SKIP_UPDATE_VIEWS) {
-  sys.puts('updating views. set SKIP_UPDATE_VIEWS to skip this');
-  couch_views.update_views(app.db, _);
-};
-
-  
 require('controllers/session')(app);
 require('controllers/ws/categories')(app);
 require('controllers/ws/conferences')(app);
@@ -57,6 +50,7 @@ require('controllers/ws/users')(app);
 require('controllers/reset')(app);
 
 app.get('/', function(req, res) {
+  console.log(req.header('host'));
   res.redirect('index.html');
 });
 

@@ -3,47 +3,86 @@ var vows = require('vows'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   _ = require('../../public/vendor/underscore/underscore')._;
 
-vows_http.initialize(3001, '127.0.0.1')
+vows_http.initialize(3001, 'localhost');
 
-vows.
-  describe('CategoriesController').
-  addBatch({
-    'create': {
-      'with valid category': {
-        topic: function () {
-          var callback = this.callback;
-          
-          vows_http.post('/reset', function() {
-            vows_http.post('/ws/categories', callback, {name: 'tech'});
-          });
-        },
 
-        'should return 200': function (error, response) {
-          assert.equal(response.statusCode, 200);
-        },
-        'should return the new category': function(error, response) {
-          assert.isTrue(response.body.version.length > 0);
-          delete(response.body.version);          
-          assert.deepEqual(response.body, {name: 'tech', id: 'category-tech',
-            parent: null, subcategories: []});
-        }
+vows.describe('CategoriesController')
+  .addBatch({
+    'create with valid category': {
+      topic: function () {
+        var callback = this.callback;
+        
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/categories', callback, {name: 'tech'});
+        });
       },
-      'with invalid category': {
-        topic: function () {
-          var callback = this.callback;
-          
-          vows_http.post('/reset', function() {
-            vows_http.post('/ws/categories', callback, {name: ''});
-          });
-        },
-
-        'should return 400': function (error, response) {
-          assert.equal(response.statusCode, 400);
-        },
+  
+      'should return 200': function (error, response) {
+        assert.equal(response.statusCode, 200);
       },
-      'without permission': {
-        // XXX
+      'should return the new category': function(error, response) {
+        assert.isTrue(response.body.version.length > 0);
+        var category_without_version = response.body;
+        delete(category_without_version.version);
+        
+        assert.deepEqual(category_without_version, {name: 'tech', id: 'category-tech',
+          parent: null, subcategories: []});
+        
       }
     }
-  }).
-  export(module);
+  })
+  .addBatch({
+    'create with invalid category': {
+      topic: function () {
+        var callback = this.callback;
+        
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/categories', callback, {name: ''});
+        });
+      },
+  
+      'should return 400': function (error, response) {
+        assert.equal(response.statusCode, 400);
+      }
+    },
+    'without permission': {
+      // XXX
+    }
+  })
+  .addBatch({
+    'list with a category': {
+      topic: function() {
+        var callback = this.callback;
+    
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/categories', function() {
+            vows_http.get('/ws/categories', callback);
+          }, {name: 'tech'});
+        });
+      },
+      'should return 200': function(err, res) {
+        assert.equal(res.statusCode, 200);
+      },
+      'should list that category': function(err, res) {
+        var categories = res.body;
+        assert.deepEqual(categories, [{name: 'tech', details: 'http://localhost:3001/ws/categories/category-tech'}]);
+      }
+    }
+  })
+  .addBatch({
+    'with no category': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/reset', function() {
+          vows_http.get('/ws/categories', callback);
+        });
+      },
+      'should return 204': function(err, res) {
+        assert.equal(res.statusCode, 204);
+      },
+      'should render an empty list': function(err, res) {
+        assert.deepEqual(res.body, []);
+      }
+    }
+  })
+  .export(module);

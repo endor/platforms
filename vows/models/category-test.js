@@ -16,7 +16,17 @@ vows.
         'should prefix the name': function(topic) {
           assert.equal(topic, 'category-tech');
         }
-      }
+      },
+      'called with fromDoc': {
+        topic: Category.fromDoc({_id: '123'}),
+        
+        'should add the id': function(category) {
+          assert.equal(category.id, '123');
+        },
+        'should add the methods': function(category) {
+          assert.isTrue(typeof category.toDoc == 'function');
+        }
+      },
     },
     'a Category': {
       'with a missing name': {
@@ -33,30 +43,54 @@ vows.
 
         'is valid': function(topic) {
           assert.isTrue(topic.valid());
+        }
+      },
+      'called with toApi': {
+        topic: function(category) {
+          var category = Category.fromParams({name: 'tech'});
+          category.version = '1';
+          category.id = 'category-tech';
+          return category.toApi()
         },
         
-        'called with toApi': {
-          topic: function(category) {
-            category.version = '1';
-            category.id = 'category-tech';
-            return category.toApi()
-          },
-          
-          'should remove the errors and valid': function(topic) {
-            assert.isUndefined(topic.errors);
-            assert.isUndefined(topic.valid);
-          },
-          'should return the name, version and id': function(topic) {
-            assert.equal(topic.name, 'tech')
-            assert.equal(topic.id, 'category-tech');
-            assert.equal(topic.version, '1');
-          },
-          'should return the parent': function(topic) {
-            assert.isTrue(topic.parent === null);
-          },
-          'should return the subcategories': function(topic) {
-            assert.deepEqual(topic.subcategories, []);
-          },
+        'should remove the errors and valid': function(topic) {
+          assert.isUndefined(topic.errors);
+          assert.isUndefined(topic.valid);
+        },
+        'should return the name, version and id': function(topic) {
+          assert.equal(topic.name, 'tech')
+          assert.equal(topic.id, 'category-tech');
+          assert.equal(topic.version, '1');
+        },
+        'should return the parent': function(topic) {
+          assert.isTrue(topic.parent === null);
+        },
+        'should return the subcategories': function(topic) {
+          assert.deepEqual(topic.subcategories, []);
+        }
+      },
+      'called with toEmbeddedApi': {
+        topic: function(category) {
+          var category = Category.fromParams({name: 'tech'});
+          category.id = 'category-tech';
+          var request = {header: function(name) {
+            if(name == 'host') {
+              return 'localhost:3001'
+            };
+          }}
+          return category.toEmbeddedApi(request)
+        },
+        'should only include the name and the details link': function(category) {
+          assert.deepEqual(category, {name: 'tech', details: 'http://localhost:3001/ws/categories/category-tech'});
+        }
+      },
+      'called with toDoc': {
+        topic: function(category) {
+          var category = Category.fromParams({name: 'tech'});
+          return category.toDoc();
+        },
+        'should add the type': function(category) {
+          assert.equal(category.type, 'Category');
         }
       }
     }
