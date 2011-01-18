@@ -74,7 +74,7 @@ vows.
         
         'should return all conferences in the tech category': function(err, response) {
           assert.length(response.body, 1)
-          assert.equal(response.body[0].name, 'nature');
+          assert.equal(response.body[0].name, 'tech');
         }
       }
     }
