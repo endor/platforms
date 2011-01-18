@@ -22,12 +22,10 @@ vows.
           assert.equal(response.statusCode, 200);
         },
         'should return the new category': function(error, response) {
-          var category_without_version = JSON.parse(response.body);
-          delete(category_without_version.version);
-          
-          assert.deepEqual(category_without_version, {name: 'tech', id: 'category-tech',
+          assert.isTrue(response.body.version.length > 0);
+          delete(response.body.version);          
+          assert.deepEqual(response.body, {name: 'tech', id: 'category-tech',
             parent: null, subcategories: []});
-          assert.isTrue(JSON.parse(response.body).version.length > 0);
         }
       },
       'with invalid category': {

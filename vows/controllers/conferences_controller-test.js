@@ -22,11 +22,9 @@ vows.
           assert.equal(response.statusCode, 200);
         },
         'should return the new conference': function(error, response) {
-          var conference_without_version = JSON.parse(response.body);
-          delete(conference_without_version.version);
-          
-          assert.deepEqual(conference_without_version, {name: 'tech', id: 'conference-tech'});
-          assert.isTrue(JSON.parse(response.body).version.length > 0);
+          assert.isTrue(response.body.version.length > 0);
+          delete response.body.version;
+          assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech'});
         }
       },
       'with invalid conference': {
@@ -47,4 +45,28 @@ vows.
       }
     }
   }).
+  // addBatch({
+  //   'index': {
+  //     topic: function() {
+  //       var callback = this.callback;
+  //       
+  //       vows_http.post('/reset', function() {
+  //         vows_http.post('/ws/conferences', function() {
+  //           vows_http.post('/ws/conferences', function() {
+  //             vows_http.get('/ws/conferences', callback);
+  //           }, {name: 'nature', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'nature-category'}]});            
+  //         }, {name: 'tech', startdate: '02.03.2011', enddate: '04.03.2011', categories: [{id: 'tech-category'}]});
+  //       });
+  //     },
+  //     
+  //     'should return 200': function(err, response) {
+  //       assert.equal(response.statusCode, 200);
+  //     },
+  //     
+  //     'should return a list of conferences': function(err, response) {
+  //       var conferences = response.body;
+  //       assert.length(conferences, 2);
+  //     }
+  //   }
+  // }).
   export(module);
