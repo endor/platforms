@@ -9,7 +9,7 @@
       contentType: 'application/json',
       success: success,
       error: function(xhr) {
-        if(xhr.status === 401) {
+        if(xhr.status === 403) {
           skeleton.current_user = null;
           skeleton.requestBeforeSessionTimeout = context;
           skeleton.app.runRoute('get', '#/session/new');

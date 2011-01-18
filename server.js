@@ -49,8 +49,6 @@ app.configure('production', function() {
   app.db = couch_client.db(db_name + '_production');
 });
   
-
-  
 require('controllers/session')(app);
 require('controllers/user')(app);
 require('controllers/question')(app);
