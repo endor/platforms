@@ -1,11 +1,13 @@
 require "bundler/setup"
 require 'httparty'
+require File.dirname(__FILE__) + '/config'
 
 unless $server_pid
   STDERR.puts 'starting node'
+  reset_database
   $server_pid = Process.spawn({'CONNECT_ENV' => 'test', 'PORT' => '3001'}, 'node server.js')
   begin
-    HTTParty.get 'http://127.0.0.1:3001/index.html'
+    HTTParty.get APP_HOST + '/index.html'
   rescue Errno::ECONNREFUSED => e
     sleep 0.1
     retry
@@ -18,3 +20,4 @@ unless $server_pid
     end
   end
 end
+
