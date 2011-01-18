@@ -25,7 +25,7 @@ vows.
     }
   })
   .addBatch({
-    'create with invalid members': {
+    'create with invalid member': {
       topic: function() {
         var callback = this.callback;
         vows_http.post('/reset', function() {
@@ -38,18 +38,34 @@ vows.
     }
   })
   .addBatch({
-    'create with valid members': {
+    'create with valid member': {
       topic: function() {
         var callback = this.callback;
         vows_http.post('/reset', function() {
           vows_http.post('/ws/members', callback, { username: "alex", password: "test", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"});
         });
       },
-      'should return 201': function(err, res) {
-        assert.equal(res.statusCode, 201);
+      'should return 200': function(err, res) {
+        assert.equal(res.statusCode, 200);
       },
       'should return the user': function(err, res) {
         assert.deepEqual(res.body, {id: 'user-alex', username: "alex", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"});
+      }
+    }
+  })
+  .addBatch({
+    'create with username already taken': {
+      topic: function() {
+        var callback = this.callback,
+          valid_user_params = { username: "alex", password: "test", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"};
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/members', function(err, res) {
+            vows_http.post('/ws/members', callback, valid_user_params);
+          }, valid_user_params);
+        });
+      },
+      'should return 400': function(err, res) {
+        assert.equal(res.statusCode, 400);
       }
     }
   })
