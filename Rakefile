@@ -24,6 +24,6 @@ end
 
 task :vows do
   require File.dirname(__FILE__) + '/features/support/run_server'
-  puts `vows #{ENV['TESTS'] || 'vows/**/*-test.js'}`
+  puts `export CONNECT_ENV=test; vows #{ENV['TESTS'] || 'vows/**/*-test.js'}`
 end
 
