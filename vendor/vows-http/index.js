@@ -15,11 +15,11 @@ var http = require('http');
 
 var vows_http = {
   client: null,
-  initialize: function(port, url) {
-    this.client = http.createClient(port, url);
+  initialize: function(port, host) {
+    this.client = http.createClient(port, host);
   },
   send_request: function(type, url, callback, data) {
-    var headers = {};
+    var headers = {host: this.client.host + ':' + this.client.port};
     
     if(data) {
       data = JSON.stringify(data);
