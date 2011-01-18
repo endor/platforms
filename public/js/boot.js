@@ -1,2 +1,2 @@
-var skeleton = {};
+var cap = {};
  

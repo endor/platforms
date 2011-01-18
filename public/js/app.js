@@ -1,16 +1,16 @@
-skeleton.app = $.sammy('body', function() {
+cap.app = $.sammy('body', function() {
   this.use(Sammy.Mustache);
   this.use(Sammy.NestedParams);
   
-  this.helpers(skeleton.ApplicationHelper);
+  this.helpers(cap.ApplicationHelper);
   this.swap = function(content) {
     $('#wrapper').html(content);
   };
   
-  skeleton.Users(this);
-  skeleton.Session(this);
+  cap.Users(this);
+  cap.Session(this);
   
-  // this.before(skeleton.SessionFilter);
+  this.before(cap.SessionFilter);
   
   this.get('#/', function(context) {
     context.get('/categories', function(categories) {
@@ -20,5 +20,5 @@ skeleton.app = $.sammy('body', function() {
 });
 
 $(function() {
-  skeleton.app.run('#/');
+  cap.app.run('#/');
 });
