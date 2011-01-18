@@ -1,0 +1,1170 @@
+{
+    "members": [
+    {
+        "username": "bgates",
+        "password": "kzr",
+        "fullname": "Bill Gates",
+        "email": "bill.gates@example.com",
+        "town": "Seattle",
+        "country": "United States",
+        "gps": "47.36N,122.19W"
+
+    },
+    {
+        "username": "sballmer",
+        "password": "kzr",
+        "fullname": "Steve Ballmer",
+        "email": "steve.ballmer@example.com",
+        "town": "Redmond",
+        "country": "United States",
+        "gps": "47.40N,122.7W"
+
+    },
+    {
+        "username": "sjobs",
+        "password": "kzr",
+        "fullname": "Steve Jobs",
+        "email": "steve.jobs@example.com",
+        "town": "Cupertino",
+        "country": "United States",
+        "gps": "37.19N,122.3W"
+
+    },
+    {
+        "username": "edijkstra",
+        "password": "kzr",
+        "fullname": "Edsger Wybe Dijkstra",
+        "email": "edsger.dijkstra@example.com",
+        "town": "Eindhoven",
+        "country": "Netherlands",
+        "gps": "51.26N,5.29O"
+
+    },
+    {
+        "username": "lpage",
+        "password": "kzr",
+        "fullname": "Larry Page",
+        "email": "larry.page@example.com",
+        "town": "Mountain View",
+        "country": "United States",
+        "gps": "37.24N,122.3W"
+
+    },
+    {
+        "username": "mzuckerberg",
+        "password": "kzr",
+        "fullname": "Mark Zuckerberg",
+        "email": "mark.zuckerberg@example.com",
+        "town": "Palo Alto",
+        "country": "United States",
+        "gps": "37.26N,122.8W"
+
+    },
+    {
+        "username": "tbernerslee",
+        "password": "kzr",
+        "fullname": "Tim Berners-Lee",
+        "email": "tim.berners-lee@example.com",
+        "town": "Meyrin",
+        "country": "Switzerland",
+        "gps": "46.14N,6.4E"
+
+    },
+    {
+        "username": "aturing",
+        "password": "kzr",
+        "fullname": "Alan Turing",
+        "email": "alan.turing@example.com",
+        "town": "Bletchley Park",
+        "country": "Great Britain",
+        "gps": "51.59N,0.44W"
+
+    },
+    {
+        "username": "kzuse",
+        "password": "kzr",
+        "fullname": "Konrad Zuse",
+        "email": "konrad.zuse@example.com",
+        "town": "Berlin",
+        "country": "Germany",
+        "gps": "52.29N,13.22O"
+
+    },
+    {
+        "username": "swozniak",
+        "password": "kzr",
+        "fullname": "Steve Wozniak",
+        "email": "steve.wozniak@example.com",
+        "town": "San Jose",
+        "country": "United States",
+        "gps": "37.20N,121.53W"
+
+    },
+    {
+        "username": "BrigitteDuerr",
+        "password": "ok7Aing6",
+        "fullname": "Brigitte Duerr",
+        "email": "BrigitteDuerr@example.com",
+        "town": "Rieseby",
+        "country": "Deutschland",
+        "gps": "54.541191N,9.810499E"
+
+    },
+    {
+        "username": "KatrinBieber",
+        "password": "oph7Phong5",
+        "fullname": "Katrin Bieber",
+        "email": "KatrinBieber@example.com",
+        "town": "Torgau",
+        "country": "Deutschland",
+        "gps": "51.55333N,12.995659E"
+
+    },
+    {
+        "username": "KlausFischer",
+        "password": "tuch0Xut0ei",
+        "fullname": "Klaus Fischer",
+        "email": "KlausFischer@example.com",
+        "town": "Wachtendonk",
+        "country": "Deutschland",
+        "gps": "51.405071N, 6.325996E"
+
+    },
+    {
+        "username": "BenjaminSanger",
+        "password": "tho8WaeK1ae",
+        "fullname": "Benjamin Sanger",
+        "email": "BenjaminSanger@example.com",
+        "town": "Neunkirchen",
+        "country": "Deutschland",
+        "gps": "49.340507N,7.184578E"
+
+    },
+    {
+        "username": "JensWeisz",
+        "password": "ohSha5ohd8",
+        "fullname": "Jens Weisz",
+        "email": "JensWeisz@example.com",
+        "town": "Banzkow",
+        "country": "Deutschland",
+        "gps": "53.525387N,11.524075E"
+
+    },
+    {
+        "username": "AlexanderKruger",
+        "password": "ua4EeJ0oh",
+        "fullname": "Alexander Kruger",
+        "email": "AlexanderKruger@example.com ",
+        "town": "Großenhain",
+        "country": "Deutschland",
+        "gps": "51.292923N,13.530453E"
+
+    },
+    {
+        "username": "StephanGerber",
+        "password": "Ui8Hae2ah",
+        "fullname": "Stephan Gerber",
+        "email": "StephanGerber@example.com",
+        "town": "Harscheid",
+        "country": "Deutschland",
+        "gps": "50.46206N,6.886994E"
+
+    },
+    {
+        "username": "UteHerzog",
+        "password": "Gah3hie6Oow",
+        "fullname": "Ute Herzog",
+        "email": "UteHerzog@example.com",
+        "town": "Reichenbach",
+        "country": "Deutschland",
+        "gps": "50.630995N,12.303795E"
+
+    },
+    {
+        "username": "BirgitMehler",
+        "password": "bei1fa6uaGi",
+        "fullname": "Birgit Mehler",
+        "email": "BirgitMehler@example.com",
+        "town": "Düsseldorf",
+        "country": "Deutschland",
+        "gps": "51.218397N,6.816742E"
+
+    },
+    {
+        "username": "MichelleLehmann",
+        "password": "neeke7xiH",
+        "fullname": "Michelle Lehmann",
+        "email": "MichelleLehmann@example.com",
+        "town": "Ingolstadt",
+        "country": "Deutschland",
+        "gps": "48.760889N,11.43251E"
+
+    },
+    {
+        "username": "KAdenauer",
+        "password": "kzr",
+        "fullname": "Konrad Adenauer",
+        "email": "KAdenauer@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "LErhard",
+        "password": "kzr",
+        "fullname": "Ludwig Erhard",
+        "email": "LErhard@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "KGKiesinger",
+        "password": "kzr",
+        "fullname": "Kurt Georg Kiesinger",
+        "email": "KGKiesinger@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "WBrandt",
+        "password": "kzr",
+        "fullname": "Willy Brandt",
+        "email": "WBrandt@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "WScheel",
+        "password": "kzr",
+        "fullname": "Walter Scheel",
+        "email": "WScheel@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "HSchmidt",
+        "password": "kzr",
+        "fullname": "Helmut Schmidt",
+        "email": "HSchmidt@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "HKohl",
+        "password": "kzr",
+        "fullname": "Helmut Kohl",
+        "email": "HKohl@email.example.com",
+        "town": "Bonn",
+        "country": "Germany",
+        "gps": "50.0N,7E"
+
+    },
+    {
+        "username": "GSchröder",
+        "password": "kzr",
+        "fullname": "Gerhard Schröder",
+        "email": "GSchröder@email.example.com",
+        "town": "Berlin",
+        "country": "Germany",
+        "gps": "52.0N,13E"
+
+    },
+    {
+        "username": "AMerkel",
+        "password": "kzr",
+        "fullname": "Angela Merkel",
+        "email": "AMerkel@email.example.com",
+        "town": "Berlin",
+        "country": "Germany",
+        "gps": "52.0N,13E"
+
+    },
+    {
+        "username": "MMüller",
+        "password": "123",
+        "fullname": "Michael Müller",
+        "email": "MMüller@email.example.com",
+        "town": "Berlin",
+        "country": "Germany",
+        "gps": "52.0N,13E"
+
+    }],
+    "categories": [
+    {
+        "name": "Arts",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Humanities",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Sciences",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Business",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Computer Science",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Synthetic Biology",
+        "subcategories": [],
+        "parent": {
+            "name": "Life Science"
+
+        }
+
+    },
+    {
+        "name": "Oncology",
+        "subcategories": [],
+        "parent": {
+            "name": "Life Science"
+
+        }
+
+    },
+    {
+        "name": "Media Research",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Life Science",
+        "subcategories": [{
+            "name": "Synthetic Biology"
+
+        },
+        {
+            "name": "Oncology"
+
+        }],
+        "parent": {}
+
+    },
+    {
+        "name": "Technology",
+        "subcategories": [{
+            "name": "IT Security"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        }],
+        "parent": {}
+
+    },
+    {
+        "name": "Entertainment",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "Design",
+        "subcategories": [],
+        "parent": {}
+
+    },
+    {
+        "name": "IT Security",
+        "subcategories": [],
+        "parent": {
+            "name": "Technology"
+
+        }
+
+    },
+    {
+        "name": "Mobile Platforms",
+        "subcategories": [],
+        "parent": {
+            "name": "Technology"
+
+        }
+
+    }],
+    "series": [
+
+    {
+        "name": "ICSE",
+        "contacts": [{
+            "username": "MichelleLehmann"
+
+        }]
+
+    },
+    {
+        "name": "Chaos Communication Congress",
+        "contacts": [{
+            "username": "kzuse"
+
+        }]
+
+    },
+    {
+        "name": "Oncology Biomarkers Conference",
+        "contacts": [{
+            "username": "MMüller"
+
+        }]
+
+    }],
+    "conferences": [
+      {
+        "name": "26C3 - Here Be Dragons",
+        "creator": {
+            "username": "kzuse"
+
+        },
+        "series": {
+            "name": "Chaos Communication Congress"
+
+        },
+        "startdate": "20091227",
+        "enddate": "20091230",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "IT Security"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        },
+        {
+            "name": "Design"
+
+        }],
+        "description": "The 26th Chaos Communication Congress (26C3) is the annual four-day conference organized by the Chaos Computer Club (CCC). It takes place from December 27th to December 30th 2009 at the bcc Berliner Congress Center in Berlin, Germany.",
+        "location": "bcc Berliner Congress Center, Berlin, Germany",
+        "gps": "52.31N,13.24E",
+        "venue": "Alexanderstr. 11, 10178 Berlin, Germany",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "27C3 - We come in peace",
+        "creator": {
+            "username": "kzuse"
+
+        },
+        "series": {
+            "name": "Chaos Communication Congress"
+
+        },
+        "startdate": "20101227",
+        "enddate": "20101230",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "IT Security"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        },
+        {
+            "name": "Design"
+
+        }],
+        "description": "The 27th Chaos Communication Congress (27C3) is the annual four-day conference organized by the Chaos Computer Club (CCC). It takes place at the bcc Berliner Congress Center in Berlin, Germany.",
+        "location": "bcc Berliner Congress Center, Berlin, Germany",
+        "gps": "52.31N,13.24E",
+        "venue": "Alexanderstr. 11, 10178 Berlin, Germany",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "28C3 - ...",
+        "creator": {
+            "username": "kzuse"
+
+        },
+        "series": {
+            "name": "Chaos Communication Congress"
+
+        },
+        "startdate": "20111227",
+        "enddate": "20111230",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "IT Security"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        },
+        {
+            "name": "Design"
+
+        }],
+        "description": "The 28th Chaos Communication Congress (28C3) is the annual four-day conference organized by the Chaos Computer Club (CCC). It takes place from December 27th to December 30th 2011 at the bcc Berliner Congress Center in Berlin, Germany.",
+        "location": "bcc Berliner Congress Center, Berlin, Germany",
+        "gps": "52.31N,13.24E",
+        "venue": "Alexanderstr. 11, 10178 Berlin, Germany",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Black Hat DC 2011",
+        "creator": {
+            "username": "mzuckerberg"
+
+        },
+        "series": {},
+        "startdate": "20110116",
+        "enddate": "20110119",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "IT Security"
+
+        }],
+        "description": "The Black Hat Conference is a computer security conference that brings together a variety of people interested in information security. Representatives of federal agencies and corporations attend along with hackers. The Briefings take place regularly in Las Vegas, Barcelona (previously Amsterdam) and Tokyo. An event dedicated to the Federal Agencies is organized in Washington, D.C..",
+        "location": "2799 Jefferson Davis Hwy, Arlington, VA 22202, United States",
+        "gps": "38.52N,77.6W",
+        "venue": "Hyatt Regency Crystal Hotel",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "droidcon 2011",
+        "creator": {
+            "username": "lpage"
+
+        },
+        "series": {},
+        "startdate": "20110323",
+        "enddate": "20110324",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        }],
+        "description": "The droidcon conference deals with „Android“, the platform for mobile devices which is being developed by the Open Handset Alliance under the guidance of Google. droidcon is developer- driven and independent from interests of hardware and software vendors.",
+        "location": "Takustraße 39, 14195 Berlin, Germany",
+        "gps": "52.45N,13.29E",
+        "venue": "Konferenzcenter Seminaris",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Macworld Conference 2011",
+        "creator": {
+            "username": "swozniak"
+
+        },
+        "series": {},
+        "startdate": "20110125",
+        "enddate": "20110129",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        },
+        {
+            "name": "Design"
+
+        }],
+        "description": "Macworld 2011 is a four day celebration that entertains and educates. Macworld offers access to hundreds of Apple related products and services. You will discover cool software, hardware and accessories to use with your favorite Apple devices. You will also find expert advice, demonstrations and instruction by the very people that develop these products. Macworld conference programs feature industry leading minds, presenting cutting edge product training on the topics you most want to learn.",
+        "location": "747 Howard Street, San Francisco, CA 94103, United States",
+        "gps": "37.47N,122.24W",
+        "venue": "Moscone Center",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "GSMA Mobile World Congress",
+        "creator": {
+            "username": "sballmer"
+
+        },
+        "series": {},
+        "startdate": "20110214",
+        "enddate": "20110217",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "Mobile Platforms"
+
+        }],
+        "description": "The Mobile World Congress is the mobile industry's \"must attend \" event with more than 49,000 visitors in 2010. An integral part of Congress, the conference agenda will feature speakers representing the leaders of the world's most innovative companies, both from within our industry and from the growing number of adjacent market sectors joining our expanding mobile ecosystem. In 2011, our conference agenda will showcase dynamic speakers from a broad range of companies, and will feature in-depth sessions covering the industry's key growth areas.",
+        "location": "Av. Reina Maria Cristina, s/n, 08004 Barcelona, Spain",
+        "gps": "41.3N,2.15E",
+        "venue": "Fira de Barcelona",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "TED 2011 - The Rediscovery of Wonder",
+        "creator": {
+            "username": "bgates"
+
+        },
+        "series": {},
+        "startdate": "20110228",
+        "enddate": "20110304",
+        "categories": [{
+            "name": "Technology"
+
+        },
+        {
+            "name": "Design"
+
+        },
+        {
+            "name": "Entertainment"
+
+        }],
+        "description": "TED (Technology Entertainment and Design) is a global set of conferences curated by the American private non-profit Sapling Foundation, formed to disseminate \"ideas worth spreading \". TED was founded in 1984 as a one-off event, and the conference was held annually from 1990 in Monterey, California. For 2011, we are assembling a cast of characters capable of stirring the imagination as never before. Explorers, storytellers, photographers, scientific pioneers, visionaries and provocateurs from all parts of the globe.",
+        "location": "300 E. Ocean Blvd., Long Beach, CA 90802, United States",
+        "gps": "33.76N,118.18W",
+        "venue": "Long Beach Performing Arts Center",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "HOW Design Conference",
+        "creator": {
+            "username": "sjobs"
+
+        },
+        "series": {},
+        "startdate": "20110622",
+        "enddate": "20110627",
+        "categories": [{
+            "name": "Design"
+
+        },
+        {
+            "name": "Technology"
+
+        }],
+        "description": "With more than 35 sessions and 30+ expert speakers, the HOW Design Conference (June 24-27) offers everything you need to boost your design career and create outstanding work.nnYou’ll learn how to use your software more effectively, develop a better creative process, find inspiration whenever you need it and more. Plus, you’ll be surrounded by thousands of creatives—the perfect environment for networking, learning and soaking up all the creative energy.",
+        "location": "151 E. Wacker Drive, Chicago, IL 60601, United States",
+        "gps": "41.88N,87.62W",
+        "venue": "Hyatt Regency Chicago",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Expo 2010",
+        "creator": {
+            "username": "sjobs"
+
+        },
+        "series": {},
+        "startdate": "20100501",
+        "enddate": "20100510",
+        "categories": [{
+            "name": "Design"
+
+        },
+        {
+            "name": "Technology"
+
+        },
+        {
+            "name": "Entertainment"
+
+        }],
+        "description": "Expo 2010, officially Expo 2010 Shanghai China (simplified Chinese: ??2010????????; pinyin: Zhongguó Èrlíngyilíng Nián Shànghai Shìjìe Bólanhuì) is held on both banks of the Huangpu River in the city of Shanghai, China, from May 1 to October 31, 2010. The theme of the exposition is \"Better City–Better Life \" and signifies Shanghai's new status in the 21st century as the \"next great world city \".",
+        "location": "Huangpu River, Shanghai, China",
+        "gps": "31.11N,12129E",
+        "venue": "",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ICSE 2011",
+        "creator": {
+            "username": "MichelleLehmann"
+
+        },
+        "series": {
+            "name": "ICSE"
+
+        },
+        "startdate": "2011-05-21",
+        "enddate": "2011-05-28",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "ICSE Workshops provide a highly interactive and collaborative environment in which to discuss and advance important topics in software engineering.",
+        "location": "Honoulu, Hawaii, USA",
+        "gps": "21.282327N,157.836431W",
+        "venue": "The Hilton Hawaiian Village Beach Resort and Spa",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ICSE 2010",
+        "creator": {
+            "username": "BirgitMehler"
+
+        },
+        "series": {
+            "name": "ICSE"
+
+        },
+        "startdate": "2010-05-02",
+        "enddate": "2010-05-08",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "ICSE is the premier international event for software engineering.",
+        "location": "Cape Town, South Africa",
+        "gps": "33.915879S,18.427059E",
+        "venue": "CTICC",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ICSE 2009",
+        "creator": {
+            "username": "UteHerzog"
+
+        },
+        "series": {},
+        "startdate": "2009-05-16",
+        "enddate": "2009-05-24",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "",
+        "location": "Vancouver, Canada",
+        "gps": "N49.292032,123.130976W",
+        "venue": "The Westin Bayshore",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Federated Computing Research Conference",
+        "creator": {
+            "username": "StephanGerber"
+
+        },
+        "startdate": "2011-06-04",
+        "enddate": "2011-06-11",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "FCRC 2011 assembles a spectrum of affiliated research conferences and workshops into a week long coordinated meeting held at a common time in a common place.",
+        "location": "San Jose, USA",
+        "gps": "37.339337N,121.899353W",
+        "venue": "The San Jose Marriott Hotel",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Asia and South Pacific Design Automation Conference",
+        "creator": {
+            "username": "AlexanderKruger"
+
+        },
+        "startdate": "2011-01-25",
+        "enddate": "2011-01-28",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "ASP-DAC offers an ideal place for all the people for exchanging ideas about challenges and solutions toward future electronic society.",
+        "location": "Yokohama, Japan",
+        "gps": "35.445782N,139.634377E",
+        "venue": "Pacifico Yokohama",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "PPoPP",
+        "creator": {
+            "username": "JensWeisz"
+
+        },
+        "startdate": "2011-02-12",
+        "enddate": "2011-02-16",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "PPoPP is a forum for leading work on all aspects of parallel programming, including foundational and theoretical aspects, techniques, tools, and practical experiences.",
+        "location": "San Antonio, Texas 78205 USA",
+        "gps": "N29.422848,98.48287W",
+        "venue": "San Antonio Marriott Rivercenter",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "TEI’11",
+        "creator": {
+            "username": "BenjaminSanger"
+
+        },
+        "startdate": "2011-01-23",
+        "enddate": "2011-01-26",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "TEI’11 is the fifth international conference dedicated to presenting the latest results in tangible, embedded, and embodied interaction.",
+        "location": "Funchal, Portugal",
+        "gps": "32.654051N,16.921143W",
+        "venue": "CS Madeira Atlantic Resort & Sea Spa ",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "WSDM'11",
+        "creator": {
+            "username": "MichelleLehmann"
+
+        },
+        "startdate": "2011-02-09",
+        "enddate": "2011-02-12",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "WSDM (pronounced \"wisdom \") is the premier international ACM conference covering research in the areas of search and data mining on the Web.",
+        "location": "Hong Kong",
+        "gps": "22.29529N,114.172657E",
+        "venue": "Sheraton Hotel and Towers",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Engineering Interactive Computing Systems",
+        "creator": {
+            "username": "MichelleLehmann"
+
+        },
+        "startdate": "2011-06-13",
+        "enddate": "2011-06-16",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "EICS is an international conference devoted to all aspects of engineering usable and effective interactive computing systems, ranging from traditional workstation-based interactive systems to those involving new and emerging modalities (e.g., gesture), applications (e.g., mobile and ubiquitous games) and development methods (e.g., extreme programming).",
+        "location": "Pisa, Italy",
+        "gps": "43.716296N,10.417236E",
+        "venue": "CNR Research Area of Pisa",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ACM Hypertext",
+        "creator": {
+            "username": "MichelleLehmann"
+
+        },
+        "startdate": "2011-06-06",
+        "enddate": "2011-06-09",
+        "categories": [{
+            "name": "Sciences"
+
+        }],
+        "description": "The ACM Hypertext Conference is the main venue for high quality peer-reviewed research on hypermedia theory, systems and practices. The Web, Semantic Web, Web 2.0, Social Networks and collaborative hypermedia environments are all manifestations of the success of hypermedia research.",
+        "location": "Eindhoven, the Netherlands",
+        "gps": "51.439785N,5.460617E",
+        "venue": "Eindhoven University of Technology",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "2011 3rd Oncology Biomarkers Conference",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "series": {
+            "name": "Oncology Biomarkers Conference"
+
+        },
+        "startdate": "20110127",
+        "enddate": "20110128",
+        "categories": [{
+            "name": "Life Science"
+
+        },
+        {
+            "name": "Oncology"
+
+        }],
+        "description": "The 3rd Oncology Biomarkers Conference focuses on topics paramount to the continuing progress of biomarker research and development. This two-day summit will bring together top leaders from the pharmaceutical and biotechnology communities, officials from the FDA and NIH, and researchers from esteemed academic institutions to discuss the landscape of research, the challenges of regulations, and the future of biomarker opportunities.",
+        "location": "San Diego, CA, USA",
+        "gps": "32N,117W",
+        "venue": "Paradise Point Resort & Span1404 Vacation RoadnSan Diego, CA 92106",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "2012 4rd Oncology Biomarkers Conference",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "series": {
+            "name": "Oncology Biomarkers Conference"
+
+        },
+        "startdate": "20120127",
+        "enddate": "20120128",
+        "categories": [{
+            "name": "Life Science"
+
+        },
+        {
+            "name": "Oncology"
+
+        }],
+        "description": "The 4rd Oncology Biomarkers Conference focuses on topics paramount to the continuing progress of biomarker research and development. This two-day summit will bring together top leaders from the pharmaceutical and biotechnology communities, officials from the FDA and NIH, and researchers from esteemed academic institutions to discuss the landscape of research, the challenges of regulations, and the future of biomarker opportunities.",
+        "location": "San Diego, CA, USA",
+        "gps": "32N,117W",
+        "venue": "Paradise Point Resort & Span1404 Vacation RoadnSan Diego, CA 92106",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ESF-EMBO Research Conference \"Synthetic Biology of Antibiotic Production \"",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20111002",
+        "enddate": "20111007",
+        "categories": [{
+            "name": "Life Science"
+
+        },
+        {
+            "name": "Synthetic Biology"
+
+        }],
+        "description": "This conference will focus on the advancement of synthetic biology, especially its application in the field of antibiotic production in filamentous fungi and actinomycete bacteria, including the implementation and modification of complex biosynthesis pathway modules in existing and new production hosts. Antibiotics production is regulated by complex networks and involves intricate multi-step biosynthetic machineries, as well as major reorganization of primary metabolic fluxes to redirect cellular metabolic resources towards their biosynthesis. The urgent need for new antibiotics caused by the accelerating emergence of multi-drug resistant pathogens worldwide has led to a strong interest in the research community for decidedly novel approaches, collectively referred to as Synthetic Biology. ",
+        "location": "Sant Feliu, Spain",
+        "gps": "41N,3E",
+        "venue": "Hotel Eden Roc, Sant Feliu de Guixols, Spain",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Synthetic Biology 5.0: The Fifth International Meeting on Synthetic Biology",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110615",
+        "enddate": "20110617",
+        "categories": [{
+            "name": "Life Science"
+
+        },
+        {
+            "name": "Synthetic Biology"
+
+        }],
+        "description": "The SBx.0 international conference series is the preeminent meeting in the field of Synthetic Biology. Started in 2004 with SB1.0 at MIT, the conference was envisioned as an event that would bring together the then-nascent community of biological engineers who were utilizing DNA to build biological systems and bringing engineering principles to bear on biological problems.",
+        "location": "Stanford University, Stanford, California USA",
+        "gps": "37N,122W",
+        "venue": "Stanford University, Stanford, California USA",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ACCT11- International Conference on Advanced Computing and Communication Technologies",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110121",
+        "enddate": "20110123",
+        "categories": [{
+            "name": "Computer Science"
+
+        }],
+        "description": "International Conference on Advanced Computing & Communication Technologies promises to address current state of the technology and the outcome of the ongoing research in the area of advance computing and communication. ACCT11 would offer a forum to the academicians, researchers and students to interact with experts in the area and to learn the recent knowledge in advance computing. It invites papers original & unpublished work from individuals active in the broad theme of the conference.",
+        "location": "Rohtak, India",
+        "gps": "xxx",
+        "venue": "Gymkhana Club, HUDA Sector 4, Rohtak",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "2011 3rd IEEE International Conference on Computer and Automation (ICCAE 2011)",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110121",
+        "enddate": "20110123",
+        "categories": [{
+            "name": "Computer Science"
+
+        }],
+        "description": "The aim objective of ICCAE 2011 is to provide a platform for researchers, engineers, academicians as well as industrial professionals from all over the world to present their research results and development activities in Computer and Automation Engineering. This conference provides opportunities for the delegates to exchange new ideas and application experiences face to face, to establish business or research relations and to find global partners for future collaboration.",
+        "location": "Chongqing, Chongqing, China",
+        "gps": "29N,106E",
+        "venue": "Carlton Hotel, Chongqing, China",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "2011 3rd IEEE International Conference on Machine Learning and Computing (ICMLC 2011)",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110226",
+        "enddate": "20110228",
+        "categories": [{
+            "name": "Computer Science"
+
+        }],
+        "description": "The aim objective of ICMLC 2011 is to provide a platform for researchers, engineers, academicians as well as industrial professionals from all over the world to present their research results and development activities in Machine Learning and Computing. This conference provides opportunities for the delegates to exchange new ideas and application experiences face to face, to establish business or research relations and to find global partners for future collaboration.",
+        "location": "Singapore, Singapore",
+        "gps": "xxx",
+        "venue": "Location to be decided",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "ICCFMS 2011 : International Conference on Communication, Film and Media Sciences",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110628",
+        "enddate": "20110630",
+        "categories": [{
+            "name": "Media Research"
+
+        }],
+        "description": "The International Conference on Communication, Film and Media Sciences aims to bring together academic scientists, leading engineers, industry researchers and scholar students to exchange and share their experiences and research results about all aspects of Communication, Film and Media Sciences, and discuss the practical challenges encountered and the solutions adopted.",
+        "location": "Paris, France",
+        "gps": "48N,2E",
+        "venue": "Holiday Inn ParisnMontparnasse-Av.Du Mainen79-81 Avenue Du MainenParis, 75014 FrancenPhone: +33-1-43201393nFax: +33-1-43209560nwww.holidayinn.com/parisgare",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Media for Science Forum 2011",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110512",
+        "enddate": "20110513",
+        "categories": [{
+            "name": "Media Research"
+
+        }],
+        "description": "For readers in Europe, on May 12 and 13, the Spanish Foundation for Science and Technology (FECYT) will be hosting in Madrid the Media For Science Forum 2010. The event is intended for science journalists, media officers, science communicators, and scientists and is co-organized by the European Union Science Journalists Association. Registration is free. Following the Forum, a report featuring conclusions about the state of science journalism and public engagement will be released with recommendations aimed at enhanced cooperation among journalists, science communicators, scientists, policymakers, and the public.",
+        "location": "Madrid, Spain",
+        "gps": "40N,3W",
+        "venue": "La Casa Encendida in Madrid",
+        "accomodation": "",
+        "howtofind": ""
+
+    },
+    {
+        "name": "Media Art History 2011 - Rewire",
+        "creator": {
+            "username": "MMüller"
+
+        },
+        "startdate": "20110928",
+        "enddate": "20111001",
+        "categories": [{
+            "name": "Media Research"
+
+        }],
+        "description": "Following the success of Media Art History 05 Re:fresh in Banff, Media Art History 07 Re:place in Berlin and Media Art History 09 Re:live in Melbourne, Media Art History 11 Rewire will host three days of keynotes, panels and poster sessions.nMedia Art History 2011 - Rewire will increase the voltage and ignite key debates within the internationally distributed network of histories, which takes account of the questions surrounding documentation and methodologies, materiality, and agency. Rewire aims to up the current to illuminate the British contribution to media art, and by looking at our industrial heritage and contribution to the history of computing technologies themselves, we will open the discussion to how these contributions are manifested internationally. Considering the International scope of the histories of media art, science and technology, Rewire is also listed as part of the \"McLuhan in Europe \" programme, and will take place concurrently with The Asia Triennial in Manchester and Abandon Normal Devices, the North West's festival of new cinema and digital culture which returns to Liverpool in September 2011.The reviewers especially welcome proposals for presentations thatnresonate thematically with these events.",
+        "location": "Liverpool, UK",
+        "gps": "53N,3W",
+        "venue": "Location to be decided.",
+        "accomodation": "",
+        "howtofind": ""
+
+    }
+  ]
+}

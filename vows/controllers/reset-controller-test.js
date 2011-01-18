@@ -7,9 +7,9 @@ var vows = require('vows'),
 vows_http.initialize(3001, '127.0.0.1')
 
 vows.
-  describe('CategoriesController').
+  describe('ResetController').
   addBatch({
-    'POST': {
+    'POST /reset': {
       topic: function () {
         var callback = this.callback;
         
@@ -30,6 +30,28 @@ vows.
         'should rebuild the views': function(err, docs) {
           assert.isTrue(docs.rows.filter(function(row) {return row.id.indexOf('_design') != -1}).length > 0);
         }
+      }
+    }
+  }).
+  addBatch({
+    'POST /factorydefaults': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/factorydefaults', function() {
+          vows_http.get('/ws/categories', callback, {});
+        });
+      },
+      'should load categories': function(err, res) {
+        assert.isTrue(res.body.length > 0);
+      },
+      'should load conferences': function() {
+        // XXX
+      },
+      'should load members': function() {
+        // XXX
+      },
+      'should load series': function() {
+        // XXX
       }
     }
   }).
