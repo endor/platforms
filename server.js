@@ -51,7 +51,7 @@ if(!process.env.SKIP_UPDATE_VIEWS) {
 
   
 require('controllers/session')(app);
-require('controllers/users')(app);
+require('controllers/ws/users')(app);
 
 app.get('/', function(req, res) {
   res.redirect('index.html');

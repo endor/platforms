@@ -1,6 +1,6 @@
 cap.Users = function(app) {
   app.post('#/users', function(context) {
-    context.post('/users', {user: context.params.user}, function() {
+    context.post('/ws/users', {user: context.params.user}, function() {
       context.flash('Welcome ' + context.params.user.username + '. You can log in now.');
       context.redirect('#/');
     }, function(errors) {
