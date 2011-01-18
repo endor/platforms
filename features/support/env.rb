@@ -31,6 +31,12 @@ def patiently(&block)
   # end
 end
 
+class Platforms
+  include HTTParty
+  base_uri 'localhost:3000'
+  format :json
+end
+
 Before do
   url = 'http://localhost:5984'
   @db_name = 'platforms_test'
