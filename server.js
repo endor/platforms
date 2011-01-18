@@ -12,11 +12,6 @@ var  User = require('models/user'),
   couch_views = require('couch_views'),
   cookie_sessions = require('cookie-sessions');
 
-if(process.env.SKIP_UPDATE_VIEWS) {
-  sys.puts('updating views. set SKIP_UPDATE_VIEWS to skip this');
-  couch_views.update_views(app.db, _);
-};
-
 var couch_client,
   db_name = 'platforms';
 
@@ -48,10 +43,16 @@ app.configure('production', function() {
   app.use(connect.errorHandler());
   app.db = couch_client.db(db_name + '_production');
 });
+
+if(process.env.SKIP_UPDATE_VIEWS.length == 0) {
+  sys.puts('updating views. set SKIP_UPDATE_VIEWS to skip this');
+  couch_views.update_views(app.db, _);
+};
+
   
 require('controllers/session')(app);
-require('controllers/user')(app);
-require('controllers/question')(app);
+require('controllers/users')(app);
+require('controllers/questions')(app);
 
 app.get('/', function(req, res) {
   res.redirect('index.html');
