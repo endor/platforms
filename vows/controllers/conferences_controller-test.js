@@ -26,7 +26,11 @@ vows.
         assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
       }
     }
-  }).addBatch({
+  }).
+  // addBatch({
+  //   
+  // }).
+  addBatch({
     'create with invalid conference': {
       topic: function () {
         var callback = this.callback;

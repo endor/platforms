@@ -11,6 +11,8 @@ Feature: Sign up
       And I press "Register"
     Then I should see "Welcome Alexander Lang"
     And I should be logged in
+    And I should see "Berlin"
+    And I should see "Germany"
   
   Scenario: fails with invalid username
     When I go to the start page

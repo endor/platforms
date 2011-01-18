@@ -1,6 +1,7 @@
 var vows = require('vows'),
   assert = require('assert'),
-  vows_http = require(__dirname + '/../../vendor/vows-http/index');  
+  vows_http = require(__dirname + '/../../vendor/vows-http/index')
+
 
 vows_http.initialize(3001, 'localhost')
 
@@ -10,7 +11,7 @@ vows.
     'create': {
       'with invalid user': {
         topic: function () {
-          vows_http.post('/ws/users', this.callback, {user: {}})
+          vows_http.post('/ws/users', this.callback, {})
         },
 
         'should be an invalid request': function (error, response) {
@@ -18,5 +19,4 @@ vows.
         }        
       }
     }
-  }).
-  export(module);
+  }).export(module);

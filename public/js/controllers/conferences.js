@@ -20,4 +20,11 @@ cap.Conferences = function(app) {
       context.partial('views/conferences/show.mustache');
     });
   });
+  
+  app.post('#/conferences/:id/attendees', function(context) {
+    context.post('/ws/conferences/' + context.params.id + '/attendees', function() {
+      context.flash('You are attending this conference!');
+      context.redirect('#/conferences/' + context.params.id);
+    });
+  });
 }
