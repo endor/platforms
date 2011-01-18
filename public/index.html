@@ -7,7 +7,10 @@
     <ul>
       <li><a href="#/users/new">Register</a></li>
       <li id="login"><a href="#/session/new">Log in</a></li>
-      <li id="logout" style="display:none">
+      <li id="create_conference" class="show_when_logged_in" style="display:none">
+        <a href="#/conferences/new">Create Conference</a>
+      </li>
+      <li id="logout" class="show_when_logged_in" style="display:none">
         <form method="DELETE" action="#/session">
           <input type="submit" value="Log out" />
         </form>
@@ -31,6 +34,7 @@
       .script('js/helpers/application_helper.js')
       .script('js/controllers/session.js')
       .script('js/controllers/users.js')
+      .script('js/controllers/conferences.js')
       .script('js/filters/session_filter.js').wait()
       .script('js/app.js');
 		</script>
