@@ -45,6 +45,19 @@ vows.
     }
   }).
   addBatch({
+    'index with no conferences': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/reset', function() {
+          vows_http.get('/ws/conferencesbycategory', callback);
+        });
+      },
+      'should return 204': function(err, response) {
+        assert.equal(response.statusCode, 204);
+      }
+    }
+  }).
+  addBatch({
     'index': {
       topic: function() {
         var callback = this.callback;
