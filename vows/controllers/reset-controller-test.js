@@ -25,7 +25,10 @@ vows.
           db.allDocs(this.callback);
         },
         'should empty the database': function(err, docs) {
-          assert.length(docs.rows, 0);
+          assert.isTrue(docs.rows.filter(function(row) {return row.id.indexOf('_design') == -1}).length == 0);
+        },
+        'should rebuild the views': function(err, docs) {
+          assert.isTrue(docs.rows.filter(function(row) {return row.id.indexOf('_design') != -1}).length > 0);
         }
       }
     }
