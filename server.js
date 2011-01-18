@@ -50,14 +50,13 @@ require('controllers/ws/users')(app);
 require('controllers/reset')(app);
 
 app.get('/', function(req, res) {
-  console.log(req.header('host'));
   res.redirect('index.html');
 });
 
 app.handleError = function(res, callback) {
   return function() {
     var args = Array.prototype.slice.call(arguments); 
-    var err = args.shift(); 
+    var err = args.shift();
 
     if(!err) {
       callback.apply(null, args);
