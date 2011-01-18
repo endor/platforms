@@ -16,7 +16,7 @@ vows.describe('CategoriesController')
           vows_http.post('/ws/categories', callback, {name: 'tech'});
         });
       },
-  
+      
       'should return 200': function (error, response) {
         assert.equal(response.statusCode, 200);
       },
@@ -26,8 +26,26 @@ vows.describe('CategoriesController')
         delete(category_without_version.version);
         
         assert.deepEqual(category_without_version, {name: 'tech', id: 'category-tech',
-          parent: null, subcategories: []});
+          parent: null, subcategories: []});        
+      }
+    }
+  })
+  .addBatch({
+    'create with a parent': {
+      topic: function() {
+        var callback = this.callback;
         
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/categories', function() {
+            vows_http.post('/ws/categories', function() {
+              vows_http.get('/ws/categories/category-coffee', callback);
+            }, {name: 'tea', parent: {name: 'coffee'}});            
+          }, {name: 'coffee'});
+        });
+      },
+      
+      'should allow retrieving the subcategories': function(err, response) {
+        assert.deepEqual(response.body.subcategories, [{name: 'tech', details: 'http://localhost:3001/ws/categories/category-tea'}]);
       }
     }
   })

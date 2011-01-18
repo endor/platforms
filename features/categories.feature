@@ -7,9 +7,13 @@ Feature: Categories
     Given a user "admin" with the password "admin"
       And a category "JavaScript"
       And a category "Ruby"
+      And a category "Node" within "JavaScript"
     When I go to the start page
     Then I should see "JavaScript"
       And I should see "Ruby"
+      But I should not see "Node"
+    When I follow "JavaScript"
+    Then I should see "Node"
 
   Scenario: create a category
     Given a user "admin" with the password "admin"
