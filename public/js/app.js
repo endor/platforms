@@ -1,3 +1,5 @@
+// origin: RM
+
 cap.app = $.sammy('body', function() {
   this.use(Sammy.Mustache);
   this.use(Sammy.NestedParams);

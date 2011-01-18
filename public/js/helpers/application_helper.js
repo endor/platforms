@@ -1,3 +1,5 @@
+// origin: RM
+
 (function() {
   var send = function(type, context, url, data, success, error) {
     if(typeof(data) == 'function') {
