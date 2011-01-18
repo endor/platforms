@@ -19,7 +19,7 @@ var vows_http = {
     this.client = http.createClient(port, host);
   },
   send_request: function(type, url, callback, data) {
-    var headers = {host: this.client.host + ':' + this.client.port};
+    var headers = {host: this.client.host + ':' + this.client.port, 'x-requested-with': 'VowsHTTP'};
     
     if(data) {
       data = JSON.stringify(data);
