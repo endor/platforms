@@ -7,22 +7,19 @@
   </p>
   
   <p>
-    <label for="conference_category">Category</label>
-    <select id="conference_category" name="conference[category]">
-      {{#categories}}
-        <option value="{{id}}">{{name}}</option>
-      {{/categories}}
-    </select>
+    {{#categories}}
+      <input type="checkbox" name="conference[categories][][name]" value="{{name}}" id="conference_{{name}}" /> {{name}}
+    {{/categories}}
   </p>
 
   <p>
-    <label for="conference_start_date">Start Date</label>
-    <input type="text" id="conference_start_date" name="conference[start_date]" />
+    <label for="conference_startdate">Start Date</label>
+    <input type="text" id="conference_startdate" name="conference[startdate]" />
   </p>
   
   <p>
-    <label for="conference_end_date">End Date</label>
-    <input type="text" id="conference_end_date" name="conference[end_date]" />
+    <label for="conference_enddate">End Date</label>
+    <input type="text" id="conference_enddate" name="conference[enddate]" />
   </p>
   
   <p>
