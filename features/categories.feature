@@ -8,10 +8,17 @@ Feature: Categories
       And I log in as "admin/admin"
       And I create a category "JavaScript"
       And I create a category "Ruby"
+      And I create a category "Rails" within "Ruby"
       And I press "Log out"
     When I go to the start page
     Then I should see "JavaScript"
       And I should see "Ruby"
+      But I should not see "Rails"
+    When I follow "Ruby"
+    Then I should see "Rails"
+    When I go to the start page
+      And I follow "JavaScript"
+    Then I should not see "Rails"
 
   Scenario: create a category
     Given a user "admin" with the password "admin"

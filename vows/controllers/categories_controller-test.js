@@ -14,7 +14,7 @@ vows.
           var callback = this.callback;
           
           vows_http.post('/reset', function() {
-            vows_http.post('/categories', callback, {name: 'tech'});
+            vows_http.post('/ws/categories', callback, {name: 'tech'});
           });
         },
 
@@ -35,7 +35,7 @@ vows.
           var callback = this.callback;
           
           vows_http.post('/reset', function() {
-            vows_http.post('/categories', callback, {name: ''});
+            vows_http.post('/ws/categories', callback, {name: ''});
           });
         },
 
