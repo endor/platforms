@@ -27,9 +27,6 @@ vows.
       }
     }
   }).
-  // addBatch({
-  //   
-  // }).
   addBatch({
     'create with invalid conference': {
       topic: function () {
