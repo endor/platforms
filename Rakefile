@@ -26,8 +26,14 @@ task :vows do
   require File.dirname(__FILE__) + '/features/support/run_server'
   puts `export CONNECT_ENV=test; vows #{ENV['TESTS'] || 'vows/**/*-test.js'}`
 end
+
 desc "Reset development enviroment"
 task :reset do
-  `curl -X POST localhost:3000/reset `
+  `curl -X POST localhost:3000/reset`
+end
+
+desc "Load test data"
+task :factory_defaults do
+  `curl -X POST localhost:3000/factorydefaults`
 end
 

@@ -11,10 +11,11 @@ vows.
   addBatch({
     'the Category class': {
       'called with toId': {
-        topic: Category.toId('tech'),
-        
-        'should prefix the name': function(topic) {
-          assert.equal(topic, 'category-tech');
+        'should prefix the name': function() {
+          assert.equal(Category.toId('tech'), 'category-tech');
+        },
+        'should escape non-word characters': function(topic) {
+          assert.equal(Category.toId('tech house  x'), 'category-tech-house-x');
         }
       },
       'called with fromDoc': {

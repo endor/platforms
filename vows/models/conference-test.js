@@ -147,7 +147,7 @@ vows.
         },
         'called with toDoc': {
           topic: function() {
-            var conference = Conference.fromParams({categories: [{name: 'Nature'}]});
+            var conference = Conference.fromParams({name: '1', categories: [{name: 'Nature'}]});
             var db = {
               view: function(design, view, options, callback) {
                 if(design == 'category' && view == 'by_name' && options.keys[0] == 'Nature') {
