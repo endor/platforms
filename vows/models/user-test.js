@@ -73,6 +73,10 @@ vows.
           
           'should remove all functions': function(topic) {
             assert.isUndefined(topic.authenticate);
+          },
+          
+          'should add type': function(topic) {
+            assert.equal(topic.type, 'User');
           }
         }
       }
