@@ -1,3 +1,5 @@
+# run all tests
+
 require 'jasmine'
 load 'jasmine/tasks/jasmine.rake'
 require 'cucumber/rake/task'
@@ -22,6 +24,6 @@ end
 
 task :vows do
   require File.dirname(__FILE__) + '/features/support/run_server'
-  puts `vows vows/models/*.js vows/controllers/*.js`
+  puts `vows #{ENV['TESTS'] || 'vows/**/*-test.js'}`
 end
 

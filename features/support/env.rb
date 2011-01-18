@@ -6,12 +6,13 @@ require 'test/unit'
 require 'test/unit/assertions'
 include Test::Unit::Assertions
 require 'httparty'
+require File.dirname(__FILE__) + '/config'
 
 ENV['NODE_ENV'] = 'test'
 ENV['SKIP_UPDATE_VIEWS'] = 'true'
 
 Capybara.app = nil
-Capybara.app_host = 'http://127.0.0.1:3001'
+Capybara.app_host = APP_HOST
 Capybara.javascript_driver = :selenium
 Capybara.default_driver = :selenium
 
@@ -38,9 +39,5 @@ class Platforms
 end
 
 Before do
-  url = 'http://localhost:5984'
-  @db_name = 'platforms_test'
-  HTTParty.delete "#{url}/#{@db_name}" rescue nil
-  HTTParty.put "#{url}/#{@db_name}"
-  HTTParty.put Capybara.app_host + "/update_views"
+  reset_database
 end
