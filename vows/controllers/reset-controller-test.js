@@ -4,7 +4,7 @@ var vows = require('vows'),
   _ = require('../../public/vendor/underscore/underscore')._;
   var db = require('../../server.js').db;
 
-vows_http.initialize(3001, '127.0.0.1')
+vows_http.initialize(3001, 'localhost')
 
 vows.
   describe('ResetController').
