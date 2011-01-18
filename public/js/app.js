@@ -16,7 +16,7 @@ cap.app = $.sammy('body', function() {
   
   this.get('#/', function(context) {
     context.get('/ws/categories', function(categories) {
-      context.get('/ws/conferences', function(conferences) {
+      context.get('/ws/conferencesbycategory', function(conferences) {
         context.partial('views/categories/show.mustache', {categories: categories, conferences: conferences});        
       });
     });
