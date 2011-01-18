@@ -9,7 +9,7 @@
 <ul id="conferences">
   {{#conferences}}
     <li>
-      {{name}}
+      <a href="#/conferences/{{name}}" data-link="{{details}}" id="conference_{{name}}">{{name}}</a>
     </li>
   {{/conferences}}
 </ul>

@@ -15,8 +15,16 @@ cap.Conferences = function(app) {
   });
   
   app.get('#/conferences/:id', function(context) {
-    context.get('/ws/conferences/' + context.params.id, function(conference) {
-      context.partial('views/conferences/show.mustache', conference);
+    var details_link = $('#conference_' + context.params.id).attr('data-link');
+    context.get(details_link, function(category) {
+      context.partial('views/conferences/show.mustache');
+    });
+  });
+  
+  app.post('#/conferences/:id/attendees', function(context) {
+    context.post('/ws/conferences/' + context.params.id + '/attendees', function() {
+      context.flash('You are attending this conference!');
+      context.redirect('#/conferences/' + context.params.id);
     });
   });
 }
