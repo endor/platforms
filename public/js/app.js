@@ -8,7 +8,6 @@ skeleton.app = $.sammy('body', function() {
   };
   
   skeleton.Users(this);
-  skeleton.TestResults(this);
   skeleton.Session(this);
   
   this.before(skeleton.SessionFilter);
