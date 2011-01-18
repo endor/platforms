@@ -1,14 +1,14 @@
 cap.SessionFilter = (function() {
   var allowed_routes = [
-    {verb: 'get', path: '#/users/new'},
-    {verb: 'post', path: '#/users'},
-    {verb: 'get', path: '#/session/new'},
-    {verb: 'put', path: '#/session'},
-    {verb: 'get', path: '#/'}
+    {verb: 'get', path: /#\/users\/new/},
+    {verb: 'post', path: /#\/users/},
+    {verb: 'get', path: /#\/session\/new/},
+    {verb: 'put', path: /#\/session/},
+    {verb: 'get', path: /#\//}
   ],
   is_allowed_route = function(verb, path) {
     return _(allowed_routes).select(function(route) {
-      return route.path == path && route.verb == verb;
+      return path.match(route.path) && route.verb == verb;
     }).length > 0;
   },
   logged_in = function() {
