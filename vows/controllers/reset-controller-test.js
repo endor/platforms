@@ -46,7 +46,7 @@ vows.
           assert.isTrue(res.body.length > 0);
         },
       },
-      'cconferences': {
+      'conferences': {
         topic: function() {
           vows_http.get('/ws/conferencesbycategory', this.callback);
         },
@@ -54,9 +54,14 @@ vows.
           assert.isTrue(res.body.length > 0);
         },
       },
-      
-      'should load members': function() {
-        // XXX
+      'members': {
+        topic: function() {
+          vows_http.get('/ws/members/sjobs', this.callback);
+        },
+        'should import users': function(err, res) {
+          assert.equal(res.statusCode, 200);
+          assert.equal(res.body.username, 'sjobs');
+        },
       },
       'should load series': function() {
         // XXX
