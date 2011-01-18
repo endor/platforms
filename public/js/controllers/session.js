@@ -14,7 +14,7 @@ cap.Session = function(app) {
         cap.app.runRoute(_context.verb, _context.path, _context.params, _context.target); 
         cap.requestBeforeSessionTimeout = null;
       } else {
-        context.redirect('#/');
+        context.redirect('#/users/' + user.user._id);
       }
     }, function(errors) {
       context.showErrors('#new_session_form', context, errors);
