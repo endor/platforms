@@ -5,11 +5,12 @@
       error = success;
     }
     error = error || function() {};
-    
+
     $.ajax({
       type: type,
       url: url,
       data: data ? JSON.stringify(data) : null,
+      dataType: 'json',
       contentType: 'application/json',
       success: success,
       error: function(xhr) {

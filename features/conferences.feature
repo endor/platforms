@@ -23,7 +23,7 @@ Feature: Conferences
       And I log in as "hans/test"
     When I follow "Create Conference"
       And I fill in "Name" with "JSconf EU"
-      And I select "JavaScript" from "Category"
+      And I check "conference_JavaScript"
       And I fill in "Start Date" with "01.05.2011"
       And I fill in "End Date" with "04.05.2011"
       And I fill in "Description" with "The best JavaScript conference in the world!"

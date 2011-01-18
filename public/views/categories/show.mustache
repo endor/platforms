@@ -1,7 +1,7 @@
 <ul id="categories">
   {{#categories}}
     <li>
-      {{name}}
+      <a href="#/categories/{{name}}" data-link="{{details}}" id="category_{{name}}">{{name}}</a>
     </li>
   {{/categories}}
 </ul>

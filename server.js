@@ -56,7 +56,7 @@ app.get('/', function(req, res) {
 app.handleError = function(res, callback) {
   return function() {
     var args = Array.prototype.slice.call(arguments); 
-    var err = args.shift(); 
+    var err = args.shift();
 
     if(!err) {
       callback.apply(null, args);

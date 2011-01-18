@@ -1,5 +1,11 @@
 Given /^I create a category "(\w+)"$/ do |name|
-  p Platforms.post '/ws/categories', :body => { :name => name }
+  Platforms.post '/ws/categories', :body => { :name => name }
+end
+
+Given /^a category "(\w+)" within "(\w+)"$/ do |name, parent|
+  Given 'I log in as "admin/admin"'
+    Platforms.post '/ws/categories', :body => { :name => name, :parent => { :name => parent } }
+    And 'I press "Log out"'  
 end
 
 Given /^a category "(\w+)"$/ do |name|
