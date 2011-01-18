@@ -9,7 +9,8 @@ Feature: Sign up
       And I fill in "langalex" for "Username"
       And I fill in "test" for "Password"
       And I press "Register"
-    Then I should see "Welcome langalex"
+    Then I should see "Welcome Alexander Lang"
+    And I should be logged in
   
   Scenario: fails with invalid username
     When I go to the start page

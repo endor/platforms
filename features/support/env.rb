@@ -34,7 +34,7 @@ end
 
 class Platforms
   include HTTParty
-  base_uri 'localhost:3001'
+  base_uri APP_HOST
   format :json
 end
 
