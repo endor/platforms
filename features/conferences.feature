@@ -20,6 +20,7 @@ Feature: Conferences
     Given a user "admin" with the password "admin"
       And a category "JavaScript"
       And a user "hans" with the password "test"
+    When I go to the start page
       And I log in as "hans/test"
     When I follow "Create Conference"
       And I fill in "Name" with "JSconf EU"
