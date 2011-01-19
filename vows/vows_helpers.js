@@ -1,8 +1,12 @@
 // origin: M
 
-var assert = require('assert');
+var assert = require('assert'),
+    vows_http = require(__dirname + '/../vendor/vows-http/index');
 
 module.exports = {
+  reset_database: function(callback){
+    vows_http.get('/reset', callback, {'authorization': 'Basic YWRtaW46YWRtaW4='});
+  },
   assertStatusCode: function(code) {
     return function(err, response) { assert.equal(response.statusCode, code); }
   },
