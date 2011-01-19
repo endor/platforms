@@ -19,8 +19,18 @@ cap.Members = function(app) {
   
   app.get('#/members', function(context) {
     context.get('/ws/members', function(members) {
-      members = members.filter(function(member) { return member.username !== cap.current_user.username; });
-      context.partial('views/members/index.mustache', {members: members});
+      context.get('/contact_requests', function(contact_requests) {
+        var formatted_members = [];
+        
+        contact_requests = contact_requests.map(function(cr) { return cr.target_username; });
+        members.forEach(function(member) {
+          if(member.username !== cap.current_user.username) {
+            formatted_members.push(_(member).extend({show_name: (contact_requests.indexOf(member.username) > -1) }));
+          }
+        });
+
+        context.partial('views/members/index.mustache', {members: formatted_members});        
+      });
     });
   });
 }

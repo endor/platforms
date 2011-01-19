@@ -3,10 +3,16 @@
 <ul>
   {{#members}}
     <li>
-      <form method="POST" action="#/contact_requests">
-        <input type="hidden" name="target_username" value="{{username}}" />
-        <input type="submit" value="Send Contact Request to {{username}}" />
-      </form>
+      {{#show_name}}
+        {{username}}
+      {{/show_name}}
+      
+      {{^show_name}}
+        <form method="POST" action="#/contact_requests">
+          <input type="hidden" name="target_username" value="{{username}}" />
+          <input type="submit" value="Send Contact Request to {{username}}" />
+        </form>
+      {{/show_name}}
     </li>
   {{/members}}
 </ul>

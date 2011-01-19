@@ -14,4 +14,6 @@ Feature: Contacts
     Then I should see "Successfully sent contact request to alex"
       And I follow "Home"
     Then I should see "alex"
+    When I follow "Search Members"
+    Then I should see "alex"
   
