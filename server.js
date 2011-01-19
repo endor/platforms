@@ -49,8 +49,10 @@ require('controllers/session')(app);
 require('controllers/ws/categories')(app);
 require('controllers/ws/conferences')(app);
 require('controllers/ws/members')(app);
+require('controllers/ws/search')(app);
 require('controllers/reset')(app);
 require('controllers/contact_requests')(app);
+
 
 app.get('/', function(req, res) {
   res.redirect('index.html');
