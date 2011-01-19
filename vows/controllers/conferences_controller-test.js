@@ -3,11 +3,12 @@
 var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
-  _ = require('../../public/vendor/underscore/underscore')._;
+  _ = require('../../public/vendor/underscore/underscore')._,
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
+  logIn = require('../vows_helpers.js').logIn;
 
 vows_http.initialize(3001, 'localhost');
-var assertStatusCode = function(code) { return function(err, response) { assert.equal(response.statusCode, code); } },
-  validConference = {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]};
+var validConference = {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]};
 
 vows.
   describe('ConferencesController').
@@ -73,14 +74,13 @@ vows.
     'adding attendees were conference and given username are correct': {
       topic: function() {
         var callback = this.callback;
+        
         vows_http.post('/reset', function() {
-          vows_http.post('/ws/members', function() {
-            vows_http.put('/session', function() {
-              vows_http.post('/ws/conferences', function(err, res) {
-                vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
-              }, validConference);              
-            }, {username: 'frank', password: 'test'});
-          }, { username: "frank", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+          logIn(vows_http, function() {
+            vows_http.post('/ws/conferences', function(err, res) {
+              vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
+            }, validConference);            
+          });
         });        
       },
       

@@ -3,6 +3,7 @@
 var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   _ = require('../../public/vendor/underscore/underscore')._;
   var db = require('../../server.js').db;
 
@@ -19,9 +20,7 @@ vows.
           vows_http.post('/reset', callback);
         });
       },
-      'should return 204': function (error, response) {
-        assert.equal(response.statusCode, 204);
-      },
+      'should return 204': assertStatusCode(204),
       'when loading all documents': {
         topic: function() {
           db.allDocs(this.callback);
@@ -60,8 +59,8 @@ vows.
         topic: function() {
           vows_http.get('/ws/members/sjobs', this.callback);
         },
+        'should return a 200': assertStatusCode(200),
         'should import users': function(err, res) {
-          assert.equal(res.statusCode, 200);
           assert.equal(res.body.username, 'sjobs');
         },
       },

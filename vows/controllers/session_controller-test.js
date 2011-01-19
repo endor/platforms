@@ -2,6 +2,7 @@
 
 var vows = require('vows'),
   assert = require('assert'),
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   vows_http = require(__dirname + '/../../vendor/vows-http/index');  
 
 vows_http.initialize(3001, 'localhost')
@@ -33,9 +34,7 @@ vows.
             fullname: 'joe doe', country: 'Germany'
           });
         },
-        'should return 200': function(err, res) {
-          assert.equal(res.statusCode, 200);
-        }
+        'should return 200': assertStatusCode(200)
       }
     }
   }).
