@@ -22,6 +22,7 @@ cap.Conferences = function(app) {
     cap.details_link = null;
     context.get(details_link, function(conference) {
       context.get('/ws/conferences/' + conference.id + '/attendees', function(attendees) {
+        conference.categories_string = _(conference.categories).map(function(category) { return category.name; }).join(', ');
         var conference_with_attendees = _(conference).extend({attendees: attendees});
         if(cap.current_user) {
           conference_with_attendees.already_attending = _(attendees).select(function(attendee) {
