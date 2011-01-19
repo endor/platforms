@@ -4,7 +4,8 @@ var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   assertStatusCode = require('../vows_helpers.js').assertStatusCode,
-  _ = require('../../public/vendor/underscore/underscore')._;
+  _ = require('../../public/vendor/underscore/underscore')._,
+  logIn = require('../vows_helpers.js').logIn;
 
 vows_http.initialize(3001, 'localhost')
 
@@ -15,14 +16,16 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.post('/reset', function(err, res) {
-          vows_http.post('/ws/categories', function(err, res) {
-            vows_http.post('/ws/conferences', function(err, res) {
-              vows_http.get('/ws/search/27c3%20chaos', callback);
-              }, {name: '27c3', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}],
-                  description: 'a chaos event'}
-            );
-          }, {name: 'tech'});
+        vows_http.get('/reset', function(err, res) {
+          logIn(vows_http, function() {
+            vows_http.post('/ws/categories', function(err, res) {
+              vows_http.post('/ws/conferences', function(err, res) {
+                vows_http.get('/ws/search/27c3%20chaos', callback);
+                }, {name: '27c3', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}],
+                    description: 'a chaos event'}
+              );
+            }, {name: 'tech'});
+          });
         });
       },
       'should return 200': assertStatusCode(200),
@@ -38,11 +41,13 @@ vows.
     topic: function() {
       var callback = this.callback;
       
-      vows_http.post('/reset', function(err, res) {
-        vows_http.post('/ws/conferences', function(err, res) {
-          vows_http.get('/ws/search/27c3', callback);
-        }, {name: '27c3', startdate: '20100302', enddate: '20100304', categories: [{name: 'tech'}],
-            description: 'a ccc event'});
+      vows_http.get('/reset', function(err, res) {
+        logIn(vows_http, function() {
+          vows_http.post('/ws/conferences', function(err, res) {
+            vows_http.get('/ws/search/27c3', callback);
+          }, {name: '27c3', startdate: '20100302', enddate: '20100304', categories: [{name: 'tech'}],
+              description: 'a ccc event'});
+        });
       });
     },
     'should return 204': assertStatusCode(204)
@@ -53,7 +58,7 @@ vows.
     topic: function() {
       var callback = this.callback;
       
-      vows_http.post('/reset', function(err, res) {
+      vows_http.get('/reset', function(err, res) {
         vows_http.post('/ws/conferences', function(err, res) {
           vows_http.get('/ws/search/28c3', callback);
         }, {name: '27c3', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}],

@@ -18,7 +18,9 @@ vows.
         var callback = this.callback;
         
         vows_http.get('/reset', function() {
-          vows_http.post('/ws/conferences', callback, validConference);
+          logIn(vows_http, function() {
+            vows_http.post('/ws/conferences', callback, validConference);
+          });
         });
       },
   
@@ -27,7 +29,9 @@ vows.
       'should return the new conference': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         delete response.body.version;
-        assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
+        assert.deepEqual(response.body, {name: 'tech', id: 'conference-tech', startdate: '20110302',
+          enddate: '20110304', categories: [{name: 'tech'}],
+          creator: {name: 'Frank', email: 'test@best.de'}});
       }
     }
   }).
@@ -37,7 +41,9 @@ vows.
         var callback = this.callback;
         
         vows_http.get('/reset', function() {
-          vows_http.post('/ws/conferences', callback, {name: ''});
+          logIn(vows_http, function() {
+            vows_http.post('/ws/conferences', callback, {name: ''});
+          });
         });
       },
   
@@ -60,11 +66,13 @@ vows.
       topic: function() {
         var callback = this.callback;
         vows_http.get('/reset', function() {
-          vows_http.post('/ws/members', function() {
-            vows_http.post('/ws/conferences', function(err, res) {
-              vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'admin'});
-            }, validConference);
-          }, { username: "frank", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+          logIn(vows_http, function() {
+            vows_http.post('/ws/members', function() {
+              vows_http.post('/ws/conferences', function(err, res) {
+                vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'admin'});
+              }, validConference);
+            }, { username: "frank2", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+          });
         });
       },
       
@@ -104,15 +112,17 @@ vows.
         var callback = this.callback;
         
         vows_http.get('/reset', function() {
-          vows_http.post('/ws/categories', function() {
+          logIn(vows_http, function() {
             vows_http.post('/ws/categories', function() {
-              vows_http.post('/ws/conferences', function() {
+              vows_http.post('/ws/categories', function() {
                 vows_http.post('/ws/conferences', function() {
-                  vows_http.get('/ws/conferencesbycategory', callback);
-                }, {name: 'natureconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'nature'}]});
-              }, {name: 'techconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
-            }, {name: 'tech'});
-          }, {name: 'nature'})
+                  vows_http.post('/ws/conferences', function() {
+                    vows_http.get('/ws/conferencesbycategory', callback);
+                  }, {name: 'natureconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'nature'}]});
+                }, {name: 'techconf', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
+              }, {name: 'tech'});
+            }, {name: 'nature'});
+          });
         });
       },
       
