@@ -1,17 +1,23 @@
 <!-- origin: M -->
 
-<ul id="categories">
-  {{#categories}}
-    <li>
-      <a href="#/categories/{{esc_details}}">{{name}}</a>
-    </li>
-  {{/categories}}
-</ul>
+<div id="categories_container">
+  <h2>Categories</h2>
+  <ul id="categories">
+    {{#categories}}
+      <li>
+        <a href="#/categories/{{esc_details}}">{{name}}</a>
+      </li>
+    {{/categories}}
+  </ul>  
+</div>
 
-<ul id="conferences">
-  {{#conferences}}
-    <li>
-      <a href="#/conferences/{{esc_details}}">{{name}}</a>
-    </li>
-  {{/conferences}}
-</ul>
+<div id="conferences_container">
+  <h2>Conferences</h2>
+  <ul id="conferences">
+    {{#conferences}}
+      <li>
+        <a href="#/conferences/{{esc_details}}">{{name}}</a>
+      </li>
+    {{/conferences}}
+  </ul>  
+</div>

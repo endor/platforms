@@ -2,6 +2,16 @@
 
 cap.ContactRequests = function(app) {
   app.post('#/contact_requests', function(context) {
-    context.redirect('#/');
+    var data = {
+      target_username: context.params.target_username,
+      source_username: cap.current_user.username,
+      source_user_id: cap.current_user._id
+    };
+    context.post('/contact_requests', data, function() {
+      context.flash("Successfully sent contact request to " + context.params.target_username);
+      context.redirect('#/members/' + cap.current_user.username);      
+    }, function() {
+      context.flash(context.params.target_username + " could not be added as a contact.");
+    });
   });
 }
