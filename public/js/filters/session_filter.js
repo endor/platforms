@@ -2,12 +2,12 @@
 
 cap.SessionFilter = (function() {
   var allowed_routes = [
-    {verb: 'get', path: /#\/users\/new/},
-    {verb: 'post', path: /#\/users/},
-    {verb: 'get', path: /#\/session\/new/},
-    {verb: 'put', path: /#\/session/},
-    {verb: 'get', path: /#\//},
-    {verb: 'get', path: /#\/conferences\//}
+    {verb: 'get', path: /#\/members\/new\/?$/},
+    {verb: 'post', path: /#\/members\/?$/},
+    {verb: 'get', path: /#\/session\/new\/?$/},
+    {verb: 'put', path: /#\/session\/?$/},
+    {verb: 'get', path: /#\/$/},
+    {verb: 'get', path: /#\/conferences\/?$/}
   ],
   is_allowed_route = function(verb, path) {
     return _(allowed_routes).select(function(route) {
@@ -27,20 +27,17 @@ cap.SessionFilter = (function() {
   
   return function(context) {
     if(!cap.current_user) {
-      if(is_allowed_route(context.verb, context.path)) {
+      context.get('/session', null, function(user) {
+        cap.current_user = user;
+        logged_in();
+        cap.app.runRoute(context.verb, context.path, context.params, context.target);
+      }, function() {
         logged_out();
-      } else {
-        context.get('/session', null, function(user) {
-          cap.current_user = user;
-          logged_in();
-          cap.app.runRoute(context.verb, context.path, context.params, context.target);
-        }, function() {
+        if(!is_allowed_route(context.verb, context.path)) {
           context.redirect('#/session/new');
-          logged_out();
-        });
-
-        return false;
-      }
+          return false;
+        }
+      });
     } else {
       logged_in();
     }
