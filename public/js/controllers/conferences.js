@@ -22,7 +22,8 @@ cap.Conferences = function(app) {
     cap.details_link = null;
     context.get(details_link, function(conference) {
       context.get('/ws/conferences/' + conference.id + '/attendees', function(attendees) {
-        context.partial('views/conferences/show.mustache', _(conference).extend(attendees: attendees));
+        console.log(attendees)
+        context.partial('views/conferences/show.mustache', _(conference).extend({attendees: attendees}));
       });
     });
   });
