@@ -7,6 +7,12 @@
     <ul>
       <li><a href="#/users/new">Register</a></li>
       <li id="login"><a href="#/session/new">Log in</a></li>
+      <li id="home" class="show_when_logged_in" style="display:none">
+        <a href="#/members">Home</a>
+      </li>
+      <li id="search_members" class="show_when_logged_in" style="display:none">
+        <a href="#/members">Search Members</a>
+      </li>
       <li id="create_conference" class="show_when_logged_in" style="display:none">
         <a href="#/conferences/new">Create Conference</a>
       </li>
@@ -43,6 +49,7 @@
       .script('js/controllers/conferences.js')
       .script('js/controllers/categories.js')
       .script('js/controllers/members.js')
+      .script('js/controllers/contact_requests.js')
       .script('js/filters/session_filter.js').wait()
       .script('js/app.js');
 		</script>

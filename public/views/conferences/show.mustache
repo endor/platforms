@@ -2,6 +2,27 @@
 
 <h2>{{name}}</h2>
 
-<form method="POST" action="#/conferences/{{id}}/attendees">
-  <input type="submit" value="Attend" />
-</form>
+<ul>
+  <li>Categories: {{categories_string}}</li>
+  <li>Start Date: {{startdate}}</li>
+  <li>End Date: {{enddate}}</li>
+  <li>Description: {{description}}</li>
+  <li>Location: {{location}}</li>
+</ul>
+
+<p>
+  Created by: {{#creator}}{{name}} [{{email}}]{{/creator}}
+</p>
+
+<h3>Attendees</h3>
+<ul>
+  {{#attendees}}
+    <li>{{attendee}}</li>
+  {{/attendees}}
+</ul>
+
+{{^already_attending}}
+  <form method="POST" action="#/conferences/{{id}}/attendees">
+    <input type="submit" value="Attend" />
+  </form>
+{{/already_attending}}

@@ -7,7 +7,8 @@ cap.SessionFilter = (function() {
     {verb: 'get', path: /#\/session\/new\/?$/},
     {verb: 'put', path: /#\/session\/?$/},
     {verb: 'get', path: /#\/$/},
-    {verb: 'get', path: /#\/conferences\/?$/}
+    {verb: 'get', path: /#\/conferences\/.+$/},
+    {verb: 'get', path: /#\/categories\/.+$/}
   ],
   is_allowed_route = function(verb, path) {
     return _(allowed_routes).select(function(route) {
@@ -18,6 +19,7 @@ cap.SessionFilter = (function() {
     if(cap.current_user.is_admin) { $('.show_when_admin').show(); }
     $('#login').hide();
     $('.show_when_logged_in').show();
+    $('#home a').attr('href', '#/members/' + cap.current_user.username);
   },
   logged_out = function() {
     $('.show_when_admin').hide();

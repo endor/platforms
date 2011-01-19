@@ -60,7 +60,22 @@
     
     showErrors: function(form_id, context, errors) {
       $(form_id).validate().showErrors(context.formatErrors(errors));
+    },
+    
+    escapeDetails: function(items, _) {
+      _(items).each(function(item) { item.esc_details = encodeURIComponent(escape(item.details)); });
+    },
+    
+    detailLinkFromDetails: function(details) {
+      return decodeURIComponent(unescape(details)).match(/^http:\/\/[^\/]+\/(.+)$/)[1];
+    },
+    
+    alreadyAttending: function(attendees, _) {
+      return _(attendees).select(function(attendee) {
+        return attendee.attendee === cap.current_user.username;
+      }).length > 0;
     }
+    
   };
   
 })();

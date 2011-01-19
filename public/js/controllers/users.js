@@ -5,6 +5,9 @@ cap.Users = function(app) {
     context.post('/ws/members', context.params.user, function(user) {
       context.flash('Welcome ' + user.fullname);
       cap.current_user = user
+      if(cap.current_user.username === 'admin') {
+        cap.current_user.is_admin = true;
+      }
       context.redirect('#/members/' + user.username);
     }, function(errors) {
       context.showErrors('#new_user_form', context, errors);

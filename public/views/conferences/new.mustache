@@ -9,6 +9,7 @@
   </p>
   
   <p>
+    Categories: <input type="hidden" name="conference[categories]" />
     {{#categories}}
       <input type="checkbox" name="conference[categories][][name]" value="{{name}}" id="conference_{{name}}" /> {{name}}
     {{/categories}}
