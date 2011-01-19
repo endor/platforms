@@ -15,6 +15,7 @@ cap.app = $.sammy('body', function() {
   cap.Session(this);
   cap.Conferences(this);
   cap.Categories(this);
+  cap.ContactRequests(this);
   
   this.before(cap.SessionFilter);
   

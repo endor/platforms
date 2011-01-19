@@ -68,7 +68,14 @@
     
     detailLinkFromDetails: function(details) {
       return decodeURIComponent(unescape(details)).match(/^http:\/\/[^\/]+\/(.+)$/)[1];
+    },
+    
+    alreadyAttending: function(attendees, _) {
+      return _(attendees).select(function(attendee) {
+        return attendee.attendee === cap.current_user.username;
+      }).length > 0;
     }
+    
   };
   
 })();

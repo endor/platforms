@@ -25,9 +25,7 @@ cap.Conferences = function(app) {
         conference.categories_string = _(conference.categories).map(function(category) { return category.name; }).join(', ');
         var conference_with_attendees = _(conference).extend({attendees: attendees});
         if(cap.current_user) {
-          conference_with_attendees.already_attending = _(attendees).select(function(attendee) {
-            return attendee.attendee === cap.current_user.username;
-          }).length > 0;
+          conference_with_attendees.already_attending = context.alreadyAttending(attendees, _);
         }
         context.partial('views/conferences/show.mustache', conference_with_attendees);
       });

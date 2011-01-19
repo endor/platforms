@@ -1,0 +1,12 @@
+<h2>Members</h2>
+
+<ul>
+  {{#members}}
+    <li>
+      <form method="POST" action="#/contact_requests">
+        <input type="hidden" name="contact_request[target_username]" value="{{username}}" />
+        <input type="submit" value="Send Contact Request to {{username}}" />
+      </form>
+    </li>
+  {{/members}}
+</ul>
