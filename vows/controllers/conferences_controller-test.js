@@ -3,7 +3,8 @@ var vows = require('vows'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   _ = require('../../public/vendor/underscore/underscore')._;
 
-vows_http.initialize(3001, 'localhost')
+vows_http.initialize(3001, 'localhost');
+var assertStatusCode = function(code) { return function(err, response) { assert.equal(response.statusCode, code); } };
 
 vows.
   describe('ConferencesController').
@@ -17,9 +18,8 @@ vows.
         });
       },
 
-      'should return 200': function (error, response) {
-        assert.equal(response.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
+
       'should return the new conference': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         delete response.body.version;
@@ -37,12 +37,19 @@ vows.
         });
       },
 
-      'should return 400': function (error, response) {
-        assert.equal(response.statusCode, 400);
-      },
+      'should return 400': assertStatusCode(400),
     },
     'create without permission': {
       // XXX
+    }
+  }).
+  addBatch({
+    'adding attendees with an invalid conference id': {
+      topic: function() {
+        vows_http.post('/ws/conferences/abc/attendees', this.callback, {username: 'admin'});
+      },
+      
+      'should return a 404': assertStatusCode(404)
     }
   }).
   addBatch({
@@ -53,9 +60,7 @@ vows.
           vows_http.get('/ws/conferencesbycategory', callback);
         });
       },
-      'should return 204': function(err, response) {
-        assert.equal(response.statusCode, 204);
-      }
+      'should return 204': assertStatusCode(204)
     }
   }).
   addBatch({
@@ -76,9 +81,7 @@ vows.
         });
       },
       
-      'should return 200': function(err, response) {
-        assert.equal(response.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
       
       'should return a list of conferences': function(err, response) {
         assert.deepEqual(response.body, [
@@ -106,9 +109,7 @@ vows.
           vows_http.get('/ws/conferencesbycategory/category-unknown', this.callback);
         },
         
-        'should return 404': function(err, response) {
-          assert.equal(response.statusCode, 404)
-        }
+        'should return 404': assertStatusCode(404)
       }
     }
   }).

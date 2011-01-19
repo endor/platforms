@@ -61,7 +61,11 @@ app.handleError = function(res, callback) {
     if(!err) {
       callback.apply(null, args);
     } else {
-      res.send(err, 500);
+      if(err.error === 'not_found') {
+        res.send(err, 404);
+      } else {
+        res.send(err, 500);
+      }
     };
   };
 };
