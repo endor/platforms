@@ -11,39 +11,48 @@ var  User = require('models/user'),
   connect = require('connect/index'),
   querystring = require('querystring'),
   couchdb = require('node-couchdb/lib/couchdb'),
-  cookie_sessions = require('cookie-sessions');
+  cookie_sessions = require('cookie-sessions'),
+  user_authentication_middleware = require('user_authentication_middleware');
 
 var couch_client,
   db_name = 'platforms';
 
 var app = module.exports = express.createServer();
 
-app.configure(function() {
-  app.set('views', __dirname + '/../views');
-  app.use(connect.bodyDecoder());
-  app.use(connect.methodOverride());
-  app.use(connect.cookieDecoder());
-  app.use(cookie_sessions({secret: 'jhlvbUCVY7d978g08g*^&F64dxJYVouyv'}));
-  app.use(app.router);
-  app.use(connect.staticProvider(__dirname + '/public'));
-  couch_client = couchdb.createClient(5984, 'localhost');
-});
-
 app.configure('development', function() {
+  configure_app('development');
   app.use(express.logger());    
   app.use(connect.errorHandler({ dumpExceptions: true, showStack: true }));
-  app.db = couch_client.db(db_name + '_development');
 });
 
 app.configure('test', function() {
+  configure_app('test');
   app.use(connect.errorHandler({ dumpExceptions: true, showStack: true }));
-  app.db = couch_client.db(db_name + '_test');
 });
 
 app.configure('production', function() {
+  configure_app('production');
   app.use(connect.errorHandler());
-  app.db = couch_client.db(db_name + '_production');
 });
+
+
+
+function configure_app(env) {
+  couch_client = couchdb.createClient(5984, 'localhost');
+  app.db = couch_client.db(db_name + '_' + env);
+  app.configure(function() {
+    app.set('views', __dirname + '/../views');
+    app.use(connect.bodyDecoder());
+    app.use(connect.methodOverride());
+    app.use(connect.cookieDecoder());
+    app.use(cookie_sessions({secret: 'jhlvbUCVY7d978g08g*^&F64dxJYVouyv'}));
+    app.use(user_authentication_middleware(app.db)); //filter routes that require a login
+    app.use(app.router);
+    app.use(connect.staticProvider(__dirname + '/public'));
+  });
+  
+}
+
 
 require('controllers/session')(app);
 require('controllers/ws/categories')(app);

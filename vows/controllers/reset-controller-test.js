@@ -17,7 +17,7 @@ vows.
         var callback = this.callback;
         
         db.saveDoc({_id: 'foo'}, function(err) {
-          vows_http.get('/reset', callback);
+          reset_database(callback);
         });
       },
       'should return 204': assertStatusCode(204),
@@ -38,9 +38,17 @@ vows.
     }
   }).
   addBatch({
-    'GET /factorydefaults': {
+    'GET /factorydefaults without auth': {
       topic: function() {
         vows_http.get('/factorydefaults', this.callback);
+      },
+      'should return 403': assertStatusCode(403)
+    }
+  }).
+  addBatch({
+    'GET /factorydefaults': {
+      topic: function() {
+        vows_http.get('/factorydefaults', this.callback, {'authorization': 'Basic YWRtaW46YWRtaW4='});
       },
       'categories': {
         topic: function() {
@@ -52,7 +60,7 @@ vows.
       },
       'conferences': {
         topic: function() {
-          vows_http.get('/ws/conferencesbycategory', this.callback);
+          vows_http.get('/ws/conferencesbycategory', this.callback, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         },
         'should import conferences': function(err, res) {
           assert.isTrue(res.body.length > 0);
@@ -60,7 +68,7 @@ vows.
       },
       'members': {
         topic: function() {
-          vows_http.get('/ws/members/sjobs', this.callback);
+          vows_http.get('/ws/members/sjobs', this.callback, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         },
         'should return a 200': assertStatusCode(200),
         'should import users': function(err, res) {

@@ -16,7 +16,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.get('/reset', function(err, res) {
+        reset_database(function(err, res) {
           logIn(vows_http, function() {
             vows_http.post('/ws/categories', function(err, res) {
               vows_http.post('/ws/conferences', function(err, res) {
@@ -41,7 +41,7 @@ vows.
     topic: function() {
       var callback = this.callback;
       
-      vows_http.get('/reset', function(err, res) {
+      reset_database(function(err, res) {
         logIn(vows_http, function() {
           vows_http.post('/ws/conferences', function(err, res) {
             vows_http.get('/ws/search/27c3', callback);
@@ -58,7 +58,7 @@ vows.
     topic: function() {
       var callback = this.callback;
       
-      vows_http.get('/reset', function(err, res) {
+      reset_database(function(err, res) {
         vows_http.post('/ws/conferences', function(err, res) {
           vows_http.get('/ws/search/28c3', callback);
         }, {name: '27c3', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}],

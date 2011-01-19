@@ -6,6 +6,8 @@ var vows = require('vows'),
   _ = require('../../public/vendor/underscore/underscore')._,
   assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   logIn = require('../vows_helpers.js').logIn;
+  reset_database = require('../vows_helpers.js').reset_database
+  
 
 vows_http.initialize(3001, 'localhost');
 var validConference = {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]};
@@ -17,7 +19,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/conferences', callback, validConference);
           });
@@ -40,7 +42,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/conferences', callback, {name: ''});
           });
@@ -65,7 +67,7 @@ vows.
     'adding attendees where my username does not equal the logged in username': {
       topic: function() {
         var callback = this.callback;
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/members', function() {
               vows_http.post('/ws/conferences', function(err, res) {
@@ -83,7 +85,7 @@ vows.
       topic: function() {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/conferences', function(err, res) {
               vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
@@ -99,7 +101,7 @@ vows.
     'index with no conferences': {
       topic: function() {
         var callback = this.callback;
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           vows_http.get('/ws/conferencesbycategory', callback);
         });
       },
@@ -111,7 +113,7 @@ vows.
       topic: function() {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/categories', function() {
               vows_http.post('/ws/categories', function() {

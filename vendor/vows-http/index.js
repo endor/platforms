@@ -1,3 +1,4 @@
+// origin: RM
 /**
  * Vows-HTTP - a tiny http client lib for use with vows
  * Frank Prößdorf <fp@notjusthosting.com>
@@ -19,7 +20,7 @@ var vows_http = {
   initialize: function(port, host) {
     this.client = http.createClient(port, host);
   },
-  send_request: function(type, url, callback, data) {
+  send_request: function(type, url, callback, data, custom_headers) {
     var headers = {host: this.client.host + ':' + this.client.port, 'x-requested-with': 'VowsHTTP'},
       context = this;
     
@@ -30,6 +31,12 @@ var vows_http = {
       headers['Content-Length'] = data.length;
       headers['Content-Type'] = 'application/json';
     };
+    
+    if (custom_headers){
+      for (key in custom_headers){
+        headers[key] = custom_headers[key];
+      }
+    }
 
     var request = this.client.request(type, url, headers);
     
@@ -51,17 +58,17 @@ var vows_http = {
       });      
     });
   },
-  get: function (url, callback) {
-    this.send_request('GET', url, callback);
+  get: function (url, callback, headers) {
+    this.send_request('GET', url, callback, {}, headers);
   },
-  post: function(url, callback, data) {
-    this.send_request('POST', url, callback, data);
+  post: function(url, callback, data, headers) {
+    this.send_request('POST', url, callback, data, headers);
   },
-  put: function(url, callback, data) {
-    this.send_request('PUT', url, callback, data);
+  put: function(url, callback, data, headers) {
+    this.send_request('PUT', url, callback, data, headers);
   },
-  del: function(url, callback) {
-    this.send_request('DELETE', url, callback);
+  del: function(url, callback, headers) {
+    this.send_request('DELETE', url, callback, {}, headers);
   }
 }
 
