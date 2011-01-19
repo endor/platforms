@@ -62,11 +62,11 @@
       $(form_id).validate().showErrors(context.formatErrors(errors));
     },
     
-    escapeConferenceDetails: function(conferences, _) {
-      _(conferences).each(function(cnf) { cnf.esc_details = encodeURIComponent(escape(cnf.details)); });
+    escapeDetails: function(items, _) {
+      _(items).each(function(item) { item.esc_details = encodeURIComponent(escape(item.details)); });
     },
     
-    conferenceDetailLinkFromDetails: function(details) {
+    detailLinkFromDetails: function(details) {
       return decodeURIComponent(unescape(details)).match(/^http:\/\/[^\/]+\/(.+)$/)[1];
     }
   };

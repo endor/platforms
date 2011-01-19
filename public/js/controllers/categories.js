@@ -8,10 +8,11 @@ cap.Categories = function(app) {
   });
 
   app.get('#/categories/:id', function(context) {
-    var details_link = $('#category_' + context.params.id).attr('data-link');
+    var details_link = context.detailLinkFromDetails(context.params.id);
     context.get(details_link, function(category) {
+      context.escapeDetails(category.subcategories, _);
       context.get('/ws/conferencesbycategory/' + category.id, function(conferences) {
-        context.escapeConferenceDetails(conferences, _);
+        context.escapeDetails(conferences, _);
         context.partial('views/categories/show.mustache', {categories: category.subcategories, conferences: conferences});
       });
     });

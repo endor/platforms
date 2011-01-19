@@ -18,7 +18,7 @@ cap.Conferences = function(app) {
   });
   
   app.get('#/conferences/:id', function(context) {
-     var details_link = cap.details_link || context.conferenceDetailLinkFromDetails(context.params.id);
+     var details_link = cap.details_link || context.detailLinkFromDetails(context.params.id);
     cap.details_link = null;
     context.get(details_link, function(conference) {
       context.get('/ws/conferences/' + conference.id + '/attendees', function(attendees) {

@@ -20,8 +20,9 @@ cap.app = $.sammy('body', function() {
   
   this.get('#/', function(context) {
     context.get('/ws/categories', function(categories) {
+      context.escapeDetails(categories, _);
       context.get('/ws/conferencesbycategory', function(conferences) {
-        context.escapeConferenceDetails(conferences, _);
+        context.escapeDetails(conferences, _);
         context.partial('views/categories/show.mustache', {categories: categories, conferences: conferences});        
       });
     });
