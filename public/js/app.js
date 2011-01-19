@@ -1,4 +1,5 @@
 // origin: RM
+// initializes the frontend
 
 cap.app = $.sammy('body', function() {
   this.use(Sammy.Mustache);
@@ -16,15 +17,17 @@ cap.app = $.sammy('body', function() {
   cap.Conferences(this);
   cap.Categories(this);
   cap.ContactRequests(this);
+  cap.ConferenceSearch(this);
   
   this.before(cap.SessionFilter);
   
   this.get('#/', function(context) {
     context.get('/ws/categories', function(categories) {
-      context.escapeDetails(categories, _);
       context.get('/ws/conferencesbycategory', function(conferences) {
-        context.escapeDetails(conferences, _);
-        context.partial('views/categories/show.mustache', {categories: categories, conferences: conferences});        
+        context.partial('views/categories/show.mustache', {
+          categories: context.escapeDetails(categories),
+          conferences: context.escapeDetails(conferences)
+        });        
       });
     });
   });

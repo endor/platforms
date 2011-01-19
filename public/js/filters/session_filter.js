@@ -8,7 +8,8 @@ cap.SessionFilter = (function() {
     {verb: 'put', path: /#\/session\/?$/},
     {verb: 'get', path: /#\/$/},
     {verb: 'get', path: /#\/conferences\/.+$/},
-    {verb: 'get', path: /#\/categories\/.+$/}
+    {verb: 'get', path: /#\/categories\/.+$/},
+    {verb: 'get', path: /#\/conference_search.*$/}
   ],
   is_allowed_route = function(verb, path) {
     return _(allowed_routes).select(function(route) {

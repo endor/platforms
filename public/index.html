@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/css/base.css" type="text/css" title="base stylesheet" charset="utf-8" />
   </head>
   <body>
-    <h1>Conferences and Participants</h1>
+    <h1><a href="/">Conferences and Participants</a></h1>
     <ul id="menu">
       <li><a href="#/users/new">Register</a></li>
       <li id="login"><a href="#/session/new">Log in</a></li>
@@ -25,8 +25,8 @@
           <input type="submit" value="Log out" />
         </form>
       </li>
-      <li id="search_users" class="show_when_logged_in" style="display:none">
-        <a href="#/user_search">Search User</a>
+      <li id="search_conferences">
+        <a href="#/conference_search">Search Conferences</a>
       </li>
     </ul>
     <div id="flash"></div>
@@ -48,6 +48,7 @@
       .script('js/controllers/session.js')
       .script('js/controllers/users.js')
       .script('js/controllers/conferences.js')
+      .script('js/controllers/conference_search.js')
       .script('js/controllers/categories.js')
       .script('js/controllers/members.js')
       .script('js/controllers/contact_requests.js')
