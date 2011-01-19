@@ -60,6 +60,14 @@
     
     showErrors: function(form_id, context, errors) {
       $(form_id).validate().showErrors(context.formatErrors(errors));
+    },
+    
+    escapeConferenceDetails: function(conferences, _) {
+      _(conferences).each(function(cnf) { cnf.esc_details = encodeURIComponent(escape(cnf.details)); });
+    },
+    
+    conferenceDetailLinkFromDetails: function(details) {
+      return decodeURIComponent(unescape(details)).match(/^http:\/\/[^\/]+\/(.+)$/)[1];
     }
   };
   

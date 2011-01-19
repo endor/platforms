@@ -11,6 +11,7 @@ cap.Categories = function(app) {
     var details_link = $('#category_' + context.params.id).attr('data-link');
     context.get(details_link, function(category) {
       context.get('/ws/conferencesbycategory/' + category.id, function(conferences) {
+        context.escapeConferenceDetails(conferences, _);
         context.partial('views/categories/show.mustache', {categories: category.subcategories, conferences: conferences});
       });
     });
