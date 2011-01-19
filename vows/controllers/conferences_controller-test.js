@@ -6,7 +6,8 @@ var vows = require('vows'),
   _ = require('../../public/vendor/underscore/underscore')._;
 
 vows_http.initialize(3001, 'localhost');
-var assertStatusCode = function(code) { return function(err, response) { assert.equal(response.statusCode, code); } };
+var assertStatusCode = function(code) { return function(err, response) { assert.equal(response.statusCode, code); } },
+  validConference = {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]};
 
 vows.
   describe('ConferencesController').
@@ -16,12 +17,12 @@ vows.
         var callback = this.callback;
         
         vows_http.post('/reset', function() {
-          vows_http.post('/ws/conferences', callback, {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
+          vows_http.post('/ws/conferences', callback, validConference);
         });
       },
-
+  
       'should return 200': assertStatusCode(200),
-
+  
       'should return the new conference': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         delete response.body.version;
@@ -38,7 +39,7 @@ vows.
           vows_http.post('/ws/conferences', callback, {name: ''});
         });
       },
-
+  
       'should return 400': assertStatusCode(400),
     },
     'create without permission': {
@@ -52,6 +53,38 @@ vows.
       },
       
       'should return a 404': assertStatusCode(404)
+    },
+    
+    'adding attendees where my username does not equal the logged in username': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/members', function() {
+            vows_http.post('/ws/conferences', function(err, res) {
+              vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'admin'});
+            }, validConference);
+          }, { username: "frank", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+        });
+      },
+      
+      'should return a 403': assertStatusCode(403)
+    },
+    
+    'adding attendees were conference and given username are correct': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/members', function() {
+            vows_http.put('/session', function() {
+              vows_http.post('/ws/conferences', function(err, res) {
+                vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
+              }, validConference);              
+            }, {username: 'frank', password: 'test'});
+          }, { username: "frank", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+        });        
+      },
+      
+      'should return a 204': assertStatusCode(204)
     }
   }).
   addBatch({
