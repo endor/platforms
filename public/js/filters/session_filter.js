@@ -16,7 +16,7 @@ cap.SessionFilter = (function() {
     }).length > 0;
   },
   logged_in = function() {
-    if(cap.current_user.is_admin) { $('.show_when_admin').show(); }
+    if(cap.current_user.username === 'admin') { $('.show_when_admin').show(); }
     $('#login').hide();
     $('.show_when_logged_in').show();
     $('#home a').attr('href', '#/members/' + cap.current_user.username);
