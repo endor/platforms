@@ -18,14 +18,14 @@ cap.SessionFilter = (function() {
   },
   logged_in = function() {
     if(cap.current_user.username === 'admin') { $('.show_when_admin').show(); }
-    $('#login').hide();
+    $('.show_when_logged_out').hide();
     $('.show_when_logged_in').show();
-    $('#home a').attr('href', '#/members/' + cap.current_user.username);
+    $('#profile a').attr('href', '#/members/' + cap.current_user.username);
   },
   logged_out = function() {
     $('.show_when_admin').hide();
     $('.show_when_logged_in').hide();
-    $('#login').show();
+    $('.show_when_logged_out').show();
   };
   
   return function(context) {

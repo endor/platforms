@@ -1,35 +1,44 @@
 <!-- origin: RM -->
-<h2>{{username}} / {{fullname}}</h2>
-<h3>Location</h3>
-<p>{{town}} in {{country}}</p>
+<h2>{{username}}</h2>
 
-<h3>Sent Contact Requests</h3>
 <ul>
-  {{#sent_contact_requests}}
-    <li>{{target_username}}</li>
-  {{/sent_contact_requests}}  
+  <li>Name: {{fullname}}</li>
+  <li>Location: {{town}} in {{country}}</li>
 </ul>
 
-<h3>Received Contact Requests</h3>
-<ul>
-  {{#received_contact_requests}}
-    <li>
-      {{source_username}}
-      <form method="PUT" action="#/contact_requests/{{id}}">
-        <input type="hidden" name="contact_request[version]" value="{{version}}" />
-        <input type="hidden" name="contact_request[accepted]" value="true" />
-        <input type="submit" value="Accept" />
-      </form>
-    </li>
-  {{/received_contact_requests}}  
-</ul>
+<div id="sent_contacts_container">
+  <h3>Sent Contact Requests</h3>
+  <ul>
+    {{#sent_contact_requests}}
+      <li>{{target_username}}</li>
+    {{/sent_contact_requests}}  
+  </ul>  
+</div>
 
-<h3>Contacts</h3>
-<ul>
-  {{#accepted_contact_requests}}
-    <li>
-      {{username}}<br />
-      {{fullname}} [{{email}}]
-    </li>
-  {{/accepted_contact_requests}}
-</ul>
+<div id="received_contacts_container">
+  <h3>Received Contact Requests</h3>
+  <ul>
+    {{#received_contact_requests}}
+      <li>
+        {{source_username}}
+        <form method="PUT" action="#/contact_requests/{{id}}">
+          <input type="hidden" name="contact_request[version]" value="{{version}}" />
+          <input type="hidden" name="contact_request[accepted]" value="true" />
+          <input type="submit" value="Accept" />
+        </form>
+      </li>
+    {{/received_contact_requests}}  
+  </ul>  
+</div>
+
+<div id="contacts_container">
+  <h3>Contacts</h3>
+  <ul>
+    {{#accepted_contact_requests}}
+      <li>
+        {{username}}<br />
+        {{fullname}} [{{email}}]
+      </li>
+    {{/accepted_contact_requests}}
+  </ul>  
+</div>

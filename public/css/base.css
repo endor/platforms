@@ -17,14 +17,21 @@ body {
 
 h1 {
   margin-left: 20px;
-  color: #888888;
   padding: 0px;
   margin-bottom: .5em;
 }
 
 h1 a, h1 a:visited {
   text-decoration: none;
-  color: #333;
+  color: #666666;
+}
+
+h2 {
+  color: #444444;
+}
+
+h3 {
+  color: #222222;
 }
 
 #menu {
@@ -67,6 +74,10 @@ h1 a, h1 a:visited {
   width: 945px;
   background: #EEE;
   padding: 20px;
+}
+
+#wrapper ul {
+  list-style-type: none;
 }
 
 #categories_container {

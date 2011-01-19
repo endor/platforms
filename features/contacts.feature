@@ -12,7 +12,7 @@ Feature: Contacts
     Then I should not see "Send Contact Request to frank"
     When I press "Send Contact Request to alex"
     Then I should see "Successfully sent contact request to alex"
-      And I follow "Home"
+      And I follow "Profile"
     Then I should see "alex"
     When I follow "Search Members"
     Then I should see "alex"
