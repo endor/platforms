@@ -45,10 +45,10 @@ function configure_app(env) {
     app.use(connect.bodyDecoder());
     app.use(connect.methodOverride());
     app.use(connect.cookieDecoder());
+    app.use(connect.staticProvider(__dirname + '/public'));
     app.use(cookie_sessions({secret: 'jhlvbUCVY7d978g08g*^&F64dxJYVouyv'}));
     app.use(user_authentication_middleware(app.db)); //filter routes that require a login
     app.use(app.router);
-    app.use(connect.staticProvider(__dirname + '/public'));
   });
   
 }
