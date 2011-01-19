@@ -1,0 +1,52 @@
+h1 {
+  position: absolute;
+  color: #888888;
+  top: 20px;
+  left: 60px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#menu {
+  position: absolute;
+  top: 70px;
+  left: 60px;
+  margin: 0px;
+  padding: 0px;
+}
+
+#menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#menu li a {
+  text-decoration: none;
+  color: #888888;
+}
+
+#menu li a:visited, #menu li a:hover {
+  color: #555555;
+}
+
+#wrapper {
+  position: absolute;
+  top: 100px;
+  left: 60px;
+  width: 800px;
+  border: solid 5px #CCCCCC;
+}
+
+#wrapper h2 {
+  margin-left: 30px;
+}
+
+#categories_container {
+  width: 300px;
+  float: left;
+}
+
+#conferences_container {
+  width: 300px;  
+  float: left;
+}
