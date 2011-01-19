@@ -4,31 +4,33 @@
     <link rel="stylesheet" href="/css/base.css" type="text/css" title="base stylesheet" charset="utf-8" />
   </head>
   <body>
-    <h1>Conferences and Participants</h1>
-    <ul id="menu">
-      <li><a href="#/users/new">Register</a></li>
-      <li id="login"><a href="#/session/new">Log in</a></li>
-      <li id="home" class="show_when_logged_in" style="display:none">
-        <a href="#/members">Home</a>
-      </li>
-      <li id="search_members" class="show_when_logged_in" style="display:none">
-        <a href="#/members">Search Members</a>
-      </li>
-      <li id="create_conference" class="show_when_logged_in" style="display:none">
-        <a href="#/conferences/new">Create Conference</a>
-      </li>
-      <li id="create_category" class="show_when_admin" style="display:none">
-        <a href="#/categories/new">Create Category</a>
-      </li>      
-      <li id="logout" class="show_when_logged_in" style="display:none">
-        <form method="DELETE" action="#/session">
-          <input type="submit" value="Log out" />
-        </form>
-      </li>
-      <li id="search_users" class="show_when_logged_in" style="display:none">
-        <a href="#/user_search">Search User</a>
-      </li>
-    </ul>
+    <div id="header">
+      <h1><a href="/">Conferences and Participants</a></h1>
+      <ul id="menu">
+        <li><a href="#/users/new">Register</a></li>
+        <li id="login"><a href="#/session/new">Log in</a></li>
+        <li id="home" class="show_when_logged_in" style="display:none">
+          <a href="#/members">Home</a>
+        </li>
+        <li id="search_members" class="show_when_logged_in" style="display:none">
+          <a href="#/members">Search Members</a>
+        </li>
+        <li id="create_conference" class="show_when_logged_in" style="display:none">
+          <a href="#/conferences/new">Create Conference</a>
+        </li>
+        <li id="create_category" class="show_when_admin" style="display:none">
+          <a href="#/categories/new">Create Category</a>
+        </li>      
+        <li id="logout" class="show_when_logged_in" style="display:none">
+          <form method="DELETE" action="#/session">
+            <input type="submit" value="Log out" />
+          </form>
+        </li>
+        <li id="search_conferences">
+          <a href="#/conference_search">Search Conferences</a>
+        </li>
+      </ul>
+    </div>
     <div id="flash"></div>
     <div id="wrapper"></div>
     
@@ -48,6 +50,7 @@
       .script('js/controllers/session.js')
       .script('js/controllers/users.js')
       .script('js/controllers/conferences.js')
+      .script('js/controllers/conference_search.js')
       .script('js/controllers/categories.js')
       .script('js/controllers/members.js')
       .script('js/controllers/contact_requests.js')

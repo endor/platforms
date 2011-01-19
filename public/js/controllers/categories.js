@@ -1,4 +1,5 @@
 // origin: M
+// handles sammy requests for category CRUD operations
 
 cap.Categories = function(app) {
   app.get('#/categories/new', function(context) {
@@ -12,8 +13,8 @@ cap.Categories = function(app) {
     context.get(details_link, function(category) {
       context.escapeDetails(category.subcategories, _);
       context.get('/ws/conferencesbycategory/' + category.id, function(conferences) {
-        context.escapeDetails(conferences, _);
-        var data = {categories: category.subcategories, conferences: conferences, category_name: category.name};
+        var data = {categories: context.escapeDetails(category.subcategories),
+          conferences: context.escapeDetails(conferences), category_name: category.name};
         context.partial('views/categories/show.mustache', data);
       });
     });

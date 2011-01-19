@@ -5,6 +5,7 @@ var vows = require('vows'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   _ = require('../../public/vendor/underscore/underscore')._;
+  reset_database = require('../vows_helpers.js').reset_database
 
 vows_http.initialize(3001, 'localhost');
 
@@ -15,8 +16,8 @@ vows.describe('CategoriesController')
       topic: function () {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
-          vows_http.post('/ws/categories', callback, {name: 'tech'});
+        reset_database(function() {
+          vows_http.post('/ws/categories', callback, {name: 'tech'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
       
@@ -37,12 +38,12 @@ vows.describe('CategoriesController')
       topic: function() {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           vows_http.post('/ws/categories', function() {
             vows_http.post('/ws/categories', function() {
               vows_http.get('/ws/categories/category-coffee', callback);
-            }, {name: 'tea', parent: {name: 'coffee'}});            
-          }, {name: 'coffee'});
+            }, {name: 'tea', parent: {name: 'coffee'}}, {'authorization': 'Basic YWRtaW46YWRtaW4='});            
+          }, {name: 'coffee'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
       
@@ -56,8 +57,8 @@ vows.describe('CategoriesController')
       topic: function () {
         var callback = this.callback;
         
-        vows_http.get('/reset', function() {
-          vows_http.post('/ws/categories', callback, {name: ''});
+        reset_database(function() {
+          vows_http.post('/ws/categories', callback, {name: ''}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
   
@@ -72,7 +73,7 @@ vows.describe('CategoriesController')
       topic: function() {
         var callback = this.callback;
     
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           vows_http.post('/ws/categories', function() {
             vows_http.get('/ws/categories', callback);
           }, {name: 'tech'});
@@ -89,7 +90,7 @@ vows.describe('CategoriesController')
     'with no category': {
       topic: function() {
         var callback = this.callback;
-        vows_http.get('/reset', function() {
+        reset_database(function() {
           vows_http.get('/ws/categories', callback);
         });
       },

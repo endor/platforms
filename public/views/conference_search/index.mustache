@@ -1,0 +1,23 @@
+<form action="#/conference_search" method="get">
+  <p>
+    <label for="query">Query</label>
+    <input type="search" id="query" name="query"/>
+  </p>
+  <p>
+    <input type="submit" value="Search"/>
+  </p>
+</form>
+
+{{#searched}}
+  {{#found_anything}}
+    <p>Found {{result_count}} conference(s).</p>
+  {{/found_anything}}
+  {{^found_anything}}
+    <p>No conferences found.</p>
+  {{/found_anything}}
+  {{#conferences}}
+    <li>
+      <a href="#/conferences/{{esc_details}}">{{name}}</a>
+    </li>
+  {{/conferences}}
+{{/searched}}

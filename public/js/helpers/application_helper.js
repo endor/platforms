@@ -62,8 +62,10 @@
       $(form_id).validate().showErrors(context.formatErrors(errors));
     },
     
-    escapeDetails: function(items, _) {
-      _(items).each(function(item) { item.esc_details = encodeURIComponent(escape(item.details)); });
+    escapeDetails: function(items) {
+      return _(items).map(function(item) {
+        return _(item).extend({esc_details: encodeURIComponent(escape(item.details))});
+      });
     },
     
     detailLinkFromDetails: function(details) {
