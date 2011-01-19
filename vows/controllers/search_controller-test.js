@@ -5,6 +5,7 @@ var vows = require('vows'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   _ = require('../../public/vendor/underscore/underscore')._,
+ reset_database = require('../vows_helpers.js').reset_database,
   logIn = require('../vows_helpers.js').logIn;
 
 vows_http.initialize(3001, 'localhost')

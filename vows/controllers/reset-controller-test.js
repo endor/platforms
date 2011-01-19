@@ -4,6 +4,7 @@ var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
   assertStatusCode = require('../vows_helpers.js').assertStatusCode,
+  reset_database = require('../vows_helpers.js').reset_database,
   _ = require('../../public/vendor/underscore/underscore')._;
   var db = require('../../server.js').db;
 

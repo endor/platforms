@@ -22,7 +22,7 @@ vows.describe('CategoriesController')
       },
       
       'should return 200': assertStatusCode(200),
-
+  
       'should return the new category': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         var category_without_version = response.body;
@@ -39,8 +39,8 @@ vows.describe('CategoriesController')
         var callback = this.callback;
         
         reset_database(function() {
-          vows_http.post('/ws/categories', function() {
-            vows_http.post('/ws/categories', function() {
+          vows_http.post('/ws/categories', function(err, res) {
+            vows_http.post('/ws/categories', function(err, res) {
               vows_http.get('/ws/categories/category-coffee', callback);
             }, {name: 'tea', parent: {name: 'coffee'}}, {'authorization': 'Basic YWRtaW46YWRtaW4='});            
           }, {name: 'coffee'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
@@ -76,7 +76,7 @@ vows.describe('CategoriesController')
         reset_database(function() {
           vows_http.post('/ws/categories', function() {
             vows_http.get('/ws/categories', callback);
-          }, {name: 'tech'});
+          }, {name: 'tech'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
       'should return 200': assertStatusCode(200),
