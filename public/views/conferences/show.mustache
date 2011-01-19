@@ -9,6 +9,8 @@
   {{/attendees}}
 </ul>
 
-<form method="POST" action="#/conferences/{{id}}/attendees">
-  <input type="submit" value="Attend" />
-</form>
+{{^already_attending}}
+  <form method="POST" action="#/conferences/{{id}}/attendees">
+    <input type="submit" value="Attend" />
+  </form>
+{{/already_attending}}
