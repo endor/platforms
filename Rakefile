@@ -1,3 +1,4 @@
+# origin: RM
 # run all tests
 
 require 'jasmine'
@@ -12,11 +13,19 @@ namespace :cucumber do
   end
 
   Cucumber::Rake::Task.new(:wip, 'Run features that are being worked on') do |t|
-    t.fork = false # You may get faster startup if you set this to false
+    #t.fork = false # You may get faster startup if you set this to false
     t.profile = 'wip'
   end
 end
 task cucumber: ['cucumber:all']
+
+desc "run each step on its own"
+task :single_step do
+  Dir.glob(File.join(File.dirname(__FILE__) + "/features/**", "*.feature")).each do |file|
+    `cucumber #{file}`
+  end
+end
+
 
 task :default => [:vows, :'jasmine:ci', :cucumber] do
   
@@ -36,4 +45,3 @@ desc "Load test data"
 task factory_defaults: :reset do
   `curl -X POST localhost:3000/factorydefaults`
 end
-

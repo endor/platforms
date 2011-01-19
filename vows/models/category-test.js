@@ -1,3 +1,5 @@
+// origin: M
+
 var vows = require('vows'),
   assert = require('assert'),
   Category = require('../../lib/models/category');

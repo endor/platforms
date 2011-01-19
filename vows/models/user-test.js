@@ -1,3 +1,5 @@
+// origin: RM
+
 var vows = require('vows'),
   assert = require('assert'),
   User = require('../../lib/models/user');

@@ -1,3 +1,5 @@
+// origin: RM
+
 require.paths.unshift('vendor');
 require.paths.unshift('vendor/ejs');
 require.paths.unshift('lib');

@@ -1,3 +1,5 @@
+// origin: M
+
 var vows = require('vows'),
   assert = require('assert'),
   Conference = require('../../lib/models/conference');
