@@ -1,5 +1,6 @@
 Feature: Log in
 
+  @wip
   Scenario: log in successfully
     Given a user "alex" with the password "test"
     When I go to the start page
@@ -8,6 +9,8 @@ Feature: Log in
       And I fill in "Password" with "test"
       And I press "Log in"
     Then I should be logged in
+    And I should see "Alex / "
+    
     
   Scenario: invalid username
     Given a user "alex" with the password "test"

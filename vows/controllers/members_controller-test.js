@@ -2,6 +2,7 @@
 
 var vows = require('vows'),
   assert = require('assert'),
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   vows_http = require(__dirname + '/../../vendor/vows-http/index')
 
 vows_http.initialize(3001, 'localhost')
@@ -34,9 +35,7 @@ vows.
           vows_http.post('/ws/members', callback, {})
         });
       },
-      'should be an invalid request': function (error, response) {
-        assert.equal(response.statusCode, 400);
-      }        
+      'should be an invalid request': assertStatusCode(400)
     }
   })
   .addBatch({
@@ -47,9 +46,7 @@ vows.
           vows_http.post('/ws/members', callback, { username: "alex", password: "test", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"});
         });
       },
-      'should return 200': function(err, res) {
-        assert.equal(res.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
       'should return the user': function(err, res) {
         assert.deepEqual(res.body, {id: 'user-alex', username: "alex", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"});
       }
@@ -66,9 +63,7 @@ vows.
           }, valid_user_params);
         });
       },
-      'should return 400': function(err, res) {
-        assert.equal(res.statusCode, 400);
-      }
+      'should return 400': assertStatusCode(400)
     }
   })
   

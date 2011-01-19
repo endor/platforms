@@ -3,6 +3,7 @@
 var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
   _ = require('../../public/vendor/underscore/underscore')._;
 
 vows_http.initialize(3001, 'localhost');
@@ -19,9 +20,8 @@ vows.describe('CategoriesController')
         });
       },
       
-      'should return 200': function (error, response) {
-        assert.equal(response.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
+
       'should return the new category': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         var category_without_version = response.body;
@@ -61,9 +61,7 @@ vows.describe('CategoriesController')
         });
       },
   
-      'should return 400': function (error, response) {
-        assert.equal(response.statusCode, 400);
-      }
+      'should return 400': assertStatusCode(400)
     },
     'without permission': {
       // XXX
@@ -80,9 +78,7 @@ vows.describe('CategoriesController')
           }, {name: 'tech'});
         });
       },
-      'should return 200': function(err, res) {
-        assert.equal(res.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
       'should list that category': function(err, res) {
         var categories = res.body;
         assert.deepEqual(categories, [{name: 'tech', details: 'http://localhost:3001/ws/categories/category-tech'}]);
@@ -97,9 +93,7 @@ vows.describe('CategoriesController')
           vows_http.get('/ws/categories', callback);
         });
       },
-      'should return 204': function(err, res) {
-        assert.equal(res.statusCode, 204);
-      },
+      'should return 204': assertStatusCode(204),
       'should render an empty list': function(err, res) {
         assert.deepEqual(res.body, []);
       }

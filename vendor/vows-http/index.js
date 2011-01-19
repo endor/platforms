@@ -15,17 +15,22 @@ var http = require('http');
 
 var vows_http = {
   client: null,
+  cookie: null,
   initialize: function(port, host) {
     this.client = http.createClient(port, host);
   },
   send_request: function(type, url, callback, data) {
-    var headers = {host: this.client.host + ':' + this.client.port, 'x-requested-with': 'VowsHTTP'};
+    var headers = {host: this.client.host + ':' + this.client.port, 'x-requested-with': 'VowsHTTP'},
+      context = this;
+    
+    if(context.cookie) { headers.cookie = context.cookie; }
     
     if(data) {
       data = JSON.stringify(data);
-      headers = {'Content-Length': data.length, 'Content-Type': 'application/json'};
+      headers['Content-Length'] = data.length;
+      headers['Content-Type'] = 'application/json';
     };
-    
+
     var request = this.client.request(type, url, headers);
     
     if(data) { request.write(data); }
@@ -38,6 +43,7 @@ var vows_http = {
         response.body += chunk;
       });
       response.on('end', function() {
+        if(response.headers['set-cookie']) { context.cookie = response.headers['set-cookie']; }
         if(response.body[0] === "{" || response.body[0] === '[') {
           response.body = JSON.parse(response.body);          
         }

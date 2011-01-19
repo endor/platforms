@@ -3,9 +3,12 @@
 var vows = require('vows'),
   assert = require('assert'),
   vows_http = require(__dirname + '/../../vendor/vows-http/index'),
-  _ = require('../../public/vendor/underscore/underscore')._;
+  _ = require('../../public/vendor/underscore/underscore')._,
+  assertStatusCode = require('../vows_helpers.js').assertStatusCode,
+  logIn = require('../vows_helpers.js').logIn;
 
-vows_http.initialize(3001, 'localhost')
+vows_http.initialize(3001, 'localhost');
+var validConference = {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]};
 
 vows.
   describe('ConferencesController').
@@ -15,13 +18,12 @@ vows.
         var callback = this.callback;
         
         vows_http.post('/reset', function() {
-          vows_http.post('/ws/conferences', callback, {name: 'tech', startdate: '20110302', enddate: '20110304', categories: [{name: 'tech'}]});
+          vows_http.post('/ws/conferences', callback, validConference);
         });
       },
-
-      'should return 200': function (error, response) {
-        assert.equal(response.statusCode, 200);
-      },
+  
+      'should return 200': assertStatusCode(200),
+  
       'should return the new conference': function(error, response) {
         assert.isTrue(response.body.version.length > 0);
         delete response.body.version;
@@ -38,13 +40,51 @@ vows.
           vows_http.post('/ws/conferences', callback, {name: ''});
         });
       },
-
-      'should return 400': function (error, response) {
-        assert.equal(response.statusCode, 400);
-      },
+  
+      'should return 400': assertStatusCode(400),
     },
     'create without permission': {
       // XXX
+    }
+  }).
+  addBatch({
+    'adding attendees with an invalid conference id': {
+      topic: function() {
+        vows_http.post('/ws/conferences/abc/attendees', this.callback, {username: 'admin'});
+      },
+      
+      'should return a 404': assertStatusCode(404)
+    },
+    
+    'adding attendees where my username does not equal the logged in username': {
+      topic: function() {
+        var callback = this.callback;
+        vows_http.post('/reset', function() {
+          vows_http.post('/ws/members', function() {
+            vows_http.post('/ws/conferences', function(err, res) {
+              vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'admin'});
+            }, validConference);
+          }, { username: "frank", password: "test", fullname: "Frank", town: "Berlin", country: "Germany", email: "test@best.de"})
+        });
+      },
+      
+      'should return a 403': assertStatusCode(403)
+    },
+    
+    'adding attendees were conference and given username are correct': {
+      topic: function() {
+        var callback = this.callback;
+        
+        vows_http.post('/reset', function() {
+          logIn(vows_http, function() {
+            vows_http.post('/ws/conferences', function(err, res) {
+              vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
+            }, validConference);            
+          });
+        });        
+      },
+      
+      'should return a 204': assertStatusCode(204)
     }
   }).
   addBatch({
@@ -55,9 +95,7 @@ vows.
           vows_http.get('/ws/conferencesbycategory', callback);
         });
       },
-      'should return 204': function(err, response) {
-        assert.equal(response.statusCode, 204);
-      }
+      'should return 204': assertStatusCode(204)
     }
   }).
   addBatch({
@@ -78,9 +116,7 @@ vows.
         });
       },
       
-      'should return 200': function(err, response) {
-        assert.equal(response.statusCode, 200);
-      },
+      'should return 200': assertStatusCode(200),
       
       'should return a list of conferences': function(err, response) {
         assert.deepEqual(response.body, [
@@ -108,9 +144,7 @@ vows.
           vows_http.get('/ws/conferencesbycategory/category-unknown', this.callback);
         },
         
-        'should return 404': function(err, response) {
-          assert.equal(response.statusCode, 404)
-        }
+        'should return 404': assertStatusCode(404)
       }
     }
   }).
