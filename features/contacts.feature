@@ -9,7 +9,9 @@ Feature: Contacts
       And I log in as "frank/test"
     When I go to the start page
       And I follow "Search Members"
-      And I press "Send Contact Request to alex"
+    Then I should not see "Send Contact Request to frank"
+    When I press "Send Contact Request to alex"
+    Then I should see "Successfully sent contact request to alex"
       And I follow "Home"
     Then I should see "alex"
   

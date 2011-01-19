@@ -2,3 +2,10 @@
 <h2>{{username}} / {{fullname}}</h2>
 <h3>Location</h3>
 <p>{{town}} in {{country}}</p>
+
+<h3>Sent Contact Requests</h3>
+<ul>
+  {{#contact_requests}}
+    <li>{{target_username}}</li>
+  {{/contact_requests}}  
+</ul>
