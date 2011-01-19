@@ -12,12 +12,12 @@ vows_http.initialize(3001, 'localhost')
 vows.
   describe('ResetController').
   addBatch({
-    'POST /reset': {
+    'GET /reset': {
       topic: function () {
         var callback = this.callback;
         
         db.saveDoc({foo: 'bar'}, function(err) {
-          vows_http.post('/reset', callback);
+          vows_http.get('/reset', callback);
         });
       },
       'should return 204': assertStatusCode(204),
@@ -35,9 +35,9 @@ vows.
     }
   }).
   addBatch({
-    'POST /factorydefaults': {
+    'GET /factorydefaults': {
       topic: function() {
-        vows_http.post('/factorydefaults', this.callback);
+        vows_http.get('/factorydefaults', this.callback);
       },
       'categories': {
         topic: function() {

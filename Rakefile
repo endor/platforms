@@ -38,10 +38,10 @@ end
 
 desc "Reset development enviroment"
 task :reset do
-  `curl -X POST localhost:3000/reset`
+  `curl  localhost:3000/reset`
 end
 
 desc "Load test data"
 task factory_defaults: :reset do
-  `curl -X POST localhost:3000/factorydefaults`
+  `curl localhost:3000/factorydefaults`
 end

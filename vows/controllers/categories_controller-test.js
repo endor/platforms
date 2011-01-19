@@ -15,7 +15,7 @@ vows.describe('CategoriesController')
       topic: function () {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/categories', callback, {name: 'tech'});
         });
       },
@@ -37,7 +37,7 @@ vows.describe('CategoriesController')
       topic: function() {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/categories', function() {
             vows_http.post('/ws/categories', function() {
               vows_http.get('/ws/categories/category-coffee', callback);
@@ -56,7 +56,7 @@ vows.describe('CategoriesController')
       topic: function () {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/categories', callback, {name: ''});
         });
       },
@@ -72,7 +72,7 @@ vows.describe('CategoriesController')
       topic: function() {
         var callback = this.callback;
     
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/categories', function() {
             vows_http.get('/ws/categories', callback);
           }, {name: 'tech'});
@@ -89,7 +89,7 @@ vows.describe('CategoriesController')
     'with no category': {
       topic: function() {
         var callback = this.callback;
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.get('/ws/categories', callback);
         });
       },

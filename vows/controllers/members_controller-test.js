@@ -14,7 +14,7 @@ vows.
       'with logged in user': {
         topic: function() {
           var callback = this.callback
-          vows_http.post('/reset', function() {
+          vows_http.get('/reset', function() {
             vows_http.post('/ws/members', function(error, response){
               vows_http.get('/ws/members/alex', callback)
             },
@@ -31,7 +31,7 @@ vows.
     'create with invalid member': {
       topic: function() {
         var callback = this.callback;
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/members', callback, {})
         });
       },
@@ -42,7 +42,7 @@ vows.
     'create with valid member': {
       topic: function() {
         var callback = this.callback;
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/members', callback, { username: "alex", password: "test", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"});
         });
       },
@@ -57,7 +57,7 @@ vows.
       topic: function() {
         var callback = this.callback,
           valid_user_params = { username: "alex", password: "test", fullname: "Alex Lang", town: "Berlin", country: "Germany", email: "test@best.de"};
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/members', function(err, res) {
             vows_http.post('/ws/members', callback, valid_user_params);
           }, valid_user_params);
