@@ -1,5 +1,5 @@
 Given /^a user "([^"]*)"( with the password "([^"]*)")?$/ do |username, _, password|
-  Platforms.post "/ws/users", :body => {:email => "#{username}@email.pf",
+  Platforms.post "/ws/members", :body => {:email => "#{username}@email.pf",
     :username => username,
     :fullname => "#{username} doe",
     :password => password || "test",
