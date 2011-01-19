@@ -14,7 +14,7 @@ vows.
       'with valid user': {
         topic: function () {
           var callback = this.callback;
-          vows_http.post('/reset', function(e, res){
+          vows_http.get('/reset', function(e, res){
             vows_http.post('/ws/members', function(e, res) {
               vows_http.put('/session', callback, {username: 'joe', password: 'test'});
             }, {email: 'joe@doe.com', username: 'joe', town: 'Berlin',

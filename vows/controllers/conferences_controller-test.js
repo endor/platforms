@@ -17,7 +17,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/conferences', callback, validConference);
         });
       },
@@ -36,7 +36,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/conferences', callback, {name: ''});
         });
       },
@@ -59,7 +59,7 @@ vows.
     'adding attendees where my username does not equal the logged in username': {
       topic: function() {
         var callback = this.callback;
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/members', function() {
             vows_http.post('/ws/conferences', function(err, res) {
               vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'admin'});
@@ -75,7 +75,7 @@ vows.
       topic: function() {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           logIn(vows_http, function() {
             vows_http.post('/ws/conferences', function(err, res) {
               vows_http.post('/ws/conferences/conference-tech/attendees', callback, {username: 'frank'});
@@ -91,7 +91,7 @@ vows.
     'index with no conferences': {
       topic: function() {
         var callback = this.callback;
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.get('/ws/conferencesbycategory', callback);
         });
       },
@@ -103,7 +103,7 @@ vows.
       topic: function() {
         var callback = this.callback;
         
-        vows_http.post('/reset', function() {
+        vows_http.get('/reset', function() {
           vows_http.post('/ws/categories', function() {
             vows_http.post('/ws/categories', function() {
               vows_http.post('/ws/conferences', function() {
