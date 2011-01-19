@@ -13,7 +13,8 @@ cap.Categories = function(app) {
       context.escapeDetails(category.subcategories, _);
       context.get('/ws/conferencesbycategory/' + category.id, function(conferences) {
         context.escapeDetails(conferences, _);
-        context.partial('views/categories/show.mustache', {categories: category.subcategories, conferences: conferences});
+        var data = {categories: category.subcategories, conferences: conferences, category_name: category.name};
+        context.partial('views/categories/show.mustache', data);
       });
     });
   });
