@@ -2,8 +2,8 @@
 
 cap.SessionFilter = (function() {
   var allowed_routes = [
-    {verb: 'get', path: /#\/members\/new\/?$/},
-    {verb: 'post', path: /#\/members\/?$/},
+    {verb: 'get', path: /#\/users\/new\/?$/},
+    {verb: 'post', path: /#\/users\/?$/},
     {verb: 'get', path: /#\/session\/new\/?$/},
     {verb: 'put', path: /#\/session\/?$/},
     {verb: 'get', path: /#\/$/},
