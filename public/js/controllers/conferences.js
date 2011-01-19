@@ -21,7 +21,9 @@ cap.Conferences = function(app) {
     var details_link = cap.details_link || $('#conference_' + context.params.id).attr('data-link');
     cap.details_link = null;
     context.get(details_link, function(conference) {
-      context.partial('views/conferences/show.mustache', conference);
+      context.get('/ws/conferences/' + conference.id + '/attendees', function(attendees) {
+        context.partial('views/conferences/show.mustache', _(conference).extend(attendees: attendees));
+      });
     });
   });
   

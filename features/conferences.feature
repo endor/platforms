@@ -38,13 +38,12 @@ Feature: Conferences
       And a category "JavaScript"
       And a conference "JSconfEU" in the category "JavaScript" with start date "01.05.2011" and end date "04.05.2011" and description "The best JavaScript conference in the world!" located in "Adalbertstr. 7, 10999 Berlin"
       And a user "hans" with the password "test"
-      And a user "klaus" with the password "test"
       And I log in as "hans/test"
       And I go to the start page
       And I follow "JSconfEU"
       And I press "Attend"
     Then I should see "You are attending this conference!"
-    When I follow "Log out"
-      And I log in as "klaus/test"
+    When I press "Log out"
+      And I go to the start page
       And I follow "JSconfEU"
     Then I should see "hans"

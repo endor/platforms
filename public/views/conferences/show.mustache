@@ -2,6 +2,13 @@
 
 <h2>{{name}}</h2>
 
+<h3>Attendees</h3>
+<ul>
+  {{#attendees}}
+    <li>{{attendee}}</li>
+  {{/attendees}}
+</ul>
+
 <form method="POST" action="#/conferences/{{id}}/attendees">
   <input type="submit" value="Attend" />
 </form>
