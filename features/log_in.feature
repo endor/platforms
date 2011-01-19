@@ -1,6 +1,5 @@
 Feature: Log in
 
-  @wip
   Scenario: log in successfully
     Given a user "alex" with the password "test"
     When I go to the start page
