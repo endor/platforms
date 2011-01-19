@@ -1,35 +1,71 @@
-h1 {
-  color: #888888;
+* {
+  font-family: Georgia;
+}
+
+body {
+  margin: 0px;
   padding: 0px;
+}
+
+#header {
   margin: auto;
   width: 985px;
+  background: #EEE;
+  margin-bottom: 0px;
+  padding-top: 0.5em;
+}
+
+h1 {
+  margin-left: 20px;
+  color: #888888;
+  padding: 0px;
   margin-bottom: .5em;
 }
 
+h1 a, h1 a:visited {
+  text-decoration: none;
+  color: #333;
+}
+
 #menu {
-  margin: auto;
-  width: 985px;
-  margin-bottom: 1em;
+  margin-bottom: 0px;
+  padding-left: 20px;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  background: #AAB;
 }
 
 #menu li {
   display: inline-block;
   margin-right: 10px;
+  margin-bottom: 0px;
+}
+
+#menu form {
+  display: inline;
+}
+
+#menu input {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 #menu li a {
   text-decoration: none;
-  color: #888888;
+  color: #FFF;
 }
 
 #menu li a:visited, #menu li a:hover {
-  color: #555555;
+  color: #FFF;
 }
 
 #wrapper {
   margin: auto;
   width: 945px;
-  border: solid 5px #CCCCCC;
+  background: #EEE;
   padding: 20px;
 }
 
@@ -54,4 +90,29 @@ h1 {
 
 .clear {
   clear: both;
+}
+
+a, a:visited {
+  color: darkblue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+label {
+  width: 150px;
+  display: inline-block;
+}
+
+#flash {
+  position: absolute;
+  top: 0px;
+  left: 600px;
+  background: #AAB;
+  padding: 5px;
+  color: white;
+  font-size: 90%;
+  display: none;
 }
