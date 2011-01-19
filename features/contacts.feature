@@ -3,9 +3,9 @@ Feature: Contacts
   As a user
   I want to get in contact with other users
   
-  Scenario: send contact request
-    Given a user "frank" with the password "test"
-      And a user "alex" with the password "test"
+  Scenario: send and accept contact request
+    Given a user "frank" with the password "test" and email "frank@tank.de"
+      And a user "alex" with the password "test" and email "alex@clubma.te"
       And I log in as "frank/test"
     When I go to the start page
       And I follow "Search Members"
@@ -19,4 +19,10 @@ Feature: Contacts
     When I press "Log out"
     When I log in as "alex/test"
     Then I should see "frank"
+    When I press "Accept"
+    Then I should see "Successfully created contact with frank"
+      And I should see "frank@tank.de"
+    When I press "Log out"
+      And I log in as "frank/test"
+    Then I should see "alex@clubma.te"
   

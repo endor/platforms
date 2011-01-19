@@ -13,6 +13,23 @@
 <h3>Received Contact Requests</h3>
 <ul>
   {{#received_contact_requests}}
-    <li>{{source_username}}</li>
+    <li>
+      {{source_username}}
+      <form method="PUT" action="#/contact_requests/{{id}}">
+        <input type="hidden" name="contact_request[version]" value="{{version}}" />
+        <input type="hidden" name="contact_request[accepted]" value="true" />
+        <input type="submit" value="Accept" />
+      </form>
+    </li>
   {{/received_contact_requests}}  
+</ul>
+
+<h3>Contacts</h3>
+<ul>
+  {{#accepted_contact_requests}}
+    <li>
+      {{username}}<br />
+      {{fullname}} [{{email}}]
+    </li>
+  {{/accepted_contact_requests}}
 </ul>

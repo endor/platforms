@@ -14,4 +14,15 @@ cap.ContactRequests = function(app) {
       context.flash(context.params.target_username + " could not be added as a contact.");
     });
   });
-}
+  
+  app.put('#/contact_requests/:id', function(context) {
+    context.put('/contact_requests/' + context.params.id, context.params.contact_request, function(contact_request) {
+      if(contact_request.accepted) {
+        context.flash("Successfully created contact with " + contact_request.target_username);
+        context.redirect('#/members/' + contact_request.source_username);
+      }
+    }, function() {
+      context.flash("Unable to accept contact request.");
+    });
+  });
+};

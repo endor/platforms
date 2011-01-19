@@ -2,10 +2,14 @@
 
 cap.Members = function(app) {
   app.get('#/members/:username', function(context) {
-    var render_partial = function(member, sent_contact_requests, received_contact_requests) {
+    var render_partial = function(member, sent_contact_requests, received_contact_requests, accepted_contact_requests) {
+      _(accepted_contact_requests).each(function(request) {
+        request.username = (request.source_username === cap.current_user.username) ? request.target_username : request.source_username;
+      });
       context.partial('views/members/show.mustache', _(member).extend({
         sent_contact_requests: sent_contact_requests,
-        received_contact_requests: received_contact_requests
+        received_contact_requests: received_contact_requests,
+        accepted_contact_requests: accepted_contact_requests
       }));
     };
     
@@ -13,11 +17,13 @@ cap.Members = function(app) {
       if(context.params.username === cap.current_user.username) {
         context.get('/sent_contact_requests', function(sent_contact_requests) {
           context.get('/received_contact_requests', function(received_contact_requests) {
-            render_partial(member, sent_contact_requests, received_contact_requests);
+            context.get('/accepted_contact_requests', function(accepted_contact_requests) {
+              render_partial(member, sent_contact_requests, received_contact_requests, accepted_contact_requests);
+            });
           });        
         });
       } else {
-        render_partial(member, [], []);
+        render_partial(member, [], [], []);
       }
     });
   });
