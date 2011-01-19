@@ -16,7 +16,7 @@ vows.
       topic: function () {
         var callback = this.callback;
         
-        db.saveDoc({foo: 'bar'}, function(err) {
+        db.saveDoc({_id: 'foo'}, function(err) {
           vows_http.get('/reset', callback);
         });
       },
@@ -26,10 +26,13 @@ vows.
           db.allDocs(this.callback);
         },
         'should empty the database': function(err, docs) {
-          assert.isTrue(docs.rows.filter(function(row) {return row.id.indexOf('_design') == -1}).length == 0);
+          assert.isTrue(docs.rows.filter(function(row) {return row.id == 'foo'}).length == 0);
         },
         'should rebuild the views': function(err, docs) {
           assert.isTrue(docs.rows.filter(function(row) {return row.id.indexOf('_design') != -1}).length > 0);
+        },
+        'should create a user admin/admin': function(err, docs) {
+          assert.isTrue(docs.rows.filter(function(row) {return row.id == 'user-admin'}).length == 1);
         }
       }
     }

@@ -1,4 +1,5 @@
 // origin: M
+// handles requests for creating/listing conferences
 
 cap.Conferences = function(app) {
   app.get('#/conferences/new', function(context) {
