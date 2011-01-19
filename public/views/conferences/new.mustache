@@ -8,10 +8,11 @@
     <input type="text" id="conference_name" name="conference[name]" />
   </p>
   
-  <p>
-    Categories: <input type="hidden" name="conference[categories]" />
+  Categories:
+  <p class="checkbox_select">
+    <input type="hidden" name="conference[categories]" />
     {{#categories}}
-      <input type="checkbox" name="conference[categories][][name]" value="{{name}}" id="conference_{{name}}" /> {{name}}
+      <span class="choice"><input type="checkbox" name="conference[categories][][name]" value="{{name}}" id="conference_{{name}}" /> {{name}}</span>
     {{/categories}}
   </p>
 

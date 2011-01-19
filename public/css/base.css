@@ -116,3 +116,21 @@ label {
   font-size: 90%;
   display: none;
 }
+
+.checkbox_select {
+  max-height: 160px;
+  max-width: 200px;
+  overflow: auto;
+}
+
+.checkbox_select .choice {
+  display: block;
+}
+
+input[type=text], input[type=search], textarea {
+  width: 300px;
+}
+
+textarea {
+  height: 100px;
+}
