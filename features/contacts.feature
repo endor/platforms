@@ -16,4 +16,7 @@ Feature: Contacts
     Then I should see "alex"
     When I follow "Search Members"
     Then I should see "alex"
+    When I press "Log out"
+    When I log in as "alex/test"
+    Then I should see "frank"
   

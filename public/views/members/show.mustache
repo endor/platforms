@@ -5,7 +5,14 @@
 
 <h3>Sent Contact Requests</h3>
 <ul>
-  {{#contact_requests}}
+  {{#sent_contact_requests}}
     <li>{{target_username}}</li>
-  {{/contact_requests}}  
+  {{/sent_contact_requests}}  
+</ul>
+
+<h3>Received Contact Requests</h3>
+<ul>
+  {{#received_contact_requests}}
+    <li>{{source_username}}</li>
+  {{/received_contact_requests}}  
 </ul>
