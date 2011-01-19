@@ -30,17 +30,31 @@ cap.Members = function(app) {
   
   app.get('#/members', function(context) {
     context.get('/ws/members', function(members) {
-      context.get('/sent_contact_requests', function(contact_requests) {
-        var formatted_members = [];
-        
-        contact_requests = contact_requests.map(function(cr) { return cr.target_username; });
-        members.forEach(function(member) {
-          if(member.username !== cap.current_user.username) {
-            formatted_members.push(_(member).extend({show_name: (contact_requests.indexOf(member.username) > -1) }));
-          }
-        });
+      context.get('/sent_contact_requests', function(sent_contact_requests) {
+        context.get('/accepted_contact_requests', function(accepted_contact_requests) {
+          var formatted_members = [], contact_requests = [];
 
-        context.partial('views/members/index.mustache', {members: formatted_members});        
+          contact_requests = sent_contact_requests.map(function(cr) { return cr.target_username; });
+          _(accepted_contact_requests).each(function(cr) {
+            if(cr.target_username === cap.current_user.username) {
+              contact_requests.push(cr.source_username);
+            } else {
+              contact_requests.push(cr.target_username);              
+            }
+          });
+          members.forEach(function(member) {
+            if(member.username !== cap.current_user.username) {
+              formatted_members.push(_(member).extend({
+                show_name: (contact_requests.indexOf(member.username) > -1),
+                show_details: _(accepted_contact_requests).select(function(cr) {
+                  return cr.target_username === member.username || cr.source_username === member.username;
+                }).length > 0
+              }));
+            }
+          });
+          
+          context.partial('views/members/index.mustache', {members: formatted_members});
+        });
       });
     });
   });

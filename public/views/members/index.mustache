@@ -5,6 +5,11 @@
     <li>
       {{#show_name}}
         {{username}}
+        
+        {{#show_details}}
+        <br />
+        {{fullname}} [{{email}}]
+        {{/show_details}}
       {{/show_name}}
       
       {{^show_name}}
