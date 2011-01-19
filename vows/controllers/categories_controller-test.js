@@ -17,7 +17,7 @@ vows.describe('CategoriesController')
         var callback = this.callback;
         
         reset_database(function() {
-          vows_http.post('/ws/categories', callback, {name: 'tech'});
+          vows_http.post('/ws/categories', callback, {name: 'tech'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
       
@@ -42,8 +42,8 @@ vows.describe('CategoriesController')
           vows_http.post('/ws/categories', function() {
             vows_http.post('/ws/categories', function() {
               vows_http.get('/ws/categories/category-coffee', callback);
-            }, {name: 'tea', parent: {name: 'coffee'}});            
-          }, {name: 'coffee'});
+            }, {name: 'tea', parent: {name: 'coffee'}}, {'authorization': 'Basic YWRtaW46YWRtaW4='});            
+          }, {name: 'coffee'}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
       
@@ -58,7 +58,7 @@ vows.describe('CategoriesController')
         var callback = this.callback;
         
         reset_database(function() {
-          vows_http.post('/ws/categories', callback, {name: ''});
+          vows_http.post('/ws/categories', callback, {name: ''}, {'authorization': 'Basic YWRtaW46YWRtaW4='});
         });
       },
   
